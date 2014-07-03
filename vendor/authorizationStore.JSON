@@ -1,0 +1,2760 @@
+{
+    "securityClaims": [
+        {
+            "ClaimRole": "Administrator",
+            "modules": [
+                {
+                    "Module": "Enterprise Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Properties",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Location",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "Save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "Cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import Hierarchy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export Hierarchy",
+                                    "IsVisible": true
+                                },
+								{
+                                    "name": "Save",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Dictionary Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Clone_Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Application Setup",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Save",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Exception Log",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Audit Log",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Editor",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Editor",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Device Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Device Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Device",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Device",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Open Close",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Open_Close Clinic",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Submit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Availability",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Clinic Availability",
+                            "IsVisible": true,
+                            "Links": []
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Web Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Member Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Member Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Enroll New Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Enroll ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Identify ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Decline ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Remove ID",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Monitoring",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Registration Activity",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Merge Records",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Appointment Request",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View_Confirm",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Portal Services",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View_Confirm Request",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Accept",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deny",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Monitoring",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Payment Dashboard",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Payment Collection",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Amount",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Update Card",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Payment History",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Issue Credit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Issue Refund",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Void",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Receipt",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pre-Authorizations",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Payment Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Appointment Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Appointment Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Cancel Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Activity Monitor",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Sign-In Sheet",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Arrive",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Arrive",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Resolve",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Move to Wait List",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Clear Help",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Wait List",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Call Next Patient",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Start Service",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Refresh",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Send Text Alert",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Service",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Out Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity ",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Cancelled",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "User Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "User Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "unlock",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "lock",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "resetpassword",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Delete User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Profile Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Profile",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit Profile",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Reports Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Reports Manager",
+                            "IsVisible": true
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Queue Manager",
+                            "IsVisible": true
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Monitor",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Queue Monitor",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Delete Activity",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Queue View",
+                            "IsVisible": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "ClaimRole": "Supervisor",
+            "modules": [
+                {
+                    "Module": "Enterprise Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Properties",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Location",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "Save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "Cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import Hierarchy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export Hierarchy",
+                                    "IsVisible": true
+                                },
+								{
+                                    "name": "Save",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Dictionary Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Clone_Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Application Setup",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Save",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Exception Log",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Audit Log",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Editor",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Editor",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Device Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Device Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Device",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Device",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Open Close",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Open_Close Clinic",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Submit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Availability",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Clinic Availability",
+                            "IsVisible": true,
+                            "Links": []
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Web Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Member Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Member Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Enroll New Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Enroll ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Identify ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Decline ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Remove ID",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Monitoring",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Registration Activity",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Merge Records",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Appointment Request",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View_Confirm",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Portal Services",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View_Confirm Request",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Accept",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deny",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Monitoring",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Payment Dashboard",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Payment Collection",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Amount",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Update Card",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Payment History",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Issue Credit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Issue Refund",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Void",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Receipt",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pre-Authorizations",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Payment Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Appointment Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Appointment Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Cancel Appointment",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Activity Monitor",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Sign-In Sheet",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Arrive",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Arrive",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Resolve",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Move to Wait List",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Clear Help",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Wait List",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Call Next Patient",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Start Service",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Refresh",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Send Text Alert",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Service",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Out Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity ",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Cancelled",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "User Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "User Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "unlock",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "lock",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "resetpassword",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Delete User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Profile Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Profile",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit Profile",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Reports Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Reports Manager",
+                            "IsVisible": true
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Queue Manager",
+                            "IsVisible": true
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Monitor",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Queue Monitor",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Delete Activity",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Queue View",
+                            "IsVisible": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "ClaimRole": "user",
+            "modules": [
+                {
+                    "Module": "Enterprise Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Properties",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Location",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Save",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import Hierarchy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export Hierarchy",
+                                    "IsVisible": false
+                                },
+								{
+                                    "name": "Save",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Dictionary Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Clone_Copy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Add Language",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Application Setup",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Save",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Exception Log",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Audit Log",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Show",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Workflow Editor",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Workflow Editor",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Device Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Device Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Device",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit Device",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deactivate",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Open Close",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Open_Close Clinic",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Submit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Clinic Availability",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Clinic Availability",
+                            "IsVisible": false,
+                            "Links": []
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Web Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Member Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Member Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Member",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Enroll New Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Enroll ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Identify ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Decline ID",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Remove ID",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Web Monitoring",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Registration Activity",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Merge Records",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Appointment Request",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View_Confirm",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Portal Services",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View_Confirm Request",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Accept",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Deny",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Monitoring",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Payment Dashboard",
+                            "IsVisible": true
+                        },
+                        {
+                            "name": "Payment Collection",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Amount",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Add Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Reoccurring",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Update Card",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Payment History",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "View Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Issue Credit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Issue Refund",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Void",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Receipt",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pre-Authorizations",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Pay Now",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Gateway Response",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Payment Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Payment Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Activate",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Retire",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Delete",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Copy",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Edit",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Import",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Export",
+                                    "IsVisible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Appointment Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Appointment Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Appointment",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Activity Monitor",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "Sign-In Sheet",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Arrive",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Arrive",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Resolve",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Move to Wait List",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Clear Help",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Wait List",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Call Next Patient",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Start Service",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Refresh",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Send Text Alert",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Scan",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Service",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Edit Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "In Process",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "View Member",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Account Details",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "View Updates",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Out Process",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Cancel Activity ",
+                                    "IsVisible": true
+                                },
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": false
+                                },
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Cancelled",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Restore",
+                                    "IsVisible": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "User Manager",
+                    "IsVisible": true,
+                    "Tabs": [
+                        {
+                            "name": "User Manager",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Add User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "unlock",
+                                            "IsVisible": false
+                                        },
+                                        {
+                                            "name": "lock",
+                                            "IsVisible": false
+                                        },
+                                        {
+                                            "name": "resetpassword",
+                                            "IsVisible": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Delete User",
+                                    "IsVisible": true,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": true
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Profile Manager",
+                            "IsVisible": false,
+                            "Links": [
+                                {
+                                    "name": "Add Profile",
+                                    "IsVisible": false,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": false
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Edit Profile",
+                                    "IsVisible": false,
+                                    "Buttons": [
+                                        {
+                                            "name": "save",
+                                            "IsVisible": false
+                                        },
+                                        {
+                                            "name": "cancel",
+                                            "IsVisible": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Module": "Reports Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Reports Manager",
+                            "IsVisible": false
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Manager",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Queue Manager",
+                            "IsVisible": false
+                        }
+                    ]
+                },
+                {
+                    "Module": "Queue Monitor",
+                    "IsVisible": false,
+                    "Tabs": [
+                        {
+                            "name": "Queue Monitor",
+                            "IsVisible": true,
+                            "Links": [
+                                {
+                                    "name": "Delete Activity",
+                                    "IsVisible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Queue View",
+                            "IsVisible": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

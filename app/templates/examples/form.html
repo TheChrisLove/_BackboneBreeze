@@ -1,0 +1,16 @@
+<!-- When including a form in your view, encase your form inputs with a <form> tag.  If you view utilizes
+     multiple forms, use class names to access applicable forms (no IDs please).
+
+     Each form input should be set with a "name" property with the value set to the property name that input
+     is either bound to or creating.
+
+     The above are required to properly access jquery validate, and are best practice form standards.
+  -->
+<div>
+  <form>
+    <div class="row">
+      <div class="col-xs-2 col-md-6">Name:</div>
+      <div class="col-xs-2 col-md-6"><input class="form-control" name="Name" /></div>
+    </div>
+  </form>
+</div>

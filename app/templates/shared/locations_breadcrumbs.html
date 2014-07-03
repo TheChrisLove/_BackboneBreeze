@@ -1,0 +1,25 @@
+<div class="home crumb" data-bind="attr: { 'data-locationid' : home, 'data-locationtypeid' : homeType }"></div>
+<!-- ko foreach: crumbs -->
+<div class="locationGroup">
+    <div>
+		<span>
+        <!-- ko if:display() != "..." -->
+            <!-- ko if:activeTypeId() == "2" --> 
+                <span class="glyphicon glyphicon-map-marker"></span>
+            <!-- /ko -->
+            <!-- ko if:activeTypeId() == "3" -->
+                <span class="glyphicon glyphicon-folder-close"></span>
+            <!-- /ko -->
+            <!-- ko if:activeTypeId() == "4" -->
+                <span class="glyphicon glyphicon-hdd"></span>
+            <!-- /ko -->
+            <!-- ko if:activeTypeId() == "5" -->
+                <span class="glyphicon glyphicon-folder-close"></span>
+            <!-- /ko -->
+        <!-- /ko -->
+        <span data-bind="text: display, attr: { 'data-locationid' : activeId, 'data-locationtypeid' : activeTypeId}" class="crumb"></span>
+		</span>
+    </div>
+    <ul data-bind="locationBreadcrumbs: parentId" class="list-unstyled"></ul>
+</div>
+<!-- /ko -->

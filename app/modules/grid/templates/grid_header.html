@@ -1,0 +1,21 @@
+﻿
+<!-- ko if : $data.hotkeys -->
+<!-- ko foreach: hotkeys -->
+<span data-bind="attr: { class : 'btn btn-primary ' + action , 'data-loading-text' : loading }" >
+	<i data-bind="attr: { class :  glyphicon }"></i>&nbsp;
+	<span data-bind="text: display"></span>
+</span>
+<!-- /ko -->
+<!-- /ko -->
+
+<!-- ko if: $data.dropdownButton && $data.dropdownOptions -->
+<div class="btn-group pull-right">
+  <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
+    <span data-bind="text: dropdownButton"></span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" data-bind="foreach: dropdownOptions">
+    <li><a href="#" data-bind="attr: { class: action }, text: display"></a></li>
+  </ul>
+</div>
+<div class="clearfix" />
+<!-- /ko -->

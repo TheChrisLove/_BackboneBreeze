@@ -1,0 +1,37 @@
+@import url("less/variables.less");
+@import url("less/elements.less");
+ .widget_container {
+    .rounded(@widget_border_radius);
+
+    .alert {
+        margin: 0px 0 12px 0;
+    }
+
+.drop-shadow(0, 0, 2px, 0.15);
+    border: 1px solid@swatch_bg_widget-border;
+
+width: 100%;
+    background: @swatch_bg_widget;
+    margin-bottom: 20px;
+
+> div {
+        padding: 12px 12px 8px 12px;
+    }
+    > div:first-child {
+        .border-radius(@widget_border_radius, @widget_border_radius, 0, 0);
+        border-bottom: 1px solid@swatch_bg_widget-border;
+
+.gradient(@swatch_bg_widget-header1, @swatch_bg_widget-header1, @swatch_bg_widget-header2);
+
+
+font-weight: bold;
+        padding-top:4px;
+        padding-right: 5px;
+        h4 {
+            margin: 4px 0;
+            .glyphicon {
+                top: 3px;
+            }
+        }
+    }
+}

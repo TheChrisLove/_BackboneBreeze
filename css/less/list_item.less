@@ -1,0 +1,43 @@
+@import url("less/variables.less");
+@import url("less/elements.less");
+
+.list_item{
+	.rounded(@widget_border_radius);
+	.drop-shadow(0, 0, 2px, 0.15);
+    border: 1px solid@swatch_bg_widget-border;
+    padding: 15px 15px 12px 15px;
+    .gradient(@swatch_bg_widget, @swatch_bg_widget-header2, @swatch_bg_widget);
+    margin-bottom: 20px;
+
+    h3 {
+    	padding-top: 3px;
+    	margin: 0;
+        height: 34px;
+        vertical-align: middle;
+    	input {
+	    	width: 200px;
+	    	display: inline-block;
+	    	margin: 0 0 0 5px;
+    	}
+        
+	    span.service {
+		    color: @swatch_font_warning !important; 
+	    };
+
+        .editableInput {
+            position: relative;
+            top: -4px;
+        }
+    };
+
+    > div > div:first-child{
+    	float: left;
+    	.rounded(@widget_border_radius);
+    	border: 1px solid@btn-warning_color2;
+    	.gradient(@btn-warning_color1, @btn-warning_color1, @btn-warning_color2);
+    	padding: 11px;
+    	margin: -7px 10px 0 -5px;
+    	color: @swatch_font_contrast;
+    	font-size: 16px;
+    };
+}

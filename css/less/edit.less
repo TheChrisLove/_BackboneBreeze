@@ -1,0 +1,86 @@
+@import url("less/variables.less");
+@import url("less/elements.less");
+
+.inlineEdit{
+
+    .glyphicon {
+        display: none;
+    }
+    
+    .editableData {cursor: pointer; padding-left: 5px;}
+
+    .editableData {
+        padding: 1px 5px 1px 5px;
+    padding-right: 13px;
+        cursor: pointer; 
+    }
+    
+    .editableData .editIcon{display: none; }
+
+    .editableData:hover{
+        padding: 0px 4px 0px 4px;
+        border: 1px solid @swatch_font_subdued;
+        padding-right: 5px;
+        .rounded(@widget_border_radius);
+        .editIcon {
+            display: inline-block;
+            font-size: .8em;
+            color: @swatch_font_subdued;
+        }
+        .glyphicon {
+            display: inline-block;
+        }
+    }
+    /*
+	.editableData:hover{
+		padding: 5px 5px 5px 0;
+        margin: 0 !important;
+		border: 1px solid @swatch_font_subdued;
+		.rounded(@widget_border_radius);
+		.editIcon {
+			display: inline-block;
+			font-size: .8em;
+			color: @swatch_font_subdued;
+		}
+	}
+    */
+
+
+    .editableInput { 
+        display: inline-block; 
+
+        .input-group {
+            width: 100%;
+        }
+
+        .glyphicon {
+
+            display: inline-block;
+        }
+
+        .input-group-addon  {
+            cursor: pointer;
+        }
+    }
+}
+
+.cellData {
+    font-size:12px!important;
+    padding: 0px !important;
+    min-width: 150px;
+
+
+    .editableDataWrapper {
+        padding: 15px 5px 15px 5px;
+        display: inline-block;
+    }
+
+    .editableInput{
+        width: 100%%;
+        input {
+            width: 100%;
+        }
+        padding: 2px 5px 2px 5px;
+    }
+
+}

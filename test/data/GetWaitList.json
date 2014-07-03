@@ -1,0 +1,28 @@
+[{
+    "TicketId": 10,
+    "PatientName": "Bonney, William",
+    "QueueName": "Walk-in Screening",
+    "AppointmentTime": null,
+    "CheckInCompleteTime": "2014-04-17T16:49:28.527",
+    "WaitTime": 21,
+    "Service": "LAB",
+    "EscalationState": "Escalated"
+}, {
+    "TicketId": 9,
+    "PatientName": "Munny, William",
+    "QueueName": "Appointment",
+    "AppointmentTime": "2014-04-17T17:05:28.527",
+    "CheckInCompleteTime": "2014-04-17T16:55:28.527",
+    "WaitTime": 15,
+    "Service": "MRI",
+    "EscalationState": "Warning"
+}, {
+    "TicketId": 11,
+    "PatientName": "Henry, John",
+    "QueueName": "Walk-in Drop-off",
+    "AppointmentTime": null,
+    "CheckInCompleteTime": "2014-04-17T17:07:28.527",
+    "WaitTime": 3,
+    "Service": "CAT",
+    "EscalationState": "Normal"
+}]

@@ -1,0 +1,4 @@
+﻿<h1><span data-bind="text: title"></span></h1>
+<ul data-bind="foreach: menu_actions">
+    <li class="link" data-bind="subNav: { controller: $parent.url, action: action}"><span data-bind="text: name"></span></li>
+</ul>

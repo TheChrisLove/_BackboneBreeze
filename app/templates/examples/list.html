@@ -1,0 +1,15 @@
+<!-- 
+	This is an example of using knockout foreach on a breeze entity with a nested array.
+	(Working example can be seen from loading the demo controller)
+-->
+
+<div class="widget_container">
+    <div>
+        <h4><span class="glyphicon glyphicon-refresh"></span> &nbsp;<span data-bind="text: entity().Name"></span></h4>
+    </div>
+    <div class="widget_content">
+    	<ul data-bind="foreach: entity().Parameters">
+    		<li><span data-bind="text: Value"></span></li>
+    	</ul>
+    </div>
+</div>

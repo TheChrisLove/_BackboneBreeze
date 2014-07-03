@@ -1,0 +1,8 @@
+<ul class="list-unstyled" data-bind="foreach: modules">
+    <!-- ko if: display() == true &&  access() == true -->
+    <li class="link" data-bind="css: { active : active() == true }, attr: { 'data-href' : url() }" >
+        <span data-bind="attr: { class : 'module_icon module_icons-' + url() }"> </span>
+        <p><span data-bind="text: name"></span></p>
+    </li>
+    <!-- /ko -->
+</ul>

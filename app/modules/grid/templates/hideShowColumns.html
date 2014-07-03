@@ -1,0 +1,16 @@
+
+<!-- ko if: properties().length > 0 -->
+<p>Check which columns you would like to display in the grid.  When complete, click on &rsquo;Apply&rsquo; below.</p>
+<!-- /ko -->
+
+<!-- ko if: properties().length === 0 -->
+<p>Entity data has not yet loaded for this grid.  Hide/Show column functionality will be available as soon as data is available for display within the grid.</p>
+<!-- /ko -->
+
+<!-- ko foreach: properties -->
+<div class="checkbox">
+    <label>
+        <input type="checkbox" data-bind="attr: { checked: $parent.isActive(prop()), 'data-prop' : prop }" ><span data-bind="text: name "></span>
+    </label>
+</div>
+<!-- /ko -->

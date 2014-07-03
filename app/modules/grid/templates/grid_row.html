@@ -1,0 +1,21 @@
+<!-- ko foreach: columns -->
+<!-- ko if: active -->
+
+<td data-bind="css: { cellData : editable }">
+	<span class="inlineEdit js-inlineEdit">
+		<span class="editableDataWrapper">
+	        <span data-bind="css: { editableData : editable, 'js-editable': editable }">
+	            <span data-bind="text: $parent[prop()]"></span>
+	            <span class="editIcon glyphicon glyphicon-pencil"></span>
+	        </span>
+        </span>
+        <span class="editableInput js-editableInput hidden">
+        	<div class="input-group input-group-sm">
+				<input type="text" class="form-control" data-bind="value: $parent[prop()], attr: { name: prop() }"/>
+				<span class="input-group-addon js-saveEdit" data-bind="attr: { name : prop()} "><span class="glyphicon glyphicon-ok"></span></span>
+			</div>
+        </span>
+    </span>
+</td>
+<!-- /ko -->
+<!-- /ko -->

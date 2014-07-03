@@ -1,0 +1,34 @@
+<!--
+	Navigation within SPA should utilize backbone.router to leverage push state
+	and fully leverage SPA functionality.  Backbone.router will direct the App to the 
+	appropriate controller/action without page reload.
+-->
+
+<!-- Utilize the "link" class to leverage the backbone.router, the href tag will be passed directly -->
+<a href="someController/someAction/someArgument=someValue" class="link">Href Link</a>
+
+<!-- 
+	Utilize data-href as an alternative to href 
+	- useful for elements not supporting href property
+	- easily references viewModel properties
+-->
+<span class="link" data-href="someController/someAction">Span Link</span>
+
+<!-- 
+	Utilize the ko custom binding "urlArgs" to:
+	- easily utilize viewModel properties for arguments.
+	- create arguments from a function
+	Arguments are url encoded for safe transport.
+	(below, someValue is a viewModel property)
+-->
+<a href="demo/index" class="link" 
+   data-bind="urlArgs: { someArgument : username, anotherArgument: 'AnotherValue' } ">Url Args Link</a>
+
+<a href="someController/someAction" class="link" 
+   data-bind="urlArgs: { someArgument : 'hello' + 'world'} ">Url Args Function Link</a>
+
+<!-- 
+	Utilize the "noLink" class if you desire an <a> element but want to disable navigation
+	(Generally this may be the case for some Bootstrap elements)
+ -->
+<a href="#" class="noLink">No Link</a>

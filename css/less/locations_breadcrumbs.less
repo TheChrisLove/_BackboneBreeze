@@ -1,0 +1,93 @@
+@import url("less/variables.less");
+@import url("less/elements.less");
+
+#locations_breadcrumbs {
+    float: left;
+    display: block;
+    height: 61px;
+    width: 70%;
+    color: @swatch_font_locations;
+    font-size: 1.3em;
+    font-weight: bold;
+    
+    .link {
+        color: @swatch_font_locations;
+    }
+    
+    .locations_breadcrumbs {
+        display: block;
+        height: 100%;
+        
+        > div {
+            cursor: pointer;
+            line-height: 57px;
+            height: 100%;
+            float: left;
+            display: block;
+            background: url("../img/breadcrumbs_border.png") 0 0 no-repeat;
+            padding-left: 36px; 
+            padding-right: 12px;
+            > div {
+                height: 100%;
+				
+				> span {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					max-width: 180px;
+					display: block;
+				}
+            }
+        }
+        
+        ul {
+            margin-left: -31px;
+            background: @swatch_bg_dropdown;
+            font-weight: normal;
+            font-size: .9em;
+            line-height: 1.1em;
+            border: 1px solid @swatch_bg_dropdown-border;
+            border-top: none;
+            position: absolute;
+            z-index: 100;
+            display: none;
+            .border-radius(0, @widget_border_radius2, @widget_border_radius2, 0);
+			max-width: 350px;
+			max-height: 700px;
+			overflow-y: auto;
+			overflow-x: hidden;
+        
+            li:first-child{
+               border: none;     
+            }
+            
+            li:hover{
+                background: @swatch_bg_dropdown-hover;
+            }
+            
+            li {
+                cursor: pointer;
+                padding: 12px 28px 12px 12px;
+                border-top: 1px solid @swatch_bg_dropdown-border;
+                color: @swatch_font_link;
+				p{white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 120px;
+				display: block;
+				margin-bottom: 0px;}
+                }
+            
+            li.inactive{
+                    color:  @swatch_font_warning;
+                }   
+        }
+    
+        .home {
+            background: url("../img/home_icon.png") center center no-repeat;
+            display: block;
+            width: 85px;
+            height: 60px;
+        }
+    }
+}

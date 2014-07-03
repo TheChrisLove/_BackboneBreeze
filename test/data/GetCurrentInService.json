@@ -1,0 +1,10 @@
+[{
+    "TicketId": 10,
+    "PatientName": "Current, InService",
+    "QueueName": "Walk-in Screening",
+    "AppointmentTime": null,
+    "CheckInCompleteTime": "2014-04-17T16:49:28.527",
+    "WaitTime": 21,
+    "Service": "LAB",
+    "EscalationState": "Escalated"
+}]

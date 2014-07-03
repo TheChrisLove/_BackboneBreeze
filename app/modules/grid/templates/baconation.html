@@ -1,0 +1,30 @@
+<td colspan="100%">
+	<div class="baconation">
+
+		<div class="btn-toolbar pull-left" role="toolbar">
+		    
+		    <div class="btn-group">
+                <select class="form-control input-sm" style="margin: 0px; " data-bind="options: pageSizeOptions, optionsText: 'display', optionsValue: 'value', value: pageSize"></select>
+            </div>
+            <div class="btn-group" data-bind="visible: hideShowColumns">
+		    	<span class="btn btn-default btn-sm js-hideShowColumns"><span class="glyphicon glyphicon-cog"></span> Hide/Show Columns</span>
+		    </div>
+		</div>
+
+		<div class="baconation_pagination pull-right">
+			<span class="page btn btn-sm" data-bind="visible: total() > 1, css: { 'btn-primary active' : 1 == page(), 'btn-default' : 1 != page()}">1</span>
+			<span data-bind="visible: (page() > 3) && (total() >= 5)">...</span>
+			<!-- ko foreach: new Array(total()) -->
+			<span class="page btn btn-sm" data-bind="
+				visible: $parent.showPage($index()+1),
+				text: $index()+1, css: { 'btn-primary active' : $index()+1 == $parent.page(), 'btn-default' : $index()+1 != $parent.page() }" ></span>
+			<!-- /ko -->
+			<span data-bind="visible: (page() < total() - 2) && (total() >= 5)">...</span>
+			<span class="page btn btn-sm" 
+				  data-bind="text: total, visible: total() > 4,
+				  css: { 'btn-primary active activeBacon' : total() == page(), 'btn-default' : total() != page()}"></span>
+			<span class="page btn btn-default btn-sm" data-bind="visible: page() < total()">next</span>
+		</div>
+
+	</div>
+</td>

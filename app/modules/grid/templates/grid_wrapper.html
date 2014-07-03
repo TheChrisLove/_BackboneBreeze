@@ -1,0 +1,54 @@
+﻿<div>
+    <div class="widget_container">
+        <div>
+            <h4><span data-bind="attr: {class : glyphicon }"></span> <span data-bind="visible: title, text: title"></span></h4>
+        </div>
+        <div class="widget_content">
+            <div class="zone1"></div>
+            <div class="top_bar header"></div>
+            <table class="ingrid ingrid-entered ingrid-select_all table-striped grid_view collection-list">
+                <thead>
+                    <tr>
+                        <!-- ko foreach: _columns -->
+                            <!-- ko if: active -->
+                            <th scope="col" data-bind="attr: { 'data-type' : type, 'data-prop' : prop }, css: { inSort: $parent.sortEnabled() == true , filtered: filtered}">
+                                <span data-bind="text: name"></span>
+                                
+                                <!-- type will determine what type of input gets rendered here... use if or custom bind -->
+                                <div class="hover_wrapper">
+                                    <div class="hover_filter">
+                                        <form>
+                                        <div class="input-group input-group-sm">
+                                          <input type="text" class="form-control search" placeholder="Search..." data-bind="attr: { 'data-prop' : prop }, value: value">
+                                          <span class="input-group-addon searchGo"><span class="glyphicon glyphicon-search"></span></span>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </th>
+                            <!-- /ko -->
+                        <!-- /ko -->
+                        <th scope="col" data-bind="visible: rowActions"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tbody class="ingrid-empty" data-bind="visible: ((_filteredCount() == 0) && (_fetching() != true)) || (_initializing() && _fetching())">
+                    <tr>
+                        <td colspan="100%">
+                            <div data-bind="visible: (_filteredCount() == 0) && (_fetching() != true)">
+                                <span data-bind="text: emptyListCaption"></span>
+                            </div>
+                            <div data-bind="visible: _initializing() && _fetching()" class="loadingData">
+                                <h3>Loading Data...</h3>
+                                <span class="js-spinner spinner"></span>
+                            </div>
+                        </td>
+                    </td>
+                </tbody> 
+                <tfoot class="paging"></tfoot>
+            </table>
+
+            <div class="footer"></div>
+        </div>
+    </div>
+</div>
