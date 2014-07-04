@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>view_examples.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="basic_view.html">
+                basic_view.js
+              </a>
+            
+              
+              <a class="source" href="view_examples.html">
+                view_examples.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>view_examples.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, app, $, someViewModel */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="extending-the-base-view">Extending the Base View</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This view is to provide illustrative examples of view customization */
+Copy and paste functionality as applicable, but ensure attention is paid
+to comments.  Implementing a view with conflicting methods (conflicting
+methods are shown here as part of illustrative examples) will cause issues. </p>
+<p>For examples of view initialization, refer to app/controllers/examples/initializing_views.js</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'knockback'</span>,
+  <span class="hljs-string">'knockout'</span>,
+  <span class="hljs-string">'text!templates/examples/container.html'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, kb, ko, template)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> BasicView = View.extend({
+
+        template: _.template(template),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>The start function fires after the view’s initialize function,
+and can be utilized to add view initialization logic without 
+overriding base/view initialization logic. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        start: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Example usage might be binding custom function(s)
+if view context is needed within the function </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          _.bindAll(<span class="hljs-keyword">this</span>, <span class="hljs-string">'myHoverFunction'</span>, <span class="hljs-string">'myClickFunction'</span>);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h2 id="events">Events</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Refer to Backbone docs for further details on events object </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        events: {
+            <span class="hljs-string">'click .someClass'</span> : <span class="hljs-string">'myClickFunction'</span>,
+            <span class="hljs-string">'mouseenter .someOtherClass'</span> : <span class="hljs-string">'myHoverFunction'</span>,
+            <span class="hljs-string">'mouseleave .someOtherClass'</span> : <span class="hljs-string">'myHoverFunction'</span>
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Example usage of hover in/out using Backbone view eventing </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        myHoverFunction: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span>{</span>
+            <span class="hljs-keyword">switch</span>(event.type){
+              <span class="hljs-keyword">case</span> <span class="hljs-string">'mouseenter'</span> :
+                  $(event.currentTarget).addClass(<span class="hljs-string">'hovering'</span>);
+              <span class="hljs-keyword">break</span>;
+              <span class="hljs-keyword">case</span> <span class="hljs-string">'mouseleave'</span> : 
+                  $(event.currentTarget).removeClass(<span class="hljs-string">'hovering'</span>);
+              <span class="hljs-keyword">break</span>;
+            }
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>This basic click event function illustrates a few view fundamentals </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        myClickFunction: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Access model properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">var</span> modelProperty = <span class="hljs-keyword">this</span>.model.get(<span class="hljs-string">'someProperty'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Access viewModel properties
+viewModelProperties are either ko obsservables, kb observables, or viewModels</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">var</span> viewModelProperty = <span class="hljs-keyword">this</span>.viewModel.viewModelProperty();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Access an element contained within the DOM associated with this view
+Never use IDs in your HTML as elements are easily accessible when scoped properly</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">var</span> $element = <span class="hljs-keyword">this</span>.$el.find(<span class="hljs-string">'.someClass'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>passed in event is a standard jquery event</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">var</span> clickSource = $(event.currentTarget);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <h2 id="customizing-the-view-model">Customizing the View Model</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The viewModel is created during initialization and can be updated later.
+By default, all model properties will be pulled into the viewModel.
+This core function can be overwritten to provide a custom viewModel 
+with exclusions, remapping, computed properties, and more. */</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        createViewModel: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(options)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>The viewModel will be accessible on the model through this.viewModel
+when your within context of the view.<br>When within context of the view, this.model is a reference to this view’s
+associate Backbone.Model</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> viewModel, _this;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>this function must return a viewModel</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>This default implementation passes view options and creates a viewModel
+based on these options and all the model properties of associated model.
+Accepts the same options as kb.viewModel.
+This function resides in base/view.js, and utilizes knockback (kb.viewModel) 
+in conjunction helper functions to create observeables on breeze array
+and other advanced functionality as applicable to options passed to the view
+(refer to “Creating Custom/Advanced ViewModels” below for details)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">this</span>._createViewModel(options);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>The default Knockback viewModel factory can also be utilized if the model
+utilized by the view is properly structured with nested models/collections.
+Breeze entities however use arrays not collections, and as such the Knockback
+viewmodel factory would not be sufficient (the _createViewModel function will
+allow for Breeze entity property arrays to be observed).  Make sure kb is defined. */</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = kb.viewModel(<span class="hljs-keyword">this</span>.model);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>A custom viewModel can also be returned.  Useful if you just want to create something
+simple from scratch, or if the view has no model.
+Knockback and Knockout can be used interchangeably in this context as applicable,
+as a rule of thumb, consider the following guidelines when chooseing knockback vs. knockout</p>
+<ul>
+<li>If the observeable is to be synced with a this.model property, use KNOCKBACK</li>
+<li>If the observeable should not reference/sync with this.model, use KNOCKOUT</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>             viewModel = {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>You can use kb and ko as applicable and in concert with eachother within the viewmodel
+username is created as a knockout observable (will have no link to any backbone model)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                username: ko.observable(<span class="hljs-string">'A username'</span>),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>displayname is created with knockback, and will sync with this.model </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                displayname: kb.observable(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'displayname'</span>)
+             };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Adding/appending Knockback observeables:
+The following two examples may be applicable in the scenario above, wherein a viewModel
+is created from scratch without using _createViewModel() or kb.viewModel().
+To add/append model properties to an existing viewModel, either append the existing viewModel</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel.customProperty = kb.observable(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'someValue'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>OR use knockback viewModel factory to extend the viewModel</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            kb.viewModel(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'userId'</span>, viewModel);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Adding/appending Knockout observeables:
+The following illustrates adding a knockout observeable to the viewModel. 
+This may be applicable for computed properties which reference model properties,
+or for properties created by or used only for the view (and need not be tracked 
+on the view’s model (this.model)).
+To add/append custom properties (not referencing this.model), use knockout
+ko.computed can be used interchangeably with ko.observable below</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel.knockoutProperty = ko.observable(<span class="hljs-string">'This is bound with knockout'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <h2 id="creating-custom-and-advanced-view-models">Creating Custom and Advanced View Models</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>The below are some examples of options that can be passed to _createViewModel.
+ For a full list of options, refer to Knockback viewModel API documentation. 
+These options should be utilized primarily for advanced use cases.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>To exclude certain properties, use the excludes option
+This is a knockback option, refer to knockback docs for details</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">this</span>._createViewModel({
+              excludes : [<span class="hljs-string">'aPropertyName'</span>, <span class="hljs-string">'anotherPropertyName'</span>]
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Creating a viewModel with options:
+In addition to the options that can be passed to kb.viewModel, 
+custom properties can be created in bulk via utilizing the custom option.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">this</span>._createViewModel({
+              custom : [
+                <span class="hljs-string">'someProperty'</span>, <span class="hljs-comment">// if an entry is a string, it will be initialized with null value</span>
+                { 
+                  name: <span class="hljs-string">'anotherProperty'</span>, <span class="hljs-comment">// If an object, use name/value</span>
+                  value: <span class="hljs-string">'anotherProperyValue'</span>
+                },
+                {
+                  name: <span class="hljs-string">'thirdProperty'</span>, <span class="hljs-comment">// functions can also be used to create value</span>
+                  value: (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span><span class="hljs-keyword">return</span> <span class="hljs-string">'thirdPropertyValue'</span>;})()
+                },
+                {
+                  name: <span class="hljs-string">'fourthProperty'</span>, <span class="hljs-comment">// or functions can be referenced</span>
+                  value: <span class="hljs-keyword">this</span>.someFunction
+                }
+              ]
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>To include a viewModel reference to another viewModel:
+This is applicable when this view requires access to the context of 3rd party viewModel</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">this</span>._createViewModel({
+              vm_related: {
+                key : <span class="hljs-string">'relatedVmPropertyName'</span>, <span class="hljs-comment">// this will be the name of the viewmodel property</span>
+                vm  : someViewModel <span class="hljs-comment">// the reference to your desired viewModel</span>
+              }
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>To create a viewModel scoped to a nested property:
+Backbone Nested Model is also supported (use the nested model get/set syntax)
+This is ADVANCED usage, utilize as applicable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">this</span>._createViewModel({
+              vm_model_context: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+                <span class="hljs-keyword">return</span> _this.model.get(<span class="hljs-string">'nestedObject_or_nestedBackboneObject'</span>);
+              },
+              address: <span class="hljs-string">'nestedObject'</span> <span class="hljs-comment">// The property name of the nested object</span>
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>A viewModel needs to be returned from this function</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">return</span> viewModel;
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <h2 id="rendering-the-view">Rendering the View</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Overwrite beforeRender, afterRender, or renderComplete to apply functionality before/after render</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Fires before render… simple.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        beforeRender: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>},</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Fires immediately after render.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        afterRender: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>this.renderBindings() applies/resets knockout bindings as applicable if a 
+viewModel is present on the view.  This should only be overwritten for 
+custom knockout binding logics (should not be necessary)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.renderBindings();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Sometimes you want to piggy back off of the afterRender function, which may have extant logic you
+do not want to copy or duplicate in your function.  </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.renderComplete();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>To apply validation rules, utilize this.trackValidation()
+Pass jQuery Validate (extension) validate object to initialize validation
+in your view’s form.
+Make sure that your submit action checks the following: (below snippet existing in context of view)
+if(!this.$el.find(‘form’).valid()) return false; // where return ceases execution of the submit function</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.trackValidation({
+                rules: {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>simple rule, converted to {required:true}</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    Name: <span class="hljs-string">"required"</span>,
+                    DisplayName: <span class="hljs-string">"required"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>compound rule example</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="hljs-comment">/*
+                    example: 
+                      email: {
+                        required: true,
+                        email: true
+                      }
+                    */</span>
+                }
+            });
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>By default this function is completely empty, and simply fires after afterRender.  This is the easiest function to overwrite
+without worrying about breaking any extant functionality.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        renderComplete: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>}
+    });
+
+    <span class="hljs-keyword">return</span> BasicView;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

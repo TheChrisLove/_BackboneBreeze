@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>grid_wrapper_view.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="grid_footer_view.html">
+                grid_footer_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_header_view.html">
+                grid_header_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_module.html">
+                grid_module.js
+              </a>
+            
+              
+              <a class="source" href="grid_pagination_view.html">
+                grid_pagination_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_row_view.html">
+                grid_row_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_wrapper_view.html">
+                grid_wrapper_view.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>grid_wrapper_view.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'text!modules/grid/templates/grid_wrapper.html'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, View, template)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> Wrapper = View.extend({
+        template: _.template(template),
+
+        className: <span class="hljs-string">"centered full"</span>,
+
+        events: {
+          <span class="hljs-string">'click .searchGo'</span> : <span class="hljs-string">'search'</span>,
+          <span class="hljs-string">'click .inSort'</span>: <span class="hljs-string">"sortEngine"</span>,
+          <span class="hljs-string">'change .selectIngridMeta'</span>: <span class="hljs-string">"setMeta"</span>,
+          <span class="hljs-string">'change .inCheckAll'</span>: <span class="hljs-string">"checkAll"</span>,
+          <span class="hljs-string">'click .js_addNewSave'</span> : <span class="hljs-string">'saveNew'</span>,
+          <span class="hljs-string">'mouseenter th'</span> : <span class="hljs-string">'filter'</span>,
+          <span class="hljs-string">'mouseleave th'</span> : <span class="hljs-string">'filter'</span>
+        },
+
+        sortEngine: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(event, clear)</span> {</span>
+            <span class="hljs-keyword">var</span> $el = $(event.currentTarget);
+            <span class="hljs-keyword">if</span>($(event.target).parents(<span class="hljs-string">'.hover_wrapper'</span>).length &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            <span class="hljs-keyword">var</span> data = $el.data();
+            <span class="hljs-keyword">var</span> columns = $el.siblings();
+            columns.add($el).removeClass(<span class="hljs-string">'sortDirectiondesc'</span>).removeClass(<span class="hljs-string">'sortDirectionasc'</span>);
+            <span class="hljs-keyword">if</span> (!clear) {
+                <span class="hljs-keyword">var</span> previousSort = <span class="hljs-keyword">this</span>.grid.get(<span class="hljs-string">'sortBy'</span>);
+                <span class="hljs-keyword">var</span> prop = data.prop;
+                <span class="hljs-keyword">var</span> type = data.type;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>calculating the direction of our sort. 
+only if the previous sort was the same column AND the previous sort direction was descending, then we sort ascending
+otherwise we sort descending</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> sortDir = previousSort.prop == prop &amp;&amp; previousSort.dir == <span class="hljs-string">'desc'</span>
+                            ? <span class="hljs-string">'asc'</span>
+                            : <span class="hljs-string">'desc'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Clear siblings of sort flags, add appropriate sort flag</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                $el.addClass(<span class="hljs-string">'sortDirection'</span> + sortDir);
+            }
+
+            <span class="hljs-keyword">if</span> (clear == <span class="hljs-literal">true</span>) {
+                <span class="hljs-keyword">var</span> sort = <span class="hljs-keyword">this</span>.grid.get(<span class="hljs-string">'defaultSort'</span>);
+                <span class="hljs-keyword">this</span>.grid.set(<span class="hljs-string">'sortBy'</span>, sort);
+            } <span class="hljs-keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>this.model.setSortBy(colName, sortDir, sortType);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">this</span>.grid.set(<span class="hljs-string">'sortBy'</span>, {
+                    <span class="hljs-string">'dir'</span>: sortDir,
+                    <span class="hljs-string">'type'</span>: type,
+                    <span class="hljs-string">'prop'</span>: prop
+                });
+            }
+
+
+            <span class="hljs-comment">/*
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Need to add breeze/ajax functionality if not using a complete collection</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.model.attributes.sortAjax === <span class="hljs-literal">true</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>this.model.collection.fetch({sort : { dir: sortDir, type: sortType, name: colName }});</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            } 
+                */
+        },
+
+        search: function(event){
+          event.stopPropagation();
+          var $el = $(event.currentTarget).siblings('input[type="text"]');
+          var prop = $el.data('prop');
+          this.grid.filter(prop, 'eq', $el.val()); 
+        },
+
+        filter: function(event){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>TODO check for mouseleave if input has focus and cancel hide
+Add blur event to input to hide</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">var</span> $el = $(event.currentTarget);
+          <span class="hljs-keyword">switch</span>(event.type){
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'mouseenter'</span> : 
+              $el.find(<span class="hljs-string">'.hover_wrapper'</span>).fadeIn();
+            <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'mouseleave'</span> :</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>TODO check if input has focus and do not hide if it does
+also need to hide input if not moused over and blurred</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              $el.find(<span class="hljs-string">'.hover_wrapper'</span>).hide();
+            <span class="hljs-keyword">break</span>;
+          }
+        },
+
+        saveNew: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span>{</span>
+            <span class="hljs-keyword">var</span> form = <span class="hljs-keyword">this</span>.$el.find(<span class="hljs-string">'form.addNewForm'</span>);
+            <span class="hljs-keyword">var</span> newObject = app.utils.serializeObject(form.serializeArray());
+            <span class="hljs-keyword">var</span> type = <span class="hljs-keyword">this</span>.grid.get(<span class="hljs-string">'entityInfo'</span>).shortName;
+            <span class="hljs-keyword">this</span>.grid.get(<span class="hljs-string">'collection'</span>).add(app.api.manager.createEntity(type, newObject));
+            app.api.manager.saveChanges();
+            <span class="hljs-keyword">this</span>.$el.find(<span class="hljs-string">'.modal'</span>).modal(<span class="hljs-string">'hide'</span>);
+        }
+
+    });
+
+    <span class="hljs-keyword">return</span> Wrapper;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

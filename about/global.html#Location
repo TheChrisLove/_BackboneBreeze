@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Class: Location</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="keyword" content="" />
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:url" content=""/>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"applicationName":"ESS.App","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">ESS.App</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="BaseView">
+            <span class="title">
+                <a href="BaseView.html">BaseView</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="BaseView#_applyModelListeners"><a href="BaseView.html#_applyModelListeners">_applyModelListeners</a></li>
+            
+                <li data-name="BaseView#_breezeCallback"><a href="BaseView.html#_breezeCallback">_breezeCallback</a></li>
+            
+                <li data-name="BaseView#_contextModelListen"><a href="BaseView.html#_contextModelListen">_contextModelListen</a></li>
+            
+                <li data-name="BaseView#_createViewModel"><a href="BaseView.html#_createViewModel">_createViewModel</a></li>
+            
+                <li data-name="BaseView#_createViewModelHelper"><a href="BaseView.html#_createViewModelHelper">_createViewModelHelper</a></li>
+            
+                <li data-name="BaseView#_getAddress"><a href="BaseView.html#_getAddress">_getAddress</a></li>
+            
+                <li data-name="BaseView#_updateContextModel"><a href="BaseView.html#_updateContextModel">_updateContextModel</a></li>
+            
+                <li data-name="BaseView#afterRender"><a href="BaseView.html#afterRender">afterRender</a></li>
+            
+                <li data-name="BaseView#beforeRender"><a href="BaseView.html#beforeRender">beforeRender</a></li>
+            
+                <li data-name="BaseView#createViewModel"><a href="BaseView.html#createViewModel">createViewModel</a></li>
+            
+                <li data-name="BaseView#fetchTemplate"><a href="BaseView.html#fetchTemplate">fetchTemplate</a></li>
+            
+                <li data-name="BaseView#getViewModel"><a href="BaseView.html#getViewModel">getViewModel</a></li>
+            
+                <li data-name="BaseView#renderBindings"><a href="BaseView.html#renderBindings">renderBindings</a></li>
+            
+                <li data-name="BaseView#renderComplete"><a href="BaseView.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="BaseView#resetBindings"><a href="BaseView.html#resetBindings">resetBindings</a></li>
+            
+                <li data-name="BaseView#resetElement"><a href="BaseView.html#resetElement">resetElement</a></li>
+            
+                <li data-name="BaseView#setModel"><a href="BaseView.html#setModel">setModel</a></li>
+            
+                <li data-name="BaseView#setViewModel"><a href="BaseView.html#setViewModel">setViewModel</a></li>
+            
+                <li data-name="BaseView#start"><a href="BaseView.html#start">start</a></li>
+            
+                <li data-name="BaseView#subscribe"><a href="BaseView.html#subscribe">subscribe</a></li>
+            
+                <li data-name="BaseView#trackValidation"><a href="BaseView.html#trackValidation">trackValidation</a></li>
+            
+                <li data-name="BaseView#updateViewModel"><a href="BaseView.html#updateViewModel">updateViewModel</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Controller">
+            <span class="title">
+                <a href="Controller.html">Controller</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Controller#actions"><a href="Controller.html#actions">actions</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Controller#_prepActions"><a href="Controller.html#_prepActions">_prepActions</a></li>
+            
+                <li data-name="Controller#buildMenuActions"><a href="Controller.html#buildMenuActions">buildMenuActions</a></li>
+            
+                <li data-name="Controller#dispose"><a href="Controller.html#dispose">dispose</a></li>
+            
+                <li data-name="Controller#getView"><a href="Controller.html#getView">getView</a></li>
+            
+                <li data-name="Controller#renderLayout"><a href="Controller.html#renderLayout">renderLayout</a></li>
+            
+                <li data-name="Controller#setView"><a href="Controller.html#setView">setView</a></li>
+            
+                <li data-name="Controller#start"><a href="Controller.html#start">start</a></li>
+            
+                <li data-name="Controller#startAction"><a href="Controller.html#startAction">startAction</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Info">
+            <span class="title">
+                <a href="Info.html">Info</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Info#applyClaimsAccess"><a href="Info.html#applyClaimsAccess">applyClaimsAccess</a></li>
+            
+                <li data-name="Info#getActive"><a href="Info.html#getActive">getActive</a></li>
+            
+                <li data-name="Info#getController"><a href="Info.html#getController">getController</a></li>
+            
+                <li data-name="Info#getModule"><a href="Info.html#getModule">getModule</a></li>
+            
+                <li data-name="Info#recycle"><a href="Info.html#recycle">recycle</a></li>
+            
+                <li data-name="Info#renderModule"><a href="Info.html#renderModule">renderModule</a></li>
+            
+                <li data-name="Info#setActive"><a href="Info.html#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Location">
+            <span class="title">
+                <a href="global.html#Location">Location</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Location#_buildCrumbs"><a href="global.html#Location#_buildCrumbs">_buildCrumbs</a></li>
+            
+                <li data-name="Location#setActive"><a href="global.html#Location#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Location#location:change"><a href="global.html#Location#event:location:change">location:change</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Modal">
+            <span class="title">
+                <a href="Modal.html">Modal</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Modal#_buttonClick"><a href="Modal.html#_buttonClick">_buttonClick</a></li>
+            
+                <li data-name="Modal#_modalOnClose"><a href="Modal.html#_modalOnClose">_modalOnClose</a></li>
+            
+                <li data-name="Modal#close"><a href="Modal.html#close">close</a></li>
+            
+                <li data-name="Modal#renderComplete"><a href="Modal.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="Modal#setContentView"><a href="Modal.html#setContentView">setContentView</a></li>
+            
+                <li data-name="Modal#show"><a href="Modal.html#show">show</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Router">
+            <span class="title">
+                <a href="Router.html">Router</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Router#_getActiveLayout"><a href="Router.html#_getActiveLayout">_getActiveLayout</a></li>
+            
+                <li data-name="Router#_getArgs"><a href="Router.html#_getArgs">_getArgs</a></li>
+            
+                <li data-name="Router#_setLayout"><a href="Router.html#_setLayout">_setLayout</a></li>
+            
+                <li data-name="Router#_show404"><a href="Router.html#_show404">_show404</a></li>
+            
+                <li data-name="Router#default"><a href="Router.html#default">default</a></li>
+            
+                <li data-name="Router#go"><a href="Router.html#go">go</a></li>
+            
+                <li data-name="Router#login"><a href="Router.html#login">login</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="User">
+            <span class="title">
+                <a href="User.html">User</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="User#login"><a href="User.html#login">login</a></li>
+            
+                <li data-name="User#logout"><a href="User.html#logout">logout</a></li>
+            
+                <li data-name="User#verify"><a href="User.html#verify">verify</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="User#user:login"><a href="User.html#event:user:login">user:login</a></li>
+            
+                <li data-name="User#user:logout"><a href="User.html#event:user:logout">user:logout</a></li>
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="global.html#Location">Class: Location</h1>
+        
+
+
+
+<section>
+    
+<header>
+    <h2>
+    Location
+    </h2>
+    
+        <div class="class-description"><p>Location Holds location information for navigation and query purposes. Subscribes to <a href="User.html"><code>User</code></a> to query
+location data when user logs in (user:login).</p></div>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="Location">
+            
+            new Location<span class="signature">(options)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="location.js.html">models/location.js</a>, <a href="location.js.html#line28">line 28</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>Backbone.Model options</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+        <h5 class="subsection-title">Properties:</h5>
+        
+        <dl>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>locations</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Collection</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>Collection holding Location Entity Data</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>home</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>From <a href="User.html"><code>User</code></a> claims, this is the Id for uppermost location the user can traverse</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>homeType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The type of location for home</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>active</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The id of the currently active location</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeType</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The type of location for active</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>crumbs</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Collection</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>A collection with ordered information about the current path from active to home</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>display</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The displayname or &quot;...&quot; for the crumb</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>parentId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The parentId for the crumb</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The id for the crumb</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeTypeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The type for the crumb</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+            </td>
+        </tr>
+	
+	
+	</tbody>
+</table></dl>
+        
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+        <h3 class="subsection-title">Extends</h3>
+        
+        <ul>
+            <li>Backbone.Model</li>
+        </ul>
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Requires</h3>
+        
+        <ul>
+            <li>module:Backbone</li>
+        </ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="_buildCrumbs">
+            
+            <span class="type-signature ">private</span>_buildCrumbs<span class="signature">(<span class="optional">activeId</span>, <span class="optional">activeTypeId</span>)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="location.js.html">models/location.js</a>, <a href="location.js.html#line57">line 57</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Internal function for maintaining/updating the crumbs collection on location change (when this.get('active') changes).
+This function loops internally traversing parents of the activeId param until 'home' is discovered.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the id of the lowermost crumb to be created. (generally will be activeId)</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeTypeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                        <span class="optional">optional</span>
+                    
+                    
+                        
+                    
+                
+                <p>the id type of the lowermost crumb to be created. (generally will be activeTypeId)</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="setActive">
+            
+            setActive<span class="signature">(activeId, activeTypeId, reloadChildLocations)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="location.js.html">models/location.js</a>, <a href="location.js.html#line105">line 105</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Sets the currently active location, and queries for children if applicable.  Will call on this._buildCrumbs to update crumbs.
+TODO: make sure this handles logic related to pathing up a nested chain (for example in future user starting preference option)</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the id of the location to be set as active</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>activeTypeId</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>the type of the location to be set as active</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>reloadChildLocations</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>If true will force reloading of child locations</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Events</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="event:location:change">
+            
+            location:change
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="location.js.html">models/location.js</a>, <a href="location.js.html#line144">line 144</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>On successful query, trigger change of active location</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+</article>
+
+</section>  
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Thu Apr 03 2014 20:58:35 GMT-0400 (Eastern Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

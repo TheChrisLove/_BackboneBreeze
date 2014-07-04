@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>example_controller.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="basic_controller.html">
+                basic_controller.js
+              </a>
+            
+              
+              <a class="source" href="example_controller.html">
+                example_controller.js
+              </a>
+            
+              
+              <a class="source" href="initializing_views.html">
+                initializing_views.js
+              </a>
+            
+              
+              <a class="source" href="using_collections.html">
+                using_collections.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>example_controller.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, console */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="example-controller-">Example Controller </h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>The example file below illustrates the basic controller functionality/optoins.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'base/controller'</span>,
+  <span class="hljs-string">'views/shared/submenu_view'</span>,
+  <span class="hljs-string">'app/templates/shared/layout_controller.html'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, Controller, SubmenuView, template)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>The controller will be initialized on a URL route match by Backbone.Router
+Immediately after initialization, Backbone.Router will call the fn property
+of the action matched by the URL route match, or the controller’s default action</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> ExampleController = Controller.extend({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The title will be displayed in the default controller layout</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        title: <span class="hljs-string">"Example Controller"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>The controller extends Backbone.Model and as such can have defaults overridden
+Controller model properties may be applicable for controller actions or helpers</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        defaults: {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>the index property is the default or index ACTION name for this controller</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            index: <span class="hljs-string">'index'</span>
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>As usual, the start function will fire immediately after the standard backbone 
+initialization function.  </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        start: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            _.bindAll(<span class="hljs-keyword">this</span>, <span class="hljs-string">'customLogic'</span>);
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Definition for controller layout.  Overwrite for more advanced/custom layouts
+The example below adds an additional grid view to the content region
+Make sure submenu is in your require for this controller if you plan on utilizing submenu
+Note: To ensure controller layout is rendered before action sets view, pass in template
+in require above (future patch will allow for paths at this controller level)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        layout: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">this</span>._layout = <span class="hljs-keyword">new</span> View({
+                el: <span class="hljs-string">"#main_content"</span>,
+                template: _.template(template), <span class="hljs-comment">// replace this template</span>
+                views: {
+                    <span class="hljs-string">".menu"</span>: <span class="hljs-keyword">this</span>.getView(<span class="hljs-string">"SubmenuView"</span>, SubmenuView, <span class="hljs-keyword">this</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Define any additional views to initialize at controller start</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                },
+                createViewModel: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+                    <span class="hljs-keyword">return</span> {};
+                } <span class="hljs-comment">// By default no observeables used</span>
+            });
+            <span class="hljs-keyword">this</span>._layout.render();
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>To add logic or function helpers to be accessed from within the action.fn context,
+best practice is to apply these helpers at the controller level.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        customLogic: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span>
+            console.log(<span class="hljs-string">'Hellow World'</span>);
+        },
+
+        actions: {
+            index: {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>The name property is optional.  If included, the name will be displayed 
+as a sub-menu option.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                name: <span class="hljs-string">"My Activity"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>The isVisible function will determine if this action should be visible in 
+the submenu.  This is executed on initialization and whenever
+this.buildMenuActions is executed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                isVisible: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span>
+                    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<span class="hljs-comment">// A boolean must be returned</span>
+                },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>fn is required, and executed on URL route match by Backbone.Router
+This fn can also be called programmatically as required, but best practice
+for controller functions is that they are applied as per the customLogic() 
+example above.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                fn: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The action function’s primary design purpose is to set view content.
+Reference app/controllers/examples/initializing_views.js for more details                </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                }
+            }
+        }
+    });
+
+    <span class="hljs-keyword">return</span> ExampleController;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

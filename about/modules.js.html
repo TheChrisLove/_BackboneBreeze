@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: models/modules.js</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="keyword" content="" />
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:url" content=""/>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"applicationName":"ESS.App","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">ESS.App</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="Base.Controller">
+            <span class="title">
+                <a href="Base.Controller.html">Base.Controller</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Info">
+            <span class="title">
+                <a href="Info.html">Info</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Router">
+            <span class="title">
+                <a href="Router.html">Router</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Router#_getArgs"><a href="Router.html#_getArgs">_getArgs</a></li>
+            
+                <li data-name="Router#_setLayout"><a href="Router.html#_setLayout">_setLayout</a></li>
+            
+                <li data-name="Router#_show404"><a href="Router.html#_show404">_show404</a></li>
+            
+                <li data-name="Router#default"><a href="Router.html#default">default</a></li>
+            
+                <li data-name="Router#go"><a href="Router.html#go">go</a></li>
+            
+                <li data-name="Router#login"><a href="Router.html#login">login</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="User">
+            <span class="title">
+                <a href="User.html">User</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="User#login"><a href="User.html#login">login</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="View">
+            <span class="title">
+                <a href="View.html">View</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="modules.js.html">Source: models/modules.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/* global define, console, $ */
+define([
+  'underscore',
+  'backbone',
+  'controllers/login',
+  'nested'
+], function (_, Backbone, Login) {
+    "use strict";
+
+    var Info = Backbone.NestedModel.extend(/** @lends Info.prototype */{
+
+        defaults: {
+        	home: 'index',
+            active: null,
+        	modules: new Backbone.Collection(),
+        	controllers: {
+        		login : Login
+        	}
+        },
+
+        /**
+         * @class Info class description
+         *
+         * @augments Backbone.Model
+         * @constructs
+         * @requires Backbone
+         * 
+         *
+         *
+         * @param {object} options - Backbone.Model options
+         */
+        initialize: function(attributes, options){
+        	this.listenTo(Backbone.EventBroker, 'user:login', function(user){
+        		this.applyClaimsAccess(user.get('claims'));
+            });
+        },
+
+        getModule: function(url){
+        	return this.get('modules').findWhere({url: url});
+        },
+
+        getController: function(url){
+            return this.get('controllers')[url];
+        },
+
+        getActive: function(){
+        	return this.get('modules').where({ active: true });
+        },
+
+        setActive: function(url){
+        	var active, modules = this.get('modules');
+            this.set('active', url);
+        	for(var i = 0; i &lt; modules.models.length; i++){
+        		active = (modules.models[i].get('url') == url) ? true : false;
+        		modules.models[i].set({
+                    active : active
+                });
+        	}
+        },
+        
+        applyClaimsAccess: function(claims){
+            var modules = this.get('modules');
+            $.each(claims, function(key,value){
+                var module = modules.findWhere({name : value.ClaimType });
+                if(module) module.set('access', true); 
+            })
+        },
+
+        // url: moduleUrl, controller: (optional if defined) controller definition for module, action: (optional) defaults to index
+        renderModule: function(args){
+        	// Check we have a controller to call first
+        	var module = this.getModule(args.url);
+
+            if(!module) return false;
+
+        	// If not initialized, initialize the module (which will call render)
+        	if(module.get('initialized') === false){
+                if(!args.controller &amp;&amp; typeof this.get('controllers')[args.url] == 'undefined') return false;
+        		var ini = { url : args.url };
+        		if(args.action) ini.action = args.action;
+        		if(args.args) ini.args = args.args;
+        		var controller = (args.controller) ? args.controller : this.get('controllers')[args.url];
+                module.set({
+                    controller: new controller(ini),
+                    initialized: true
+                });
+
+            // If not initialized, render the layout and call action
+            } else {
+            	var controller = module.get('controller');
+            	var action = (args.action) ? args.action : controller.get('index');
+	            if(_.isFunction(controller.actions[action].fn)){
+		            var actionArgs = (args.args) ? args.args : {_action: action };
+	            	var render = (this.getActive() == args.url) ? false : true;
+					controller.startAction(action, render);
+		            controller.actions[action].fn(actionArgs);
+	            } else return false;
+            }
+
+            this.setActive(args.url);
+            return module;
+        },
+
+        recycle: function(){
+        	// TODO finish this
+        	/*
+        	var trash = this.get('modules').find({ active : false, persist : false});
+        	trash.dispose();
+        	*/
+        }
+
+    });
+
+    return Info;
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Wed Apr 02 2014 10:08:57 GMT-0400 (Eastern Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

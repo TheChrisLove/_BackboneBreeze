@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>grid_module.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="grid_footer_view.html">
+                grid_footer_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_header_view.html">
+                grid_header_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_module.html">
+                grid_module.js
+              </a>
+            
+              
+              <a class="source" href="grid_pagination_view.html">
+                grid_pagination_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_row_view.html">
+                grid_row_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_wrapper_view.html">
+                grid_wrapper_view.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>grid_module.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, app, QueryEngine, $ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="grid-module">Grid Module</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'modules/grid/grid_wrapper_view'</span>,
+  <span class="hljs-string">'modules/grid/grid_header_view'</span>,
+  <span class="hljs-string">'modules/grid/grid_row_view'</span>,
+  <span class="hljs-string">'modules/grid/grid_footer_view'</span>,
+  <span class="hljs-string">'modules/grid/grid_pagination_view'</span>,
+  <span class="hljs-string">'base/collectionView'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, Wrapper, Header, Row, Footer, PaginationView, CollectionView)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> GridModule = Backbone.Model.extend( <span class="hljs-comment">/** @lends Grid.prototype */</span> {
+        <span class="hljs-comment">/**
+         * @class Grid &lt;p&gt;The grid module allows for easy rendering and manipulation of collections.  The default display
+         * renders as a grid, but by overriding a template/view (header, footer, row, wrapper), any appearance can be achieved (such as list views).
+         * This grid module integrates with Breeze data without any additional configuration.  By default, columns will
+         * be derived from ready a collection model's entityType dataproperties.&lt;/p&gt;&lt;ul&gt;
+         * &lt;li&gt;TODO : Appears to be a bug with pagination offset while filtering&lt;/li&gt;
+         * &lt;li&gt;TODO : Add support for sorting on date/time&lt;/li&gt;
+         * &lt;li&gt;TODO : Add filtering interface for enums/dates, update filtering UI&lt;/li&gt;
+         * &lt;li&gt;TODO : Hide/show columns widget (available currently via api)&lt;/li&gt;
+         * &lt;li&gt;TODO : Add support for loading spinners&lt;/li&gt;
+         * &lt;li&gt;TODO : Add support for drag/drop, select, multi-select&lt;/li&gt;&lt;/ul&gt;
+         * @example
+         * // Rendering a grid within a controller action.
+         * var grid = new Grid({
+         *     resource: 'Activities',
+         *     row: myRowView,
+         *     columns: {
+         *         active : ['Physician','MemberName','Service','Status']
+         *     }
+         * });
+         * 
+         * this.setView(grid.getView());
+         *
+         * @augments Backbone.Model
+         * @constructs
+         * @requires Backbone, Backbone.QueryCollection
+         * @param {Object} [options] - Backbone.Model options, pass in any of the properties below as a param to override the property.
+         * @property {View} [row] - A Backbone.View to use for each item in the collection view
+         * @property {View} [wrapper] - A Backbone.View to use as the collection view Wrapper
+         * @property {View} [header] - A Backbone.View to render in the '.header'
+         * @property {View} [footer] - A Backbone.View to render in the '.footer'
+         * @property {Object} [columns] - Object Defining default columns to render, columns to rename, and custom columns
+         * @property {Array.&lt;String&gt;} [columns.active] - Columns to be displayed/active by default. Also defines column order.
+         * @property {Object} [columns.rename] - Key/Value pair object where key = property name and value = related column header displayname
+         * @property {Array.&lt;Object&gt;} [columns.custom] - Array of object containing information for custom columns headers to add
+         * @property {String} columns.custom.name - Display name for the column
+         * @property {String} columns.custom.prop - viewModel property (from the row's viewModel) related to this custom property
+         * @property {String} [title] - Title to be displayed if title binding used in wrapper template
+         * @property {String} [description] - Description to be displayed if description binding used in wrapper template
+         * @property {Number} [limit=7] - The number of columns to display by default
+         * @property {Array.&lt;String&gt;} [exclude] - Properties to exclude from available columns. By default contains Id, id, and _id
+         * @property {QueryEngine} [collection] - The collection to be consumed for displayed data (only optional if this.get('resource'))
+         * @property {Object} [defaultSort] - Object containing default sort data (empty by default)
+         * @property {String} defaultSort.prop - Entity property to sort on
+         * @property {String} [defaultSort.type] - Entity property type (if empty the type will be discovered)
+         * @property {String} [defaultSort.dir=desc] - Direction for the sort 'asc' or 'desc'
+         * @property {Object} [sortBy] - The currently active sort properties
+         * @property {String} sortBy.prop - Entity property to sort on
+         * @property {String} [sortBy.type] - Entity property type (if empty the type will be discovered)
+         * @property {String} [sortBy.dir=desc] - Direction for the sort 'asc' or 'desc'
+         * @property {Number} [pageSize=10] - The number of records to display per page
+         * @property {Number} _inlineCount - The total number of records in the database
+         * @property {Number} _offset - The current page index
+         * @property {Object} _entityInfo - Entity information for Entities in this collection
+         * @property {String} [resource] - The resource for entities associated with this collection (only optional if no queries required)
+         * @property {Number} [take=30] - The amount of records to initialize the grid with (take from Breeze)
+         * @property {Object} [predicate] - A breeze predicate to apply to ALL server communications
+         * @property {Object} manager - Breeze entity manager to use for queries
+         * @property {String} select - Breeze select parameter
+         * @property {String} expand - Breeze expand parameter
+         * @property {Object} _filter - Internally tracks filter usage for breeze
+         * @property {Object} _filter - Internally tracks filter usage for breeze
+         * @property {Boolean} refresh - Always refresh on _fetch (good for debug or if the collection may frequently change server side)
+         * @property {Number} size - the current size of associated collection
+         */</span>
+        initialize: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(attributes, options)</span> {</span>
+            _.bindAll(<span class="hljs-keyword">this</span>,
+                <span class="hljs-string">'_buildLayout'</span>, <span class="hljs-string">'_buildViewModel'</span>, <span class="hljs-string">'_loadBreezeData'</span>, <span class="hljs-string">'_fetch'</span>,
+                <span class="hljs-string">'_afterRender'</span>, <span class="hljs-string">'_sortHandler'</span>, <span class="hljs-string">'_sortEngine'</span>, <span class="hljs-string">'filter'</span>, <span class="hljs-string">'_filter'</span>,
+                <span class="hljs-string">'updateViewModels'</span>, <span class="hljs-string">'setActiveColumns'</span>, <span class="hljs-string">'render'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Setup module defaults / options</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> collection = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collection'</span>);
+            <span class="hljs-keyword">var</span> resource = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'resource'</span>);
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collection'</span>)) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>If no collection or resource, we will just setup a default queryEngine Collection </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">if</span> (!resource) collection = <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'collection'</span>, <span class="hljs-keyword">new</span> QueryEngine.createLiveCollection());
+                <span class="hljs-keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>If a resource exists, we setup a childCollection from the API.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    <span class="hljs-keyword">var</span> shortName = app.api.manager.metadataStore.getEntityTypeNameForResourceName(resource);
+                    collection = app.api.getChildCollection(shortName.split(<span class="hljs-string">':'</span>)[<span class="hljs-number">0</span>]).query();
+                    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'collection'</span>, collection);
+                }
+            }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Extend the row definition to provide a reference to this grid instance</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> Row = (attributes.row) ? attributes.row : Row,
+                row = Row.extend({
+                    grid: <span class="hljs-keyword">this</span>
+                });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>This queryEngine will be used in the collection view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> queryEngine = collection.createLiveChildCollection().query();
+            <span class="hljs-keyword">this</span>.set({
+                header: (attributes.header) ? attributes.header : Header,
+                footer: (attributes.footer) ? attributes.footer : Footer,
+                wrapper: (attributes.wrapper) ? attributes.wrapper : Wrapper,
+                row: row,
+                queryEngine: queryEngine,
+                schema: (attributes.schema) ? attributes.schema : {},
+                size: queryEngine.length
+            }, {
+                silent: <span class="hljs-literal">true</span>
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Setup default search filter by name for queryEngine</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            queryEngine.setFilter(<span class="hljs-string">'search'</span>, <span class="hljs-keyword">this</span>._filter);
+            queryEngine.on(<span class="hljs-string">'add remove reset'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+                <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'size'</span>, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'queryEngine'</span>).length);
+            }, <span class="hljs-keyword">this</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Create reference from collection to this module for easy access</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            collection.grid = <span class="hljs-keyword">this</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Apply listeners</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.on(<span class="hljs-string">"change:sortBy"</span>, <span class="hljs-keyword">this</span>._sortHandler);
+            <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'sortBy'</span>, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'defaultSort'</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Setup layout</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._buildLayout();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>If breeze is not utilized, this will look for entity info, return false, and fizzle
+This only listens once and then unsubscribes the add event</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (collection.models.length === <span class="hljs-number">0</span>) collection.on(<span class="hljs-string">"add"</span>, <span class="hljs-keyword">this</span>._loadBreezeData);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">this</span>._loadBreezeData();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Collection setup, fire out query to make sure data up to date</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._fetch({
+                refresh: <span class="hljs-literal">true</span>
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Setup subscriptions to pagination events</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'change:_offset'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+                <span class="hljs-keyword">var</span> cview = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collectionView'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Offset changes when the page changes, we need to make sure we have enough results
+to render the next page of the grid.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'take'</span>, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_offset'</span>) + <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'pageSize'</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Go fetch records</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">this</span>._fetch();
+                <span class="hljs-keyword">if</span> (cview) {
+                    cview._offset = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_offset'</span>);
+                    cview.render();
+                }
+            }, <span class="hljs-keyword">this</span>);
+
+            <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'change:pageSize'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(changed)</span> {</span>
+                <span class="hljs-keyword">var</span> pageSize = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'pageSize'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>If the pagesize has updated, we want to make sure our offset stays in sync</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> _offset = ((<span class="hljs-built_in">Math</span>.floor(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_offset'</span>) + pageSize) / pageSize) * pageSize) - pageSize;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>We dont want to trigger rendering/fetching 2x.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">this</span>.set({
+                    _offset: _offset
+                }, {
+                    silent: <span class="hljs-literal">true</span>
+                });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>We also want to make sure that our minimum fetch value is equal to our page size</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> take = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'take'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Use pagesize if query is using skip - skip though is disabled atm
+if(take &lt; pageSize) this.set(‘take’, pageSize);
+For now we update take to grab everything up to the page we are traveling too
+TODO will want to update this on peformance pass if necessary</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'take'</span>, _offset + pageSize);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Update our collection view </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> cview = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collectionView'</span>);
+                <span class="hljs-keyword">if</span> (cview) {
+                    cview._offset = _offset;
+                    cview._pageSize = pageSize;
+                    cview.render();
+                }
+
+                <span class="hljs-keyword">this</span>._fetch();
+            }, <span class="hljs-keyword">this</span>);
+        },
+
+        defaults: {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Module properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            title: <span class="hljs-literal">null</span>,
+            description: <span class="hljs-string">''</span>,
+            limit: <span class="hljs-number">7</span>,
+            exclude: [<span class="hljs-string">'id'</span>, <span class="hljs-string">'_id'</span>, <span class="hljs-string">'Id'</span>],
+            columns: {},
+            collection: <span class="hljs-literal">null</span>,
+            defaultSort: {
+                prop: <span class="hljs-string">'Id'</span>,
+                type: <span class="hljs-string">'Number'</span>,
+                dir: <span class="hljs-string">'desc'</span>
+            },
+            sortBy: {
+                prop: <span class="hljs-string">''</span>,
+                type: <span class="hljs-string">'string'</span>,
+                dir: <span class="hljs-string">''</span>
+            },
+            pageSize: <span class="hljs-number">10</span>,
+            size: <span class="hljs-number">0</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>Breeze properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            take: <span class="hljs-number">30</span>,
+            refresh: <span class="hljs-literal">false</span>,
+            resource: <span class="hljs-literal">null</span>,
+            manager: app.api.manager,
+            expand: <span class="hljs-literal">null</span>,
+            predicate: <span class="hljs-literal">null</span>,
+            select: <span class="hljs-literal">null</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Internal properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            _inlineCount: <span class="hljs-number">0</span>, <span class="hljs-comment">// this will need to be an updating figure</span>
+            _offset: <span class="hljs-number">0</span>,
+            _entityInfo: {},
+            _filter: {}
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h2 id="module-api-functions-">Module API functions </h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>The following functions are designed to be public functions to be used by applicable controllers and views.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+        <span class="hljs-comment">/**
+         * Update visible columns
+         * @param {Array} cols - An array of column names to be set as the visible columns
+         */</span>
+        setActiveColumns: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(cols)</span> {</span>
+            <span class="hljs-keyword">var</span> viewModel = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>);
+            <span class="hljs-keyword">var</span> columns = viewModel.get(<span class="hljs-string">'columns'</span>);
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; columns.length; i++) {
+                columns[i].active = ($.inArray(columns[i].name, cols) &gt;= <span class="hljs-number">0</span>) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+            }
+            <span class="hljs-keyword">this</span>.render();
+        },
+
+        <span class="hljs-comment">/**
+         * Get the viewModel for the grid (includes columns etc).  If the viewModel is not constructed yet, it will be built.
+         * (This is an alternative to this.get('viewModel') that always will return the viewModel)
+         * @returns {Object} viewModel - Grid viewModel
+         */</span>
+        getViewModel: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>)) <span class="hljs-keyword">this</span>._buildViewModel();
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>);
+        },
+
+        <span class="hljs-comment">/**
+         * Helper function for retrieving the grid's layout/view
+         * @returns {View} this.grid.get('layout')
+         */</span>
+        getView: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'layout'</span>);
+        },
+
+        <span class="hljs-comment">/**
+         * Shortcut to the grid layout's render function.  Renders the grid module layout/views.
+         */</span>
+        render: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">var</span> layout = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'layout'</span>);
+            layout.render();
+        },
+
+        <span class="hljs-comment">/**
+         * Update/build viewModels and render.  Call this when the viewModel needs to be manually updated.
+         */</span>
+        updateViewModels: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">this</span>._buildViewModel();
+            <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'layout'</span>).setModel(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>));
+            <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'header'</span>).setModel(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>));
+            <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'footer'</span>).setModel(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'viewModel'</span>));
+            <span class="hljs-keyword">this</span>.render();
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <h2 id="internal-methods-">Internal Methods </h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+        <span class="hljs-comment">/**
+         * Retreives entities from the server by constructing breeze queries based on existing model properties.  Will return false
+         * if no resource is available.
+         * @private
+         * @param {Object} [args] - Key/Value pair object with function arguments
+         * @param {Boolean} [args.refresh] - Will force a breeze query to execute even if the local copy appears to be complete
+         */</span>
+        _fetch: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span>
+            <span class="hljs-keyword">var</span> resource = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'resource'</span>);
+            <span class="hljs-keyword">var</span> refresh = (args &amp;&amp; args.refresh || <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'refresh'</span>)) ? <span class="hljs-literal">true</span> : (<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collection'</span>).length &lt; <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_inlineCount'</span>));
+
+            <span class="hljs-keyword">if</span> (resource &amp;&amp; refresh) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>We have a resource and are not working with a complete local collection, build our query</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> query = app.api.breeze
+                    .EntityQuery
+                    .from(resource)
+                    .using(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'manager'</span>))
+                    .inlineCount()
+                    .take(<span class="hljs-keyword">this</span>.get(<span class="hljs-string">'take'</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>when going to pagination, take will need to take into account the current page index as well (take more perhaps)</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Apply predicates if applicable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> _filter = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_filter'</span>);
+                <span class="hljs-keyword">var</span> filter = <span class="hljs-literal">null</span>;
+                <span class="hljs-keyword">if</span> (!_.isEmpty(_filter)) {
+                    $.each(_filter, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(key, value)</span> {</span>
+                        filter = (filter) ? filter.and(value) : value;
+                    });
+                }
+                <span class="hljs-keyword">var</span> predicate = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'predicate'</span>);
+                <span class="hljs-keyword">if</span> (predicate &amp;&amp; filter) query = query.where(predicate.and(filter));
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (predicate) query = query.where(predicate);
+                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (filter) query = query.where(filter);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Apply order by if applicable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> sort = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'sortBy'</span>);
+                sort = (sort &amp;&amp; sort.prop === <span class="hljs-string">''</span>) ? <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'defaultSort'</span>) : sort;
+                <span class="hljs-keyword">if</span> (sort &amp;&amp; sort.prop) {
+                    sort = (sort.dir === <span class="hljs-string">'desc'</span>) ? sort.prop + <span class="hljs-string">' desc'</span> : sort.prop;
+                    query = query.orderBy(sort);
+                }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Apply expand argument if applicable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> expand = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'expand'</span>);
+                <span class="hljs-keyword">if</span> (expand) query = query.expand(expand);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Apply select argument if applicable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> select = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'select'</span>);
+                <span class="hljs-keyword">if</span> (select) query = query.select(select);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>TODO Need to update this on performance pass… 
+Right now if the offset is greater than take, we take more records so that
+our paged view displays results (since the collection view counts records by offset)
+otherwise if we skip ahead to a distant page, that page will show no data.
+May need to update grid to use a ‘display’ collection if this is a performance issue
+but generally, users will navigate on ‘near’ pages, making this negligable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-comment">/*
+                var offset = this.get('_offset');
+                if(offset &gt; 0) query = query.skip(offset);
+                */</span>
+
+                <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;
+                app.api.get(query, {
+                    refresh: <span class="hljs-literal">true</span>,
+                    callback: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> {</span>
+                        _this.set(<span class="hljs-string">'_inlineCount'</span>, data.inlineCount);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>If using a ‘resource’, this should populate by default, and the adds will fail
+as they will already be existing in the collection.  However, if this grid does 
+not use a ‘resource’, then we will need to manually update the collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                        _this.get(<span class="hljs-string">'collection'</span>).add(data.results);
+                        _this.get(<span class="hljs-string">'queryEngine'</span>).trigger(<span class="hljs-string">'reset'</span>);
+                    }
+                });
+            }
+        },
+        
+        <span class="hljs-comment">/**
+         * Gets datatype for a property. Under construction. TODO: finish this method for date/time sorting/filtering etc.
+         * @private
+         * @returns {String} data type
+         */</span>
+        _getDataType: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(dataType)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>TODO handle returning enums</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">return</span> dataType.name;
+        },
+
+        <span class="hljs-comment">/**
+         * Used in this._buildViewmodel to add custom columns to the viewModel
+         * @private
+         * @params {Array.&lt;Object&gt;} columns
+         * @params {Boolean} columns.sort - Boolean if this is a property being sorted on
+         * @params {Boolean} columns.filter - Boolean if this is a property being filtered
+         * @params {String} columns.value
+         * @params {String} columns.type - Data type
+         * @params {Boolean} columns.active - IF the column is an active (visible) column
+         * @params {Object} viewModel
+         * @params {string} [sortOn=this.get('sortBy').prop] - The property that is currently being sorted on
+         */</span>
+        _addCustomColumns: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(columns, viewModel, sortOn)</span> {</span>
+            <span class="hljs-keyword">if</span> (!sortOn) sortOn = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'sortBy'</span>).prop;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; columns.length; i++) {
+                <span class="hljs-keyword">var</span> col = columns[i];
+                col.sort = (col.name == sortOn) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+                col.filter = <span class="hljs-literal">false</span>;
+                col.value = <span class="hljs-literal">null</span>;
+                col.type = (col.type) ? col.type : <span class="hljs-string">'string'</span>;
+                col.active = <span class="hljs-literal">true</span>;
+                viewModel.columns.push(col);
+            }
+        },
+
+        <span class="hljs-comment">/**
+         * Builds viewModel to be consumed by wrapper, header, footer
+         * Row viewModel is left up to the row, but should include a reference to
+         * this viewModel.columns property in order to synchronize with hide/show columns.
+         * TODO : Review this for a bug with column order
+         * @private
+         */</span>
+        _buildViewModel: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>TODO make sure if a user specifies in columns an order that it is adhered to, this appears to be broken</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> rename, _this = <span class="hljs-keyword">this</span>;
+            <span class="hljs-keyword">var</span> order = <span class="hljs-number">0</span>;
+            <span class="hljs-keyword">var</span> active = <span class="hljs-number">0</span>;
+
+            <span class="hljs-keyword">var</span> config = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'columns'</span>);
+            <span class="hljs-keyword">var</span> sortOn = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'sortBy'</span>).prop;
+            <span class="hljs-keyword">var</span> exclude = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'exclude'</span>);
+            <span class="hljs-keyword">if</span> (config.rename) rename = _.keys(config.rename);
+
+            <span class="hljs-keyword">var</span> viewModel = {
+                limit: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'limit'</span>),
+                columns: [],
+                title: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'title'</span>),
+                description: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'description'</span>)
+            };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>TODO update this to a better method (if need to declare custom cols that dont display by default)
+currently visibility is determined by passed in options</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (config.active) viewModel.limit = config.active.length;
+            <span class="hljs-keyword">if</span> (config.custom) viewModel.limit = viewModel.limit + config.custom.length;
+
+            <span class="hljs-keyword">var</span> entityInfo = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'entityInfo'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <p>If active property declared in columns, use that, else fall back to defaults</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (entityInfo &amp;&amp; entityInfo.entityType &amp;&amp; entityInfo.entityType.dataProperties) {
+                $.each(entityInfo.entityType.dataProperties, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(k, v)</span> {</span>
+                    <span class="hljs-keyword">if</span> ($.inArray(v.name, exclude) &lt; <span class="hljs-number">0</span>) {
+                        <span class="hljs-keyword">var</span> col = {};
+                        col.name = (rename &amp;&amp; $.inArray(v.name, rename) &gt;= <span class="hljs-number">0</span>) ? config.rename[v.name] : v.name.replace(<span class="hljs-regexp">/([a-z])([A-Z])/g</span>, <span class="hljs-string">'$1 $2'</span>);
+                        col.prop = v.name;
+                        col.sort = (v.name == sortOn) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+                        col.filter = <span class="hljs-literal">false</span>;
+                        col.value = <span class="hljs-literal">null</span>;
+                        col.type = _this._getDataType(v.dataType);
+                        <span class="hljs-keyword">if</span> (config.active) {
+                            col.active = ($.inArray(v.name, config.active) &gt;= <span class="hljs-number">0</span>) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+                        } <span class="hljs-keyword">else</span> {
+                            col.active = (active &lt; viewModel.limit) ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;
+                        }
+                        active++;
+                        viewModel.columns.push(col);
+                    }
+                });
+            }
+
+            <span class="hljs-keyword">if</span> (config.custom) <span class="hljs-keyword">this</span>._addCustomColumns(config.custom, viewModel, sortOn);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p>update column order (sortby)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            viewModel = <span class="hljs-keyword">new</span> Backbone.Model(viewModel);
+            <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'viewModel'</span>, viewModel);
+            <span class="hljs-keyword">return</span> viewModel;
+        },
+
+        <span class="hljs-comment">/**
+         * Initialize the main view, apply viewModels
+         * @private
+         */</span>
+        _buildLayout: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">var</span> viewModel = <span class="hljs-keyword">this</span>._buildViewModel();
+            <span class="hljs-keyword">var</span> Header = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">"header"</span>);
+            <span class="hljs-keyword">var</span> Footer = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">"footer"</span>);
+
+            <span class="hljs-keyword">var</span> header = <span class="hljs-keyword">new</span> Header({
+                model: viewModel
+            });
+            <span class="hljs-keyword">var</span> footer = <span class="hljs-keyword">new</span> Footer({
+                model: viewModel
+            });
+
+            <span class="hljs-keyword">this</span>.set({
+                header: header,
+                footer: footer
+            });
+
+            <span class="hljs-keyword">this</span>.set({
+                layout: <span class="hljs-keyword">new</span> Wrapper({
+                    model: viewModel,
+                    views: {
+                        <span class="hljs-string">'.header'</span>: header
+                    }
+                })
+            }, {
+                silent: <span class="hljs-literal">true</span>
+            });
+
+            header.grid = <span class="hljs-keyword">this</span>;
+            <span class="hljs-keyword">var</span> layout = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'layout'</span>);
+            layout.grid = <span class="hljs-keyword">this</span>;
+            layout.afterRender = <span class="hljs-keyword">this</span>._afterRender;
+        },
+
+        <span class="hljs-comment">/**
+         * Overwrites this.get('layout').afterRender function
+         * @private
+         */</span>
+        _afterRender: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+
+            <span class="hljs-keyword">var</span> layout = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'layout'</span>);
+            layout.renderBindings();
+
+            layout.setView(<span class="hljs-string">'.header'</span>, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'header'</span>));
+            layout.setView(<span class="hljs-string">'.footer'</span>, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'footer'</span>));
+            layout.setView(<span class="hljs-string">'tfoot'</span>, <span class="hljs-keyword">new</span> PaginationView({
+                model: <span class="hljs-keyword">this</span>
+            }));
+
+            layout.renderViews();
+
+            app.cview = CollectionView;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <p>Apply collection view after render in order to 
+properly discover collection target and reset
+associated dom element (if module view is recycled)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> cview = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">"collectionView"</span>);
+            <span class="hljs-keyword">if</span> (!cview) {
+                <span class="hljs-keyword">var</span> Cview = CollectionView.extend({
+                    _offset: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_offset'</span>),
+                    _pageSize: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'pageSize'</span>)
+                });
+                cview = <span class="hljs-keyword">new</span> Cview({
+                    el: $(<span class="hljs-string">".grid_view"</span>, layout.$el),
+                    modelView: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'row'</span>),
+                    collection: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'queryEngine'</span>)
+                });
+                <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'collectionView'</span>, cview);
+            } <span class="hljs-keyword">else</span> {
+                cview.setElement($(<span class="hljs-string">".grid_view"</span>, layout.$el));
+            }
+            cview.render();
+        },
+
+        <span class="hljs-comment">/**
+         * Helper function for loading breeze data.  If no breeze entityAspect discovered, will return false
+         * @private
+         * @returns {Object} Entity information about the model including 'entityManager', 'shortName', and 'entityType'
+         */</span>
+        _getEntityInfo: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(model)</span> {</span>
+            <span class="hljs-keyword">if</span> (model.entityAspect) {
+                <span class="hljs-keyword">var</span> entityInfo = {};
+                entityInfo.entityManager = model.entityAspect.entityManager;
+                entityInfo.shortName = model.entityAspect.entityGroup.entityType.shortName;
+                entityInfo.entityType = entityInfo.entityManager.metadataStore.getEntityType(entityInfo.shortName);
+                <span class="hljs-keyword">return</span> entityInfo;
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        },
+
+        <span class="hljs-comment">/**
+         * If the grid is using breeze data, this function will listen once or be applied if there is already a model in the collection
+         * Retreives entity type info.
+         * @private
+         */</span>
+        _loadBreezeData: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">var</span> collection = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'collection'</span>);
+            collection.off(<span class="hljs-string">"add"</span>, <span class="hljs-keyword">this</span>._loadBreezeData);
+
+            <span class="hljs-keyword">var</span> schema = <span class="hljs-keyword">this</span>._getEntityInfo(collection.models[<span class="hljs-number">0</span>]);
+            <span class="hljs-keyword">if</span> (schema) {
+                <span class="hljs-keyword">this</span>.set({
+                    entityInfo: schema
+                }, {
+                    silent: <span class="hljs-literal">true</span>
+                });
+                <span class="hljs-keyword">this</span>.updateViewModels();
+            }
+        },
+
+        <span class="hljs-comment">/**
+         * Handle sorting for query engine.  Will communicate with breeze if using a 'resource'
+         * @private
+         */</span>
+        _sortHandler: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+            <span class="hljs-keyword">var</span> engine = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'queryEngine'</span>);
+
+            engine.setComparator(<span class="hljs-keyword">this</span>._sortEngine);
+            engine.sortCollection();
+            engine.trigger(<span class="hljs-string">'reset'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <p>Get breeze data and reset
+also check if we are at a full collection or not</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._fetch();
+        },
+
+        <span class="hljs-comment">/**
+         * Primary comparator function for collection sorting
+         * References entity data type to apply applicable sort method
+         * for a given column.
+         * TODO - update to call breeze for sorted data if not using a complete dataset.
+         */</span>
+        _sortEngine: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(modelA, modelB)</span> {</span>
+            <span class="hljs-keyword">var</span> sortby, modela, modelb, prop, compa, compb, result;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <p>are passed in models objects or backbone models?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            modela = (<span class="hljs-keyword">typeof</span> modelA.get === <span class="hljs-string">'function'</span>) ? modelA.attributes : modelA;
+            modelb = (<span class="hljs-keyword">typeof</span> modelB.get === <span class="hljs-string">'function'</span>) ? modelB.attributes : modelB;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <p>Get sorting options</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            sortby = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'sortBy'</span>);
+            prop = (<span class="hljs-keyword">typeof</span> sortby.prop == <span class="hljs-string">'undefined'</span>) ? _.keys(modela)[<span class="hljs-number">0</span>] : sortby.prop;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>Is sortby using alternate/multiple column names? If so, grab the first available that matches on the models
+colname-colname set in sortby allows user to sort on alternative collumns if one column gives a falsy value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> _t = prop.split(<span class="hljs-string">'-'</span>);
+            compa = compb = <span class="hljs-string">''</span>; <span class="hljs-comment">// setup a default blank value to compare on</span>
+            <span class="hljs-keyword">if</span> (_t.length &gt; <span class="hljs-number">1</span>) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; _t.length; i++) {
+                    <span class="hljs-keyword">if</span> ((modela[_t[i]] !== <span class="hljs-literal">null</span>) &amp;&amp; (modela[_t[i]].trim() !== <span class="hljs-string">''</span>)) {
+                        compa = modela[_t[i]];
+                        <span class="hljs-keyword">break</span>;
+                    }
+                }
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> b = <span class="hljs-number">0</span>; b &lt; _t.length; b++) {
+                    <span class="hljs-keyword">if</span> ((modelb[_t[b]] !== <span class="hljs-literal">null</span>) &amp;&amp; (modelb[_t[b]].trim() !== <span class="hljs-string">''</span>)) {
+                        compb = modelb[_t[b]];
+                        <span class="hljs-keyword">break</span>;
+                    }
+                }
+            } <span class="hljs-keyword">else</span> {
+                compa = modela[prop];
+                compb = modelb[prop];
+            }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>Test if we are hitting custom viewModel properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> compa === <span class="hljs-string">"undefined"</span> &amp;&amp; modelA.viewModel) compa = modelA.viewModel[prop]();
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> compb === <span class="hljs-string">"undefined"</span> &amp;&amp; modelB.viewModel) compb = modelB.viewModel[prop]();
+
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> compa === <span class="hljs-string">"undefined"</span> || <span class="hljs-keyword">typeof</span> compb === <span class="hljs-string">"undefined"</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <p>Actual sort functions dependant as set by sortby.sortType</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">switch</span> (sortby.type) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'date'</span>:
+                compa = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(compa);
+                compb = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(compb);
+                <span class="hljs-keyword">if</span> (compa &lt; compb) {
+                    result = -<span class="hljs-number">1</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (compa &gt; compb) {
+                    result = <span class="hljs-number">1</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (compa == compb) {
+                    result = <span class="hljs-number">0</span>;
+                }
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>:
+                <span class="hljs-keyword">if</span> (sortby.type == <span class="hljs-string">'String'</span>) {
+                    compa = (<span class="hljs-keyword">typeof</span> compa != <span class="hljs-string">'undefined'</span>) ? compa.toLowerCase() : <span class="hljs-number">0</span>;
+                    compb = (<span class="hljs-keyword">typeof</span> compb != <span class="hljs-string">'undefined'</span>) ? compb.toLowerCase() : <span class="hljs-number">0</span>;
+                }
+                <span class="hljs-keyword">if</span> (compa &lt; compb) {
+                    result = -<span class="hljs-number">1</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (compa &gt; compb) {
+                    result = <span class="hljs-number">1</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (compa == compb) {
+                    result = <span class="hljs-number">0</span>;
+                }
+
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">return</span> (sortby.dir == <span class="hljs-string">'asc'</span>) ? result : <span class="hljs-number">0</span> - result;
+        },
+
+        <span class="hljs-comment">/**
+         * Main filter function, applies search string from arguments to query engine
+         * and creates a breeze predicate to update the collection if applicable.
+         * @param {String} prop - The property to filter
+         * @param {String} comparator - The method to filter ex: ('=' or '&gt;')
+         * @param {String} value - The value to compare against
+         */</span>
+        filter: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(prop, comparator, value)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <p>TODO need to make sure filter conditions are being tracked separately so that
+multiple filter conditions can be applied</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'queryEngine'</span>).setSearchString(prop + <span class="hljs-string">':'</span> + value).query();
+            <span class="hljs-keyword">var</span> _filter = $.extend(<span class="hljs-literal">true</span>, {}, <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'_filter'</span>));
+            <span class="hljs-keyword">if</span> (value) _filter[prop] = <span class="hljs-keyword">new</span> app.api.Predicate(prop, comparator, value);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">delete</span> _filter[prop];
+            <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'_filter'</span>, _filter);
+            <span class="hljs-keyword">this</span>._fetch();
+        },
+
+        <span class="hljs-comment">/**
+         * Internal filter function passed to query engine
+         * TODO - Need to check for alternate types, and viewmodel properties
+         * TODO - need to fix the column widths to avoid the bouncing as searches go through
+         * TODO - update to use breeze query if not using a complete dataset
+         * @private
+         */</span>
+        _filter: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(model, searchString)</span> {</span>
+            <span class="hljs-keyword">if</span> (searchString) {
+                <span class="hljs-keyword">var</span> args = searchString.split(<span class="hljs-string">':'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>TODO split this out of this function</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> prop = model.get(args[<span class="hljs-number">0</span>]);
+                <span class="hljs-keyword">var</span> datatype = <span class="hljs-keyword">typeof</span> prop;
+                <span class="hljs-keyword">var</span> ret = <span class="hljs-literal">false</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <p>var datatype = this._getDataType(args[0]);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">switch</span> (datatype) {
+                <span class="hljs-keyword">case</span> <span class="hljs-string">'boolean'</span>:
+                <span class="hljs-keyword">case</span> <span class="hljs-string">'number'</span>:
+                    <span class="hljs-keyword">if</span> (prop + <span class="hljs-string">''</span> == args[<span class="hljs-number">1</span>]) ret = <span class="hljs-literal">true</span>;
+                    <span class="hljs-keyword">break</span>;
+                    <span class="hljs-comment">/*
+                case 'DateTime': case 'Time':
+                    if(prop == args[1]) return true;
+                    break;
+                case 'Decimal': case 'Double': case 'Int16': case 'Int32': case 'Int64': case 'isNumeric':
+                    if(prop == args[1]) return true;
+                    break;
+                */</span>
+                <span class="hljs-keyword">case</span> <span class="hljs-string">'string'</span>:
+                    <span class="hljs-keyword">if</span> (prop.indexOf(args[<span class="hljs-number">1</span>]) !== -<span class="hljs-number">1</span>) ret = <span class="hljs-literal">true</span>;
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">default</span>:
+                    ret = <span class="hljs-literal">true</span>;
+                    <span class="hljs-keyword">break</span>;
+                }
+                <span class="hljs-keyword">return</span> ret;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+            }
+        }
+
+    });
+
+    <span class="hljs-keyword">return</span> GridModule;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

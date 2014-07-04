@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>grid_pagination_view.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="grid_footer_view.html">
+                grid_footer_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_header_view.html">
+                grid_header_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_module.html">
+                grid_module.js
+              </a>
+            
+              
+              <a class="source" href="grid_pagination_view.html">
+                grid_pagination_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_row_view.html">
+                grid_row_view.js
+              </a>
+            
+              
+              <a class="source" href="grid_wrapper_view.html">
+                grid_wrapper_view.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>grid_pagination_view.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, app */</span>
+define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'knockback'</span>,
+  <span class="hljs-string">'knockout'</span>,
+  <span class="hljs-string">'text!modules/grid/templates/baconation.html'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, kb, ko, template)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> PaginationView = View.extend({
+
+        template: _.template(template),
+
+        tagName: <span class="hljs-string">'tr'</span>,
+
+        events: {
+          <span class="hljs-string">"click .page"</span> : <span class="hljs-string">"capture"</span>
+        },
+
+        capture: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(event)</span>{</span>
+          <span class="hljs-keyword">var</span> pageSize = <span class="hljs-keyword">this</span>.model.get(<span class="hljs-string">'pageSize'</span>);
+          <span class="hljs-keyword">var</span> offset, go = $(event.currentTarget).text();
+          <span class="hljs-keyword">switch</span>(go){
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'prev'</span>:
+              offset = <span class="hljs-keyword">this</span>.model.get(<span class="hljs-string">'_offset'</span>) - pageSize;
+            <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">'next'</span>:
+              offset = <span class="hljs-keyword">this</span>.model.get(<span class="hljs-string">'_offset'</span>) + pageSize;
+            <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">default</span>: 
+              offset = ((<span class="hljs-built_in">parseInt</span>(go) * pageSize) - pageSize);
+            <span class="hljs-keyword">break</span>;
+          }
+
+          <span class="hljs-keyword">this</span>.model.set(<span class="hljs-string">'_offset'</span>, offset);
+        },
+
+        createViewModel: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+          <span class="hljs-keyword">var</span> viewModel = {
+            pageSize: kb.observable(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'pageSize'</span>),
+            offset: kb.observable(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'_offset'</span>),
+            size: kb.observable(<span class="hljs-keyword">this</span>.model, <span class="hljs-string">'_inlineCount'</span>)
+          };
+
+          viewModel.page = ko.computed(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">var</span> pageSize = <span class="hljs-keyword">this</span>.pageSize();
+            <span class="hljs-keyword">if</span>(pageSize) <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.ceil((<span class="hljs-keyword">this</span>.offset() + pageSize) / pageSize);
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+          }, viewModel);
+
+          viewModel.total = ko.computed(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+            <span class="hljs-keyword">var</span> size = <span class="hljs-keyword">this</span>.size();
+            <span class="hljs-keyword">var</span> pageSize = <span class="hljs-keyword">this</span>.pageSize();
+            <span class="hljs-keyword">if</span>(pageSize){ 
+              <span class="hljs-keyword">if</span>(size == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+              <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-keyword">this</span>.size() / <span class="hljs-keyword">this</span>.pageSize());
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+          }, viewModel);
+
+          <span class="hljs-keyword">return</span> viewModel;
+        }
+
+    });
+
+    <span class="hljs-keyword">return</span> PaginationView;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>using_collections.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="basic_controller.html">
+                basic_controller.js
+              </a>
+            
+              
+              <a class="source" href="example_controller.html">
+                example_controller.js
+              </a>
+            
+              
+              <a class="source" href="initializing_views.html">
+                initializing_views.js
+              </a>
+            
+              
+              <a class="source" href="using_collections.html">
+                using_collections.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>using_collections.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, app */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="using-collections">Using Collections</h2>
+<p>The below example controller is to assist with code examples and methods for:</p>
+<ul>
+<li>Creating collections utilizing Breeze data</li>
+<li>Creating collection views</li>
+<li>Initializing the Grid module</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'base/controller'</span>,
+  <span class="hljs-string">'views/index/activity_item_grid_view'</span>,
+  <span class="hljs-string">'modules/grid/grid_module'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, Controller, ActivityItem, Grid)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> BasicController = Controller.extend({
+
+        title: <span class="hljs-string">"Activity Monitor"</span>,
+
+        start: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(attributes, options)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>To utilize a collection of breeze entities, utilize the app.api.getChildCollection method</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> activitiesCollection = app.api.getChildCollection(<span class="hljs-string">'Activity'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Apply any queries/filters to your child collection.  For full documentation see:
+<a href="http://bevry.me/queryengine/guide">http://bevry.me/queryengine/guide</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            activitiesCollection.query();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>In this example, the collection will be utilized across views, and as such is set as a variable
+on the controller for easy access.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.set(<span class="hljs-string">"activities"</span>, activitiesCollection );</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Once the controller is created, executing a breeze query will actually fetch data.
+Those models returning from our breeze query that match the filter/query criteria
+for our childCollection (created above) will automatically pass in to our collection
+NOTE: A Todo for an upcoming update is to combine this and the above method to initialize
+one child collection with a breeze query (wherein the child collection sets as default query/filter
+predicates passed within that breeze query) - for now, these two acts are performed separately</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            app.api.getActivities({source: <span class="hljs-string">"Activities"</span>});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>In this example, the Grid will be utilized across multiple controller actions, so we intialize
+it within our start function here and set it as a controller property for easy access.
+For full documenation regarding grid initialization parameters, refer to app/modules/grid_module.js
+Grid module utilizes <a href="http://rotundasoftware.github.io/backbone.collectionView/">http://rotundasoftware.github.io/backbone.collectionView/</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'ActivityGrid'</span>, <span class="hljs-keyword">new</span> Grid({
+                title: <span class="hljs-string">'Patient Activity'</span>,
+                collection: <span class="hljs-keyword">this</span>.get(<span class="hljs-string">'activities'</span>),
+                columns: {
+                    active: [<span class="hljs-string">'MemberName'</span>, <span class="hljs-string">'Service'</span>],
+                    rename: {
+                        <span class="hljs-string">'MemberName'</span>: <span class="hljs-string">'Patient Name'</span>
+                    },
+                    custom: [
+                        {
+                            name: <span class="hljs-string">'Service E/T'</span>,
+                            prop: <span class="hljs-string">'_vm_ElapsedTime'</span>
+                        },
+                        {
+                            name: <span class="hljs-string">'Service Status'</span>,
+                            prop: <span class="hljs-string">'_vm_Status'</span>
+                        },
+                        {
+                            name: <span class="hljs-string">'RFS Time'</span>,
+                            prop: <span class="hljs-string">'_vm_RFSTime'</span>
+                        },
+                        {
+                            name: <span class="hljs-string">'Last Updated By'</span>,
+                            prop: <span class="hljs-string">'_vm_LastUpdateBy'</span>
+                        }
+                    ]
+                },
+                row: ActivityItem
+            }));
+        },
+
+        actions: {
+            gridView: {
+                name: <span class="hljs-string">"Grid View"</span>,
+                fn: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span>
+                    <span class="hljs-keyword">var</span> ActivityGrid = <span class="hljs-keyword">this</span>.get(<span class="hljs-string">"ActivityGrid"</span>);
+
+                    <span class="hljs-keyword">this</span>.setView({
+                        name: <span class="hljs-string">'Activities'</span>,
+                        view: ActivityGrid.getView() <span class="hljs-comment">// this method returns the grid's view object</span>
+                    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>The grid will render with the above setView method, here is an example of altering
+visible columns programmatically, note render is called to apply the column update</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                    ActivityGrid.setActiveColumns([
+                        <span class="hljs-string">'Physician Name'</span>,
+                        <span class="hljs-string">'Service'</span>,
+                        <span class="hljs-string">'Id'</span>,
+                        <span class="hljs-string">'Appointment Id'</span>,
+                        <span class="hljs-string">'Patient Name'</span>
+                    ]).render();
+                   
+                }
+            }
+        }
+    });
+
+    <span class="hljs-keyword">return</span> BasicController;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

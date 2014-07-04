@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: base/controller.js</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="keyword" content="" />
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:url" content=""/>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"applicationName":"ESS.App","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">ESS.App</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="App">
+            <span class="title">
+                <a href="App.html">App</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="BaseView">
+            <span class="title">
+                <a href="BaseView.html">BaseView</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="BaseView#_applyModelListeners"><a href="BaseView.html#_applyModelListeners">_applyModelListeners</a></li>
+            
+                <li data-name="BaseView#_breezeCallback"><a href="BaseView.html#_breezeCallback">_breezeCallback</a></li>
+            
+                <li data-name="BaseView#_contextModelListen"><a href="BaseView.html#_contextModelListen">_contextModelListen</a></li>
+            
+                <li data-name="BaseView#_createViewModel"><a href="BaseView.html#_createViewModel">_createViewModel</a></li>
+            
+                <li data-name="BaseView#_createViewModelHelper"><a href="BaseView.html#_createViewModelHelper">_createViewModelHelper</a></li>
+            
+                <li data-name="BaseView#_getAddress"><a href="BaseView.html#_getAddress">_getAddress</a></li>
+            
+                <li data-name="BaseView#_updateContextModel"><a href="BaseView.html#_updateContextModel">_updateContextModel</a></li>
+            
+                <li data-name="BaseView#afterRender"><a href="BaseView.html#afterRender">afterRender</a></li>
+            
+                <li data-name="BaseView#beforeRender"><a href="BaseView.html#beforeRender">beforeRender</a></li>
+            
+                <li data-name="BaseView#createViewModel"><a href="BaseView.html#createViewModel">createViewModel</a></li>
+            
+                <li data-name="BaseView#dispose"><a href="BaseView.html#dispose">dispose</a></li>
+            
+                <li data-name="BaseView#fetchTemplate"><a href="BaseView.html#fetchTemplate">fetchTemplate</a></li>
+            
+                <li data-name="BaseView#getViewModel"><a href="BaseView.html#getViewModel">getViewModel</a></li>
+            
+                <li data-name="BaseView#renderBindings"><a href="BaseView.html#renderBindings">renderBindings</a></li>
+            
+                <li data-name="BaseView#renderComplete"><a href="BaseView.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="BaseView#resetBindings"><a href="BaseView.html#resetBindings">resetBindings</a></li>
+            
+                <li data-name="BaseView#resetElement"><a href="BaseView.html#resetElement">resetElement</a></li>
+            
+                <li data-name="BaseView#setModel"><a href="BaseView.html#setModel">setModel</a></li>
+            
+                <li data-name="BaseView#setViewModel"><a href="BaseView.html#setViewModel">setViewModel</a></li>
+            
+                <li data-name="BaseView#start"><a href="BaseView.html#start">start</a></li>
+            
+                <li data-name="BaseView#subscribe"><a href="BaseView.html#subscribe">subscribe</a></li>
+            
+                <li data-name="BaseView#trackValidation"><a href="BaseView.html#trackValidation">trackValidation</a></li>
+            
+                <li data-name="BaseView#updateViewModel"><a href="BaseView.html#updateViewModel">updateViewModel</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Controller">
+            <span class="title">
+                <a href="Controller.html">Controller</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Controller#_prepActions"><a href="Controller.html#_prepActions">_prepActions</a></li>
+            
+                <li data-name="Controller#buildMenuActions"><a href="Controller.html#buildMenuActions">buildMenuActions</a></li>
+            
+                <li data-name="Controller#dispose"><a href="Controller.html#dispose">dispose</a></li>
+            
+                <li data-name="Controller#getView"><a href="Controller.html#getView">getView</a></li>
+            
+                <li data-name="Controller#renderLayout"><a href="Controller.html#renderLayout">renderLayout</a></li>
+            
+                <li data-name="Controller#setView"><a href="Controller.html#setView">setView</a></li>
+            
+                <li data-name="Controller#start"><a href="Controller.html#start">start</a></li>
+            
+                <li data-name="Controller#startAction"><a href="Controller.html#startAction">startAction</a></li>
+            
+                <li data-name="Controller#verifyAction"><a href="Controller.html#verifyAction">verifyAction</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DataService">
+            <span class="title">
+                <a href="DataService.html">DataService</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="DataService~queryFailed"><a href="DataService.html#queryFailed">queryFailed</a></li>
+            
+                <li data-name="DataService~querySucceeded"><a href="DataService.html#querySucceeded">querySucceeded</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DataService#_filterByLocation"><a href="DataService.html#_filterByLocation">_filterByLocation</a></li>
+            
+                <li data-name="DataService#applyPredicate"><a href="DataService.html#applyPredicate">applyPredicate</a></li>
+            
+                <li data-name="DataService#get"><a href="DataService.html#get">get</a></li>
+            
+                <li data-name="DataService#getChildCollection"><a href="DataService.html#getChildCollection">getChildCollection</a></li>
+            
+                <li data-name="DataService#getCollection"><a href="DataService.html#getCollection">getCollection</a></li>
+            
+                <li data-name="DataService#getEntityInfo"><a href="DataService.html#getEntityInfo">getEntityInfo</a></li>
+            
+                <li data-name="DataService#getEntityName"><a href="DataService.html#getEntityName">getEntityName</a></li>
+            
+                <li data-name="DataService#getEntityTypeByResource"><a href="DataService.html#getEntityTypeByResource">getEntityTypeByResource</a></li>
+            
+                <li data-name="DataService#getErrorMessage"><a href="DataService.html#getErrorMessage">getErrorMessage</a></li>
+            
+                <li data-name="DataService#getLocationCollection"><a href="DataService.html#getLocationCollection">getLocationCollection</a></li>
+            
+                <li data-name="DataService#getMessageFromEntityError"><a href="DataService.html#getMessageFromEntityError">getMessageFromEntityError</a></li>
+            
+                <li data-name="DataService#getValidationMessages"><a href="DataService.html#getValidationMessages">getValidationMessages</a></li>
+            
+                <li data-name="DataService#subscribe"><a href="DataService.html#subscribe">subscribe</a></li>
+            
+                <li data-name="DataService#validatePredicate"><a href="DataService.html#validatePredicate">validatePredicate</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Grid">
+            <span class="title">
+                <a href="Grid.html">Grid</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Grid#_afterRender"><a href="Grid.html#_afterRender">_afterRender</a></li>
+            
+                <li data-name="Grid#_applyFilter"><a href="Grid.html#_applyFilter">_applyFilter</a></li>
+            
+                <li data-name="Grid#_assemblePredicate"><a href="Grid.html#_assemblePredicate">_assemblePredicate</a></li>
+            
+                <li data-name="Grid#_buildColumns"><a href="Grid.html#_buildColumns">_buildColumns</a></li>
+            
+                <li data-name="Grid#_buildLayout"><a href="Grid.html#_buildLayout">_buildLayout</a></li>
+            
+                <li data-name="Grid#_buildViewModel"><a href="Grid.html#_buildViewModel">_buildViewModel</a></li>
+            
+                <li data-name="Grid#_fetch"><a href="Grid.html#_fetch">_fetch</a></li>
+            
+                <li data-name="Grid#_filter"><a href="Grid.html#_filter">_filter</a></li>
+            
+                <li data-name="Grid#_getDataType"><a href="Grid.html#_getDataType">_getDataType</a></li>
+            
+                <li data-name="Grid#_getEntityInfo"><a href="Grid.html#_getEntityInfo">_getEntityInfo</a></li>
+            
+                <li data-name="Grid#_loadEntityData"><a href="Grid.html#_loadEntityData">_loadEntityData</a></li>
+            
+                <li data-name="Grid#_predicateFilter"><a href="Grid.html#_predicateFilter">_predicateFilter</a></li>
+            
+                <li data-name="Grid#_sortEngine"><a href="Grid.html#_sortEngine">_sortEngine</a></li>
+            
+                <li data-name="Grid#_sortHandler"><a href="Grid.html#_sortHandler">_sortHandler</a></li>
+            
+                <li data-name="Grid#_updateCollections"><a href="Grid.html#_updateCollections">_updateCollections</a></li>
+            
+                <li data-name="Grid#addColumns"><a href="Grid.html#addColumns">addColumns</a></li>
+            
+                <li data-name="Grid#dispose"><a href="Grid.html#dispose">dispose</a></li>
+            
+                <li data-name="Grid#filter"><a href="Grid.html#filter">filter</a></li>
+            
+                <li data-name="Grid#getSelected"><a href="Grid.html#getSelected">getSelected</a></li>
+            
+                <li data-name="Grid#getView"><a href="Grid.html#getView">getView</a></li>
+            
+                <li data-name="Grid#getViewModel"><a href="Grid.html#getViewModel">getViewModel</a></li>
+            
+                <li data-name="Grid#removeColumns"><a href="Grid.html#removeColumns">removeColumns</a></li>
+            
+                <li data-name="Grid#removeFilter"><a href="Grid.html#removeFilter">removeFilter</a></li>
+            
+                <li data-name="Grid#render"><a href="Grid.html#render">render</a></li>
+            
+                <li data-name="Grid#setSelected"><a href="Grid.html#setSelected">setSelected</a></li>
+            
+                <li data-name="Grid#updateViewModels"><a href="Grid.html#updateViewModels">updateViewModels</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Grid#event:hasData"><a href="Grid.html#event:hasData">hasData</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Info">
+            <span class="title">
+                <a href="Info.html">Info</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Info#applyClaimsAccess"><a href="Info.html#applyClaimsAccess">applyClaimsAccess</a></li>
+            
+                <li data-name="Info#cleanViews"><a href="Info.html#cleanViews">cleanViews</a></li>
+            
+                <li data-name="Info#getActive"><a href="Info.html#getActive">getActive</a></li>
+            
+                <li data-name="Info#getController"><a href="Info.html#getController">getController</a></li>
+            
+                <li data-name="Info#getModule"><a href="Info.html#getModule">getModule</a></li>
+            
+                <li data-name="Info#recycle"><a href="Info.html#recycle">recycle</a></li>
+            
+                <li data-name="Info#renderModule"><a href="Info.html#renderModule">renderModule</a></li>
+            
+                <li data-name="Info#setActive"><a href="Info.html#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="KnockoutBindings">
+            <span class="title">
+                <a href="KnockoutBindings.html">KnockoutBindings</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="KnockoutBindings._this.bootstrapGrid"><a href="KnockoutBindings.html#_this.bootstrapGrid">_this.bootstrapGrid</a></li>
+            
+                <li data-name="KnockoutBindings._this.locationBreadcrumbs"><a href="KnockoutBindings.html#_this.locationBreadcrumbs">_this.locationBreadcrumbs</a></li>
+            
+                <li data-name="KnockoutBindings._this.subNav"><a href="KnockoutBindings.html#_this.subNav">_this.subNav</a></li>
+            
+                <li data-name="KnockoutBindings._this.urlArgs"><a href="KnockoutBindings.html#_this.urlArgs">_this.urlArgs</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Location">
+            <span class="title">
+                <a href="Location.html">Location</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Location#_buildCrumbs"><a href="Location.html#_buildCrumbs">_buildCrumbs</a></li>
+            
+                <li data-name="Location#setActive"><a href="Location.html#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Location#location:change"><a href="Location.html#event:location:change">location:change</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Modal">
+            <span class="title">
+                <a href="Modal.html">Modal</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Modal#_buttonClick"><a href="Modal.html#_buttonClick">_buttonClick</a></li>
+            
+                <li data-name="Modal#_modalOnClose"><a href="Modal.html#_modalOnClose">_modalOnClose</a></li>
+            
+                <li data-name="Modal#close"><a href="Modal.html#close">close</a></li>
+            
+                <li data-name="Modal#renderComplete"><a href="Modal.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="Modal#setContentView"><a href="Modal.html#setContentView">setContentView</a></li>
+            
+                <li data-name="Modal#show"><a href="Modal.html#show">show</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="QueueService">
+            <span class="title">
+                <a href="QueueService.html">QueueService</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="QueueService#_error"><a href="QueueService.html#_error">_error</a></li>
+            
+                <li data-name="QueueService#_success"><a href="QueueService.html#_success">_success</a></li>
+            
+                <li data-name="QueueService#callApiMethod"><a href="QueueService.html#callApiMethod">callApiMethod</a></li>
+            
+                <li data-name="QueueService#CallNextForService"><a href="QueueService.html#CallNextForService">CallNextForService</a></li>
+            
+                <li data-name="QueueService#CallTicket"><a href="QueueService.html#CallTicket">CallTicket</a></li>
+            
+                <li data-name="QueueService#CancelTicket"><a href="QueueService.html#CancelTicket">CancelTicket</a></li>
+            
+                <li data-name="QueueService#CompleteTicket"><a href="QueueService.html#CompleteTicket">CompleteTicket</a></li>
+            
+                <li data-name="QueueService#GetCurrentInService"><a href="QueueService.html#GetCurrentInService">GetCurrentInService</a></li>
+            
+                <li data-name="QueueService#GetWaitList"><a href="QueueService.html#GetWaitList">GetWaitList</a></li>
+            
+                <li data-name="QueueService#HoldTicket"><a href="QueueService.html#HoldTicket">HoldTicket</a></li>
+            
+                <li data-name="QueueService#MoveTicketToWait"><a href="QueueService.html#MoveTicketToWait">MoveTicketToWait</a></li>
+            
+                <li data-name="QueueService#PauseTicket"><a href="QueueService.html#PauseTicket">PauseTicket</a></li>
+            
+                <li data-name="QueueService#UpdateService"><a href="QueueService.html#UpdateService">UpdateService</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Router">
+            <span class="title">
+                <a href="Router.html">Router</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Router#_getActiveLayout"><a href="Router.html#_getActiveLayout">_getActiveLayout</a></li>
+            
+                <li data-name="Router#_getArgs"><a href="Router.html#_getArgs">_getArgs</a></li>
+            
+                <li data-name="Router#_setLayout"><a href="Router.html#_setLayout">_setLayout</a></li>
+            
+                <li data-name="Router#default"><a href="Router.html#default">default</a></li>
+            
+                <li data-name="Router#go"><a href="Router.html#go">go</a></li>
+            
+                <li data-name="Router#login"><a href="Router.html#login">login</a></li>
+            
+                <li data-name="Router#show404"><a href="Router.html#show404">show404</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="User">
+            <span class="title">
+                <a href="User.html">User</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="User#IsTopLevelLocationDeleted"><a href="User.html#IsTopLevelLocationDeleted">IsTopLevelLocationDeleted</a></li>
+            
+                <li data-name="User#login"><a href="User.html#login">login</a></li>
+            
+                <li data-name="User#loginSuccess"><a href="User.html#loginSuccess">loginSuccess</a></li>
+            
+                <li data-name="User#logout"><a href="User.html#logout">logout</a></li>
+            
+                <li data-name="User#verify"><a href="User.html#verify">verify</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="User#user:login"><a href="User.html#event:user:login">user:login</a></li>
+            
+                <li data-name="User#user:logout"><a href="User.html#event:user:logout">user:logout</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Utils">
+            <span class="title">
+                <a href="Utils.html">Utils</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Utils#formatDate"><a href="Utils.html#formatDate">formatDate</a></li>
+            
+                <li data-name="Utils#formatDateTime"><a href="Utils.html#formatDateTime">formatDateTime</a></li>
+            
+                <li data-name="Utils#formatTime"><a href="Utils.html#formatTime">formatTime</a></li>
+            
+                <li data-name="Utils#getForm"><a href="Utils.html#getForm">getForm</a></li>
+            
+                <li data-name="Utils#hoursMinutes"><a href="Utils.html#hoursMinutes">hoursMinutes</a></li>
+            
+                <li data-name="Utils#trackedBreezeCollection"><a href="Utils.html#trackedBreezeCollection">trackedBreezeCollection</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="controller.js.html">Source: base/controller.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/* global define, app, $ */
+define([
+    'underscore',
+    'backbone',
+    'knockback',
+    'base/view',
+    'views/shared/submenu_view',
+    'text!templates/shared/layout_controller.html',
+    'queryengine',
+    'layoutmanager'
+], function(_, Backbone, kb, View, SubmenuView, layout_template) {
+    "use strict";
+
+    var Controller = Backbone.Model.extend( /** @lends Controller.prototype */ {
+        /**
+         * @class Controller The base controller class from which all controllers extend.  Provides methods for managing views, layouts,
+         * accessing data in and across views, and handling route actions.  Controllers are initialized within {@link Info Info} model or
+         * within {@link Router Router} on route match.  Controller information for an extand module is available through {@link Info Info}.
+         *
+         * @augments Backbone.Model
+         * @constructs
+         * @requires Backbone
+         * @param {object} [attributes] - Attributes to be set on the controller
+         * @param {object} [options] - Backbone.Model options
+         *
+         * @property {object} defaults - Technically, defaults are not used (extending a controller with new defaults would override these defaults).
+         * Rather, the following default properties are set during initialization if a value for the given property is not present.
+         * @property {string} defaults.title - Title is displayed in default controller layout template
+         * @property {string} defaults.index - The default action to fire if not action is matched on a route
+         * @property {string} defaults.views - Key/value object referencing persisted views on this controller
+         * @property {Collection} defaults.menu_actions - A helper collection built from actions, buitl for and consumed by the menu view
+         * @property {View} defaults._layout - A view defintion to for this controller's layout.
+         * @property {object} actions - Actions available via route match for this controller
+         * @property {string} [actions.name] - If a name is present, this name will be displayed in the menu view, linking to this action
+         * @property {Function} [actions.isVisible] - Whenever the menu is rendered, this will evaluate (function needs to returns boolean).
+         * If the function returns false, this menu action will not be rendered in the menu view (and will render with a result of true.)
+         * @property {Function} actions.fn - The function that fires when an action route is matched.  URL args are passed in as 'args'
+         * @property {text} template - Reference to the template file to use for controller layout
+         * @property {String} currentAction - current action for this controller
+         */
+        initialize: function(attributes, options) {
+            _.bindAll(this, 'setView', 'getView', 'renderLayout', 'verifyAction',
+                'buildMenuActions', '_prepActions', 'startAction',
+                'start', 'dispose');
+            // Bind actions.isVisible functions to this controller context
+
+            // Setup Controller 'Defaults'
+            // ---------------------------
+
+            // Set defaults manually, allows for easier overriding of defaults
+            this.set({
+                "views": (this.get("views")) ? this.get("views") : {},
+                "index": (this.get("index")) ? this.get("index") : 'index',
+                "template": (this.get("template")) ? this.get("template") : layout_template,
+                "title": this.title,
+                "actions": (this.get("actions")) ? this.get("actions") : {},
+                "menu_actions": new Backbone.Collection([]),
+            }, {
+                silent: true
+            });
+
+            this._prepActions();
+            var _this = this;
+
+            // If a _layout was not passed in, use a default setup.  We only want to call this as needed,
+            // as it creates an instance of a sub menu view by default.
+            if (!this.get('_layout')) {
+                this.set('_layout', View.extend({
+                    el: "#main_content",
+                    template: _.template(this.get('template')),
+                    renderComplete: function() {
+                        this.setView(".menu", new SubmenuView({
+                            model: _this
+                        })).render();
+                    },
+                    createViewModel: function() {
+                        return {};
+                    } // By default no observeables used
+                }));
+            }
+
+            // Controller specific initialization
+            // ----------------------------------
+
+            // "Post Initialization".
+            // Any logic specific to controller initialization is initiated here.
+            this.start(attributes, options);
+
+            // Controller layout rendering
+            // ---------------------
+
+            // Helper for submenuView actions
+            this.buildMenuActions(attributes);
+            // Render this._layout
+            // TODO : add a setLayout function that initializes but does not immediately render
+            this.renderLayout();
+
+            // By default fire home action if no action passed in
+            var args = this.get('args');
+            if (args &amp;&amp; args._action) this.set('action', args._action);
+            var action = (this.verifyAction(this.get('action'))) ? this.get('action') : this.get('index');
+            var actions = this.get('actions');
+
+            // If the action is valid, fire it.
+            if (action &amp;&amp; actions[action] &amp;&amp; _.isFunction(actions[action].fn)) {
+                var actionArgs = (attributes.args) ? attributes.args : {
+                    _action: action
+                };
+                // Always preface an action fire with startAction to properly update/track actions for the controller
+                this.startAction(action);
+                actions[action].fn(actionArgs);
+            }
+        },
+
+        title: "",
+
+        /**
+         * Verify that an action method is available for this controller
+         * @param {String} action - The action to be verified
+         * @returns {Boolean} True if verfied, false if not
+         */
+        verifyAction: function(action) {
+            var actions = this.get('actions');
+            if (action &amp;&amp; actions[action] &amp;&amp; _.isFunction(actions[action].fn)) return true;
+            else return false;
+        },
+
+        /**
+         * Binds controller actions to controller context.
+         * @private
+         */
+        _prepActions: function() {
+            var _this = this;
+            var actions = $.extend(true, {}, this.get('actions'));
+            $.each(actions, function(k, v) {
+                v.fn = _.bind(v.fn, _this);
+                if (v.isVisible) v.isVisible = _.bind(v.isVisible, _this);
+            });
+            this.set('actions', actions);
+        },
+
+        /**
+         * Empty placeholder.  Override start in an implementation to add 'initialization' logic for that implementation
+         * @param {object} attributes - Attributes passed into initialize
+         * @param {object} options - Options passed into initialize
+         */
+        start: function(attributes, options) {},
+
+        /**
+         * Builds/Updates menu actions (that are bound to the sub menu view). Updates this.get('menu_actions').
+         * Call this function as needed to re-initialize menu actions (for example if logic is involved in hiding an action).
+         * @param {object} [attributes] - Attributes passed in from initialize.
+         * @param {string} [attributes.action] - If an action passed in, it will be flagged as active
+         */
+        buildMenuActions: function(attributes) {
+            var _this = this;
+            var menu_actions = [];
+            $.each(this.get('actions'), function(k, v) {
+                if (v.name) {
+                    if (!v.isVisible || v.isVisible &amp;&amp; v.isVisible(attributes) === true) {
+                        var action = {
+                            name: v.name,
+                            action: k,
+                            active: false
+                        };
+                        if (attributes.action == k) action.active = true;
+                        menu_actions.push(action);
+                    }
+                }
+            });
+            this.get('menu_actions').reset(menu_actions);
+        },
+
+        /**
+         * Render this controllers layout.  Called by default on Initialization (TODO: udpate initialization to be able to supress this).
+         * References this.get('layout') to re-render an extant layout, or if not found, uses this.get('_layout') for a definition of the layout to render.
+         */
+        renderLayout: function() {
+            var layout = this.get('layout');
+            // If layout exists, just re-render the layout.  Make sure to re-set the element (setElement)
+            // for all bindings to work properly.
+            if (layout) {
+                layout.setElement($('#' + layout.el.id));
+                layout.render();
+            } else {
+                // Get our layout definition and render it, passing the view as a value to this.get('layout')
+                var Layout = this.get('_layout');
+                this.set('layout', new Layout().render());
+            }
+        },
+
+        /**
+         * Initialization for an action.  Fire this before executing an action function.
+         * TODO : Update this to also fire the action, precluding the need for a call to this and the action in places like {@link Router Router}.
+         * @param {string} action - The action to be fired
+         * @param {boolean} render - If true, the controller layout will re-render
+         */
+        startAction: function(action, render) {
+            app.api.manager.rejectChanges();
+            this.set('currentAction', action);
+            this.buildMenuActions({
+                action: action
+            });
+            if (render) this.renderLayout();
+        },
+
+        /**
+         * Primary method for rendering a view from the controller. Removes the current view, retrieves persisted view if found or initializes
+         * a new view if view definition passed.
+         * @param {object|string|View} args - Options relating to the view to be rendered,
+         * or the name of a persisted view to render,
+         * or a definition of view to render.
+         *
+         * @param {string} [args.zone=.content] - Zone to set this view on.  Only applicable if using a custom controller layout with more zones.
+         * @param {View} [args.view] - A definition of the view to be set (used if the view is not persisted/initialized).
+         * @param {Model} [args.model] - A Backbone.Model passed to this.getView() (for view initialization if applicable)
+         * @param {object} [args.options] - Options passed through to this.getView() (for view initialization if applicable)
+         */
+        setView: function(args) {
+            var name = (_.isObject(args)) ? args.name : args;
+            var zone = (args.zone) ? args.zone : '.content';
+            var layout = this.get('layout');
+            layout.removeView(zone);
+            var view = this.getView(name);
+            if (view) {
+                // View exists, updated dom Node so bindings properly update and set the view
+                view.resetElement(layout.$el.find(zone));
+                layout.setView(zone, view).render();
+            } else {
+                view = (args.view) ? args.view : args;
+                var options = (args.options) ? args.options : null;
+                view = this.getView(name, view, args.model, options);
+                layout.setView(zone, view).render();
+            }
+        },
+
+        /**
+         * Accessor for retrieving/initializing views.  If the view is currently active or persisted in this.get('views'),
+         * that view object will be returned.  Otherwise, a new view object will be created from the definition passed in and returned.
+         *
+         * @returns {View|Boolean} View Object to be consumed by setView or other methods. Returns false if no view found and no view passed in.
+         *
+         * @param {string} [name] - The name of the view, only needed if you plan on persisting the view.
+         * @param {View} [View] - A definition of the view.  If you are only checking on the existance of an existing view, this would be optional.
+         * @param {Model} [model] - A model to pass to view initialization, should the view need to be initialized.
+         * @param {object} [options] - Backbone.View options to be passed to the view should the view need to be initialized.
+         */
+        getView: function(name, View, model, options) {
+            var views = this.get('views');
+            if (typeof views[name] == 'undefined') {
+                if (View) {
+                    var newView;
+                    if (_.isFunction(View)) {
+                        // A view definition has been passed in.
+                        // Consolidate arguments into single object of options for the view.
+                        var newOptions = (options) ? options : {};
+                        if (model) newOptions.model = model;
+                        newView = new View(newOptions);
+                    } else {
+                        newView = View;
+                    }
+
+                    // Track the view if a name was passed
+                    if (name) {
+                        var updateViews = $.extend({}, true, views);
+                        updateViews[name] = newView;
+                        this.set('views', updateViews);
+                    }
+                    return newView;
+                } else {
+                    return false;
+                }
+            } else {
+                return views[name];
+            }
+        },
+
+        /**
+         * Dispose function to clean up the controller.
+         * TODO : Implement this.  Will be called primarily from {@link Info Info}.
+         */
+        dispose: function() {
+            if (this._disposed) return true;
+            //this.get('layout').remove();
+            var _this = this;
+            this.stopListening();
+            $.each(this.attributes, function(key, value) {
+                var get = _this.get(key);
+                if (get &amp;&amp; get.off) get.off();
+                if (get &amp;&amp; get.stopListening) get.stopListening();
+                if (get &amp;&amp; get.dispose) get.dispose();
+                //else if (get &amp;&amp; get.remove) get.remove();
+            });
+            this.off();
+            this.clear();
+        },
+
+    });
+
+    return Controller;
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue May 13 2014 13:18:45 GMT-0400 (Eastern Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,9 +1,9 @@
-ESS 5.7 SPA Application Documentation
+MVC Boilerplate SPA Application Documentation
 ---
 
 Welcome
 ---
-Welcome to ESS 5.7 Documentation.  If you are looking for code snippets and examples, see the following:
+Welcome to MVC Boilerplate Documentation.  If you are looking for code snippets and examples, see the following:
 - [Application Initialization/Configuration](tutorials/main.html)
 - [Controller Examples - Initializing Views from Controller](tutorials/example_controller.html)
 - [Model Examples](tutorials/entity_model.html)
@@ -27,14 +27,10 @@ This documentation uses the jaguarjs-jsdoc template for jsDoc, and the example l
 jsDoc is installed in the root of the project, to update the documentation, document your code following jsDoc specs, and from the root of the project run the following command (assuming jsdoc and docco are installed globally):
 
 ```
-$ jsdoc ESS.App/app -r -t Documentation/lib/jaguarjs-jsdoc-master -c Documentation/lib/ess.conf.json ESS.App/README.md -d ESS.App/about --verbose -l -p
+$ jsdoc app -r -t Documentation/lib/jaguarjs-jsdoc-master -c Documentation/lib/ess.conf.json ESS.App/README.md -d ESS.App/about --verbose -l -p
 ```
 Using docco and outputing documentation to Tutorials (snippet below assumes having navigated to /ESS.App)
 ```
 docco -o about/tutorials app/controllers/examples/*
 ```
 
-Additional Documentation
----
-Additional documentation on the project and its extensions is located in sharepoint at:
-- [Sharepoint Docs](http://sp2013.harriscomputer.com/qchc/qm/ess/development/_layouts/15/start.aspx#/Shared%20Documents/Forms/AllItems.aspx?RootFolder=%2Fqchc%2Fqm%2Fess%2Fdevelopment%2FShared%20Documents%2FDevelopment%2F5%2E7%20Release%20Documentation%2FEPIC%20ESS%2D4065%2FUI%20widget%20implementation&FolderCTID=0x0120006BB089B2CA871C4DBE748357770AA8D6&View=%7B652385E0%2D0C51%2D404B%2D8F51%2DC5B7C77A8AFF%7D)

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>initializing_views.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="basic_controller.html">
+                basic_controller.js
+              </a>
+            
+              
+              <a class="source" href="example_controller.html">
+                example_controller.js
+              </a>
+            
+              
+              <a class="source" href="initializing_views.html">
+                initializing_views.js
+              </a>
+            
+              
+              <a class="source" href="using_collections.html">
+                using_collections.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>initializing_views.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, app */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="view-initialization-examples">View Initialization Examples</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This is an example controller utilized to illustrate the methods of 
+initializing views/models within the app.  Most view initializations will
+occur at the controller level (unless working within deeply nested views,
+or within modules)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>define([
+  <span class="hljs-string">'underscore'</span>,
+  <span class="hljs-string">'backbone'</span>,
+  <span class="hljs-string">'base/view'</span>,
+  <span class="hljs-string">'base/controller'</span>,
+  <span class="hljs-string">'views/examples/basic_view'</span>,
+  <span class="hljs-string">'models/examples/entity_model'</span>,
+  <span class="hljs-string">'models/examples/restful_model'</span>,
+], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, View, Controller, BasicView, EntityModel, RestfulModel)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;
+
+    <span class="hljs-keyword">var</span> ExampleController = Controller.extend({
+
+        title: <span class="hljs-string">"Example Controller"</span>,
+
+        actions: {
+          defined: {
+            name: <span class="hljs-string">"Defined View"</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Initialize/Render a defined view (as defined in the require function above)
+Simply pass the defined view to this.setView
+note: BasicView is defined above in the require statement
+You can either pass a view instance, or a view definition.
+In this example the definition is passed, and the setView function will create it
+for you.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">this</span>.setView(BasicView);
+            }
+          },
+          dynamic: {
+            name: <span class="hljs-string">'On the Fly'</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(args)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Initialize/render a view on the fly
+extend view properties as applicable.  This can extend base/view (as defined above)
+or can extend any other defined view (that extends base/view).
+note: the template can be a string and is fetched for rendering
+Using a template string keeps the require function clean and defers getting the template
+until actually required by an action/view when executed.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">this</span>.setView(View.extend({
+                template: <span class="hljs-string">'app/templates/examples/container.html'</span>
+              }));
+            }
+          },
+          options: {
+            name: <span class="hljs-string">'Using Options'</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(args)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>View options can be passed as normal to the view
+In the example below, a breeze entityQuery is created and passed to the
+view in the “breezeQuery” option.  If the view defined extends base/view,
+this breezeQuery will be executed, and the resulting model will be used as
+the underlying model for this view (the viewModel will be rebound on 
+retrieval if the breeze entity must be fetched from the server).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">var</span> id = (args.id) ? args.id : <span class="hljs-number">3</span>; <span class="hljs-comment">// for demo purposes</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>NOTE: this is the entity query, it is NOT executed.  The execution will occur
+when the view is initialized.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">var</span> query = app.api.breeze
+                .EntityQuery
+                .from(<span class="hljs-string">'Locations'</span>)
+                .expand(<span class="hljs-string">'Parameters'</span>)
+                .where(<span class="hljs-string">"Id"</span>, app.api.FilterQueryOp.Equals, id)
+                .using(app.api.manager);
+
+              <span class="hljs-keyword">this</span>.setView(<span class="hljs-keyword">new</span> View({
+                breezeQuery : query
+              }));
+            }
+          },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>The options in the following example are advanced options.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          options2: {
+            name: <span class="hljs-string">'Options Part 2'</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(args)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>The example below illustrates additional options that may be passed
+to setView(). In this implementation, the view is passed in as 
+the “view” property.</p>
+<ul>
+<li><p>name: If the name option is passed, this view will be named and this view
+will persist.  This controller (which extends Backbone.Model), contains a property
+called ‘views’, which is a backbone collection for any persistent views stored 
+in this manner.  To access a named view, utilize this.getView(“BasicView”). To see
+all persisted views, use this.get(‘views’). If this view has already been initialized
+when setView is called, this persisted view will be re-rendered and re-set to the zone.
+NOTE: Utilizing a named view is an ADVANCED use case and should only be used as applicable.</p>
+</li>
+<li><p>zone: A jQuery selector for the zone in which to place this view.  This controller’s
+_layout property is an extension of Backbone Layout Manager.  Refer to the extension 
+documentation for how regions are used.  By Default, the shared controller template has 
+only a single “.content” view available.  In the instance you have overriden this template
+with a custom template/layout for this controller, this zone property will be utilized
+to insert your view to the desired region on the page.</p>
+</li>
+<li><p>view: This option can be accepted as either a view definition, or as a view instance.  If
+using a named view (as the option below shows), it is proper practice to pass the view 
+definition (as referenced in require function above or as a view.extend), as the view will
+only then be created if the named view is not found within this.get(‘views’);</p>
+</li>
+<li><p>options: Basic Backbone.View (or base/view) options.  These are passed directly into your
+view.  Generally, you will initialize a new view and pass the options directly
+(as shown in the previous example).  However, in the case wherein a named view
+is used, the proper use is to provide a definition.  The options property here allows
+for these options to be passed to this view if it has not yet been initialized.</p>
+</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">this</span>.setView({
+                view: BasicView,
+                name: <span class="hljs-string">'BasicView'</span>,
+                zone: <span class="hljs-string">'.right_column'</span>,
+                options: {
+                  someOption: <span class="hljs-string">'option value'</span>
+                }
+              });
+            }
+          },
+          nestedViews: {
+            name : <span class="hljs-string">'Nested Views'</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(args)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>If your view requires a more complex layout, or a composite of multiple
+  views, utilizing View’s built in layout manager functionality (View extends
+backbone layout manager). */</p>
+<p>The example below shows declaring nested views via the “views” property.
+By default, layout manager creates a composite dom structure from all associated
+views passed in with the “views” property.  If your nested views have knockout
+bindings, this will result in those bindings being applied multiple times.
+If your nested views have knockout bindings, follow example #2 below (view2) */</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">var</span> view1 = <span class="hljs-keyword">new</span> View({
+                template: <span class="hljs-string">'app/templates/examples/container.html'</span>,
+                model: <span class="hljs-keyword">new</span> Backbone.Model({ rows: <span class="hljs-number">2</span>, columns: <span class="hljs-number">2</span>}),
+                views: {
+                  <span class="hljs-string">".widget_content"</span> : <span class="hljs-keyword">new</span> View()
+                }
+              });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>This example shows that views can be inserted and independently rendered after 
+your “wrapper” or parent view is created by layout manager’s insertViews and
+renderViews methods.  Overwrite base/view.js’s renderComplete function (which
+executes after rendering/binding) to insert and render child views.  This
+method can also be used to apply child views dynamically. */</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">var</span> view2 = <span class="hljs-keyword">new</span> View({
+                template: <span class="hljs-string">'app/templates/shared/bootstrapGrid.html'</span>,
+                model: <span class="hljs-keyword">new</span> Backbone.Model({ rows: <span class="hljs-number">2</span>, columns: <span class="hljs-number">2</span>}),
+                renderComplete: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+                  <span class="hljs-keyword">this</span>.insertViews({
+                    <span class="hljs-string">".Row1_Cell1"</span> : view1 
+                  });
+                  <span class="hljs-keyword">this</span>.renderViews();
+                }
+              });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>When ready, utilize this.setView as normal, referencing just the parent view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>              <span class="hljs-keyword">this</span>.setView(view2);
+            }
+          },
+          getRestfulModel: {
+              name: <span class="hljs-string">"Restful Model"</span>,
+              fn: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(args)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>The example below illustrates creating a view on the fly
+with an associated restful model.  Refer to app/models/restful_model
+for details on the model itself.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> id = (args.id) ? args.id : <span class="hljs-number">3</span>; <span class="hljs-comment">// for demo purposes</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>As per regular Backbone specs, the model is passed as an option
+The view can be passed directly to setView as in previous examples
+or may be saved to a variable first as shown below.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> view = View.extend({
+                  template: <span class="hljs-string">'app/templates/examples/container.html'</span>,
+                  model: <span class="hljs-keyword">new</span> RestfulModel({
+                    url: <span class="hljs-string">'user.json?id='</span> + id
+                  })
+                });
+
+                <span class="hljs-keyword">this</span>.setView(view);
+
+              }
+          },
+          getEntity: {
+            name: <span class="hljs-string">"Entity Model"</span>,
+            fn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(args)</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>This is the same essential illustration as the previous example,
+but shows the use of app/examples/entity_model </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">var</span> id = (args.id) ? args.id : <span class="hljs-number">3</span>; <span class="hljs-comment">// for demo purposes</span>
+
+                <span class="hljs-keyword">this</span>.setView(<span class="hljs-keyword">new</span> View({
+                  template: <span class="hljs-string">'app/templates/examples/list.html'</span>,
+                  model: <span class="hljs-keyword">new</span> EntityModel({id: id})
+                }));
+            }
+          }
+        }
+    });
+
+    <span class="hljs-keyword">return</span> ExampleController;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

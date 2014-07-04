@@ -38,10 +38,10 @@ define([
         });
 
         // this.root used for ajax setup in non-breeze api calls
-        this.root = (app && app.api_root) ? app.api_root : '/Ess.WebAPI';
+        this.root = (app && app.api_root) ? app.api_root : '/api';
 
         // Service name is route to the Web API controller (for breeze)
-        var serviceName = this.serviceName = this.root + '/breeze/Breeze';
+        var serviceName = this.serviceName = this.root + '/breeze/';
 
 
         // Setup Entity Manager

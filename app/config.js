@@ -2,7 +2,7 @@
 require.config({
 
     // The path where main app javascript files are located 
-    baseUrl: "/ESS.App/app/",
+    baseUrl: "/app/",
 
     paths: {
         // Shortcut to vendor, can be utilized to pull in vendor files within app require functions
@@ -58,8 +58,6 @@ require.config({
         //Misc Widgets
         spinner: "../vendor/widgets/spinner.min", // Version 2.0.1 http://fgnass.github.io/spin.js/#v1.3
         idleTimer: "../vendor/idleTimer", // Version 0.8.092209 // http://github.com/paulirish/yui-misc/tree/
-        idleTimeout: "../vendor/idleTimeout", // Version 1.2 // https://github.com/ehynds/jquery-idle-timeout
-        validateClaimsAuthorization: "../vendor/claimsauthorization"
 
     },
 
@@ -78,7 +76,6 @@ require.config({
         "bootstrap": ["jquery"],
 
         "idleTimer": ["jquery"],
-        "idleTimeout": ["jquery", "idleTimer"],
 
         // jQuery Plugins
         "jqueryUI": ["jquery"],

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>app.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="app.html">
+                app.js
+              </a>
+            
+              
+              <a class="source" href="config.html">
+                config.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="modernizer.html">
+                modernizer.js
+              </a>
+            
+              
+              <a class="source" href="router.html">
+                router.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>app.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* global define, console */</span>
+define([
+  <span class="hljs-string">'underscore'</span>, <span class="hljs-string">'backbone'</span>, <span class="hljs-string">'lib/util'</span>,
+  <span class="hljs-string">'models/info'</span>, <span class="hljs-string">'models/user'</span>, <span class="hljs-string">'models/location'</span>,
+  <span class="hljs-string">'moment'</span>, <span class="hljs-string">'knockout'</span>, <span class="hljs-string">'komapping'</span>,
+  <span class="hljs-string">'bootstrap'</span>,
+  <span class="hljs-string">'eventbroker'</span>,
+  <span class="hljs-string">'nested'</span>,
+  <span class="hljs-string">'queryengine'</span>,
+  <span class="hljs-string">'collectionview'</span>,
+  <span class="hljs-string">'kobindings'</span>,
+  <span class="hljs-string">'jqueryUI'</span>,
+  <span class="hljs-string">'gritter'</span>,
+  <span class="hljs-string">'validate'</span>,
+  <span class="hljs-string">'validateAddons'</span>,
+  <span class="hljs-string">'validateCustomAddons'</span>
+  ], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(_, Backbone, Utils,
+    Modules, User, Location,
+    Moment, ko, komapping)</span> {</span><span class="hljs-pi">
+    "use strict"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="application-module">Application Module</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>The application instance is created using Backbone.Model, is created in main.js and assigned to the global window.app (for easy reference).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> app = Backbone.Model.extend( <span class="hljs-comment">/** @lends App.prototype */</span> {
+        <span class="hljs-comment">/**
+         * @class App Globally accessible application instance. Available at window.app.
+         * @constructs
+         * @augments Backbone.Model
+         * @requires Backbone
+         * @param {object} options - Backbone.Model options
+         * @property {string} root - Application root.
+         * @property {Location} location - Reference to location data.
+         * @property {User} user - Reference to the application user.
+         * @property {Info} info - Reference to application module details.
+         * @property {Utils} utils - Reference to custom utilities module.
+         * @property {object} moment - Reference to the 'Moment' date manipulation library
+         */</span>
+        initialize: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(options)</span> {</span>
+            ko.mapping = komapping;
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h2 id="application-configuration">Application Configuration</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The root path to run the application through.
+This is basically the only point of configuration you will need.
+The other point of config is the base url in config.js</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        root: <span class="hljs-string">"ESS.App/"</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h2 id="referencing-application-libraries">Referencing application libraries</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Reference/Build global Libraries and Services</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        utils: <span class="hljs-keyword">new</span> Utils(), <span class="hljs-comment">// Custom utility toolbelt</span>
+        moment: Moment, <span class="hljs-comment">// Date Manipulation Library</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <h2 id="tracking-user-and-location-data">Tracking User and Location Data</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Initialize User and Locations</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        location: <span class="hljs-keyword">new</span> Location(), <span class="hljs-comment">// Tracks location navigation/active location</span>
+        user: <span class="hljs-keyword">new</span> User(), <span class="hljs-comment">// Basic user object </span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <h2 id="tracking-application-modules">Tracking Application Modules</h2>
+<p>Model for holding application information and controller references/state
+A controller not defined here can still be initialized on route match, but will
+not populate in sidebar or any other menu referencing below application modules,
+will not be held applicable to claims (unless specifically handled elsewhere),
+and will not persist (when user navigates away from module).
+TODO - double check undeclared modules do not hold references/are disposed properly</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        info: <span class="hljs-keyword">new</span> Modules({
+            home: <span class="hljs-string">'enterprise'</span>, <span class="hljs-comment">// Default 'index' - router will navigate to this module if no route defined</span>
+            modules: <span class="hljs-keyword">new</span> Backbone.Collection([
+                {
+                    name: <span class="hljs-string">'Login'</span>, <span class="hljs-comment">// Displayed where module info rendered in UI (ex: #sidebar)</span>
+                    url: <span class="hljs-string">'login'</span>, <span class="hljs-comment">// Route to this controller, ie https://www.example.com/app.root/#login</span>
+                    display: <span class="hljs-literal">false</span>, <span class="hljs-comment">// Whether to display where module info rendered in UI (ex: #sidebar)</span>
+                    active: <span class="hljs-literal">true</span>, <span class="hljs-comment">// True if the currently active controller/route</span>
+                    persist: <span class="hljs-literal">false</span>, <span class="hljs-comment">// If false will be disposed on route change (requiring re-initialization)</span>
+                    access: <span class="hljs-literal">true</span> <span class="hljs-comment">// Updated on user.login(), defines user access to module </span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>TODO - implement/check implementation of usage of access flag above</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>                },
+                {
+                    name: <span class="hljs-string">'Activity Monitor'</span>,
+                    url: <span class="hljs-string">'index'</span>,
+                    display: <span class="hljs-literal">true</span>,
+                    active: <span class="hljs-literal">false</span>,
+                    persist: <span class="hljs-literal">true</span>,
+                    access: <span class="hljs-literal">false</span>
+                },
+                {
+                    name: <span class="hljs-string">'Enterprise Manager'</span>,
+                    url: <span class="hljs-string">'enterprise'</span>,
+                    display: <span class="hljs-literal">true</span>,
+                    active: <span class="hljs-literal">false</span>,
+                    persist: <span class="hljs-literal">false</span>,
+                    access: <span class="hljs-literal">false</span>
+                },
+                {
+                    name: <span class="hljs-string">'User Manager'</span>,
+                    url: <span class="hljs-string">'member'</span>,
+                    display: <span class="hljs-literal">true</span>,
+                    active: <span class="hljs-literal">true</span>,
+                    persist: <span class="hljs-literal">false</span>,
+                    access: <span class="hljs-literal">false</span>
+                },
+                {
+                    name: <span class="hljs-string">'Appointment Manager'</span>,
+                    url: <span class="hljs-string">'appointment'</span>,
+                    display: <span class="hljs-literal">false</span>,
+                    active: <span class="hljs-literal">false</span>,
+                    persist: <span class="hljs-literal">false</span>,
+                    access: <span class="hljs-literal">false</span>
+                },
+                {
+                    name: <span class="hljs-string">'Demo'</span>, <span class="hljs-comment">// Just a sandbox for now.  TODO: Remove this module</span>
+                    url: <span class="hljs-string">'demo'</span>,
+                    display: <span class="hljs-literal">true</span>,
+                    active: <span class="hljs-literal">false</span>,
+                    persist: <span class="hljs-literal">false</span>,
+                    access: <span class="hljs-literal">true</span>
+                }
+            ])
+        })
+    });
+
+    <span class="hljs-keyword">return</span> app;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

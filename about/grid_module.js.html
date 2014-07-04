@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: modules/grid/grid_module.js</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="keyword" content="" />
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:url" content=""/>
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"default":{"outputSourceFiles":true},"applicationName":"ESS.App","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">ESS.App</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="App">
+            <span class="title">
+                <a href="App.html">App</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="BaseView">
+            <span class="title">
+                <a href="BaseView.html">BaseView</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="BaseView#_applyModelListeners"><a href="BaseView.html#_applyModelListeners">_applyModelListeners</a></li>
+            
+                <li data-name="BaseView#_breezeCallback"><a href="BaseView.html#_breezeCallback">_breezeCallback</a></li>
+            
+                <li data-name="BaseView#_contextModelListen"><a href="BaseView.html#_contextModelListen">_contextModelListen</a></li>
+            
+                <li data-name="BaseView#_createViewModel"><a href="BaseView.html#_createViewModel">_createViewModel</a></li>
+            
+                <li data-name="BaseView#_createViewModelHelper"><a href="BaseView.html#_createViewModelHelper">_createViewModelHelper</a></li>
+            
+                <li data-name="BaseView#_getAddress"><a href="BaseView.html#_getAddress">_getAddress</a></li>
+            
+                <li data-name="BaseView#_updateContextModel"><a href="BaseView.html#_updateContextModel">_updateContextModel</a></li>
+            
+                <li data-name="BaseView#afterRender"><a href="BaseView.html#afterRender">afterRender</a></li>
+            
+                <li data-name="BaseView#beforeRender"><a href="BaseView.html#beforeRender">beforeRender</a></li>
+            
+                <li data-name="BaseView#createViewModel"><a href="BaseView.html#createViewModel">createViewModel</a></li>
+            
+                <li data-name="BaseView#dispose"><a href="BaseView.html#dispose">dispose</a></li>
+            
+                <li data-name="BaseView#fetchTemplate"><a href="BaseView.html#fetchTemplate">fetchTemplate</a></li>
+            
+                <li data-name="BaseView#getViewModel"><a href="BaseView.html#getViewModel">getViewModel</a></li>
+            
+                <li data-name="BaseView#renderBindings"><a href="BaseView.html#renderBindings">renderBindings</a></li>
+            
+                <li data-name="BaseView#renderComplete"><a href="BaseView.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="BaseView#resetBindings"><a href="BaseView.html#resetBindings">resetBindings</a></li>
+            
+                <li data-name="BaseView#resetElement"><a href="BaseView.html#resetElement">resetElement</a></li>
+            
+                <li data-name="BaseView#setModel"><a href="BaseView.html#setModel">setModel</a></li>
+            
+                <li data-name="BaseView#setViewModel"><a href="BaseView.html#setViewModel">setViewModel</a></li>
+            
+                <li data-name="BaseView#start"><a href="BaseView.html#start">start</a></li>
+            
+                <li data-name="BaseView#subscribe"><a href="BaseView.html#subscribe">subscribe</a></li>
+            
+                <li data-name="BaseView#trackValidation"><a href="BaseView.html#trackValidation">trackValidation</a></li>
+            
+                <li data-name="BaseView#updateViewModel"><a href="BaseView.html#updateViewModel">updateViewModel</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Controller">
+            <span class="title">
+                <a href="Controller.html">Controller</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Controller#_prepActions"><a href="Controller.html#_prepActions">_prepActions</a></li>
+            
+                <li data-name="Controller#buildMenuActions"><a href="Controller.html#buildMenuActions">buildMenuActions</a></li>
+            
+                <li data-name="Controller#dispose"><a href="Controller.html#dispose">dispose</a></li>
+            
+                <li data-name="Controller#getView"><a href="Controller.html#getView">getView</a></li>
+            
+                <li data-name="Controller#renderLayout"><a href="Controller.html#renderLayout">renderLayout</a></li>
+            
+                <li data-name="Controller#setView"><a href="Controller.html#setView">setView</a></li>
+            
+                <li data-name="Controller#start"><a href="Controller.html#start">start</a></li>
+            
+                <li data-name="Controller#startAction"><a href="Controller.html#startAction">startAction</a></li>
+            
+                <li data-name="Controller#verifyAction"><a href="Controller.html#verifyAction">verifyAction</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="DataService">
+            <span class="title">
+                <a href="DataService.html">DataService</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="DataService~queryFailed"><a href="DataService.html#queryFailed">queryFailed</a></li>
+            
+                <li data-name="DataService~querySucceeded"><a href="DataService.html#querySucceeded">querySucceeded</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="DataService#_filterByLocation"><a href="DataService.html#_filterByLocation">_filterByLocation</a></li>
+            
+                <li data-name="DataService#applyPredicate"><a href="DataService.html#applyPredicate">applyPredicate</a></li>
+            
+                <li data-name="DataService#get"><a href="DataService.html#get">get</a></li>
+            
+                <li data-name="DataService#getChildCollection"><a href="DataService.html#getChildCollection">getChildCollection</a></li>
+            
+                <li data-name="DataService#getCollection"><a href="DataService.html#getCollection">getCollection</a></li>
+            
+                <li data-name="DataService#getEntityInfo"><a href="DataService.html#getEntityInfo">getEntityInfo</a></li>
+            
+                <li data-name="DataService#getEntityName"><a href="DataService.html#getEntityName">getEntityName</a></li>
+            
+                <li data-name="DataService#getEntityTypeByResource"><a href="DataService.html#getEntityTypeByResource">getEntityTypeByResource</a></li>
+            
+                <li data-name="DataService#getErrorMessage"><a href="DataService.html#getErrorMessage">getErrorMessage</a></li>
+            
+                <li data-name="DataService#getLocationCollection"><a href="DataService.html#getLocationCollection">getLocationCollection</a></li>
+            
+                <li data-name="DataService#getMessageFromEntityError"><a href="DataService.html#getMessageFromEntityError">getMessageFromEntityError</a></li>
+            
+                <li data-name="DataService#getValidationMessages"><a href="DataService.html#getValidationMessages">getValidationMessages</a></li>
+            
+                <li data-name="DataService#subscribe"><a href="DataService.html#subscribe">subscribe</a></li>
+            
+                <li data-name="DataService#validatePredicate"><a href="DataService.html#validatePredicate">validatePredicate</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Grid">
+            <span class="title">
+                <a href="Grid.html">Grid</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Grid#_afterRender"><a href="Grid.html#_afterRender">_afterRender</a></li>
+            
+                <li data-name="Grid#_applyFilter"><a href="Grid.html#_applyFilter">_applyFilter</a></li>
+            
+                <li data-name="Grid#_assemblePredicate"><a href="Grid.html#_assemblePredicate">_assemblePredicate</a></li>
+            
+                <li data-name="Grid#_buildColumns"><a href="Grid.html#_buildColumns">_buildColumns</a></li>
+            
+                <li data-name="Grid#_buildLayout"><a href="Grid.html#_buildLayout">_buildLayout</a></li>
+            
+                <li data-name="Grid#_buildViewModel"><a href="Grid.html#_buildViewModel">_buildViewModel</a></li>
+            
+                <li data-name="Grid#_fetch"><a href="Grid.html#_fetch">_fetch</a></li>
+            
+                <li data-name="Grid#_filter"><a href="Grid.html#_filter">_filter</a></li>
+            
+                <li data-name="Grid#_getDataType"><a href="Grid.html#_getDataType">_getDataType</a></li>
+            
+                <li data-name="Grid#_getEntityInfo"><a href="Grid.html#_getEntityInfo">_getEntityInfo</a></li>
+            
+                <li data-name="Grid#_loadEntityData"><a href="Grid.html#_loadEntityData">_loadEntityData</a></li>
+            
+                <li data-name="Grid#_predicateFilter"><a href="Grid.html#_predicateFilter">_predicateFilter</a></li>
+            
+                <li data-name="Grid#_sortEngine"><a href="Grid.html#_sortEngine">_sortEngine</a></li>
+            
+                <li data-name="Grid#_sortHandler"><a href="Grid.html#_sortHandler">_sortHandler</a></li>
+            
+                <li data-name="Grid#_updateCollections"><a href="Grid.html#_updateCollections">_updateCollections</a></li>
+            
+                <li data-name="Grid#addColumns"><a href="Grid.html#addColumns">addColumns</a></li>
+            
+                <li data-name="Grid#dispose"><a href="Grid.html#dispose">dispose</a></li>
+            
+                <li data-name="Grid#filter"><a href="Grid.html#filter">filter</a></li>
+            
+                <li data-name="Grid#getSelected"><a href="Grid.html#getSelected">getSelected</a></li>
+            
+                <li data-name="Grid#getView"><a href="Grid.html#getView">getView</a></li>
+            
+                <li data-name="Grid#getViewModel"><a href="Grid.html#getViewModel">getViewModel</a></li>
+            
+                <li data-name="Grid#removeColumns"><a href="Grid.html#removeColumns">removeColumns</a></li>
+            
+                <li data-name="Grid#removeFilter"><a href="Grid.html#removeFilter">removeFilter</a></li>
+            
+                <li data-name="Grid#render"><a href="Grid.html#render">render</a></li>
+            
+                <li data-name="Grid#setSelected"><a href="Grid.html#setSelected">setSelected</a></li>
+            
+                <li data-name="Grid#updateViewModels"><a href="Grid.html#updateViewModels">updateViewModels</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Grid#event:hasData"><a href="Grid.html#event:hasData">hasData</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Info">
+            <span class="title">
+                <a href="Info.html">Info</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Info#applyClaimsAccess"><a href="Info.html#applyClaimsAccess">applyClaimsAccess</a></li>
+            
+                <li data-name="Info#cleanViews"><a href="Info.html#cleanViews">cleanViews</a></li>
+            
+                <li data-name="Info#getActive"><a href="Info.html#getActive">getActive</a></li>
+            
+                <li data-name="Info#getController"><a href="Info.html#getController">getController</a></li>
+            
+                <li data-name="Info#getModule"><a href="Info.html#getModule">getModule</a></li>
+            
+                <li data-name="Info#recycle"><a href="Info.html#recycle">recycle</a></li>
+            
+                <li data-name="Info#renderModule"><a href="Info.html#renderModule">renderModule</a></li>
+            
+                <li data-name="Info#setActive"><a href="Info.html#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="KnockoutBindings">
+            <span class="title">
+                <a href="KnockoutBindings.html">KnockoutBindings</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="KnockoutBindings._this.bootstrapGrid"><a href="KnockoutBindings.html#_this.bootstrapGrid">_this.bootstrapGrid</a></li>
+            
+                <li data-name="KnockoutBindings._this.locationBreadcrumbs"><a href="KnockoutBindings.html#_this.locationBreadcrumbs">_this.locationBreadcrumbs</a></li>
+            
+                <li data-name="KnockoutBindings._this.subNav"><a href="KnockoutBindings.html#_this.subNav">_this.subNav</a></li>
+            
+                <li data-name="KnockoutBindings._this.urlArgs"><a href="KnockoutBindings.html#_this.urlArgs">_this.urlArgs</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Location">
+            <span class="title">
+                <a href="Location.html">Location</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Location#_buildCrumbs"><a href="Location.html#_buildCrumbs">_buildCrumbs</a></li>
+            
+                <li data-name="Location#setActive"><a href="Location.html#setActive">setActive</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="Location#location:change"><a href="Location.html#event:location:change">location:change</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Modal">
+            <span class="title">
+                <a href="Modal.html">Modal</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Modal#_buttonClick"><a href="Modal.html#_buttonClick">_buttonClick</a></li>
+            
+                <li data-name="Modal#_modalOnClose"><a href="Modal.html#_modalOnClose">_modalOnClose</a></li>
+            
+                <li data-name="Modal#close"><a href="Modal.html#close">close</a></li>
+            
+                <li data-name="Modal#renderComplete"><a href="Modal.html#renderComplete">renderComplete</a></li>
+            
+                <li data-name="Modal#setContentView"><a href="Modal.html#setContentView">setContentView</a></li>
+            
+                <li data-name="Modal#show"><a href="Modal.html#show">show</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="QueueService">
+            <span class="title">
+                <a href="QueueService.html">QueueService</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="QueueService#_error"><a href="QueueService.html#_error">_error</a></li>
+            
+                <li data-name="QueueService#_success"><a href="QueueService.html#_success">_success</a></li>
+            
+                <li data-name="QueueService#callApiMethod"><a href="QueueService.html#callApiMethod">callApiMethod</a></li>
+            
+                <li data-name="QueueService#CallNextForService"><a href="QueueService.html#CallNextForService">CallNextForService</a></li>
+            
+                <li data-name="QueueService#CallTicket"><a href="QueueService.html#CallTicket">CallTicket</a></li>
+            
+                <li data-name="QueueService#CancelTicket"><a href="QueueService.html#CancelTicket">CancelTicket</a></li>
+            
+                <li data-name="QueueService#CompleteTicket"><a href="QueueService.html#CompleteTicket">CompleteTicket</a></li>
+            
+                <li data-name="QueueService#GetCurrentInService"><a href="QueueService.html#GetCurrentInService">GetCurrentInService</a></li>
+            
+                <li data-name="QueueService#GetWaitList"><a href="QueueService.html#GetWaitList">GetWaitList</a></li>
+            
+                <li data-name="QueueService#HoldTicket"><a href="QueueService.html#HoldTicket">HoldTicket</a></li>
+            
+                <li data-name="QueueService#MoveTicketToWait"><a href="QueueService.html#MoveTicketToWait">MoveTicketToWait</a></li>
+            
+                <li data-name="QueueService#PauseTicket"><a href="QueueService.html#PauseTicket">PauseTicket</a></li>
+            
+                <li data-name="QueueService#UpdateService"><a href="QueueService.html#UpdateService">UpdateService</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Router">
+            <span class="title">
+                <a href="Router.html">Router</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Router#_getActiveLayout"><a href="Router.html#_getActiveLayout">_getActiveLayout</a></li>
+            
+                <li data-name="Router#_getArgs"><a href="Router.html#_getArgs">_getArgs</a></li>
+            
+                <li data-name="Router#_setLayout"><a href="Router.html#_setLayout">_setLayout</a></li>
+            
+                <li data-name="Router#default"><a href="Router.html#default">default</a></li>
+            
+                <li data-name="Router#go"><a href="Router.html#go">go</a></li>
+            
+                <li data-name="Router#login"><a href="Router.html#login">login</a></li>
+            
+                <li data-name="Router#show404"><a href="Router.html#show404">show404</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="User">
+            <span class="title">
+                <a href="User.html">User</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="User#IsTopLevelLocationDeleted"><a href="User.html#IsTopLevelLocationDeleted">IsTopLevelLocationDeleted</a></li>
+            
+                <li data-name="User#login"><a href="User.html#login">login</a></li>
+            
+                <li data-name="User#loginSuccess"><a href="User.html#loginSuccess">loginSuccess</a></li>
+            
+                <li data-name="User#logout"><a href="User.html#logout">logout</a></li>
+            
+                <li data-name="User#verify"><a href="User.html#verify">verify</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            <span class="subtitle">Events</span>
+            
+                <li data-name="User#user:login"><a href="User.html#event:user:login">user:login</a></li>
+            
+                <li data-name="User#user:logout"><a href="User.html#event:user:logout">user:logout</a></li>
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Utils">
+            <span class="title">
+                <a href="Utils.html">Utils</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Utils#formatDate"><a href="Utils.html#formatDate">formatDate</a></li>
+            
+                <li data-name="Utils#formatDateTime"><a href="Utils.html#formatDateTime">formatDateTime</a></li>
+            
+                <li data-name="Utils#formatTime"><a href="Utils.html#formatTime">formatTime</a></li>
+            
+                <li data-name="Utils#getForm"><a href="Utils.html#getForm">getForm</a></li>
+            
+                <li data-name="Utils#hoursMinutes"><a href="Utils.html#hoursMinutes">hoursMinutes</a></li>
+            
+                <li data-name="Utils#trackedBreezeCollection"><a href="Utils.html#trackedBreezeCollection">trackedBreezeCollection</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="grid_module.js.html">Source: modules/grid/grid_module.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/* global define, app, QueryEngine, $ */
+// Grid Module
+// -----------
+define([
+    'underscore',
+    'knockout',
+    'backbone',
+    'base/view',
+    'modules/grid/grid_wrapper_view',
+    'modules/grid/grid_header_view',
+    'modules/grid/grid_row_view',
+    'modules/grid/grid_footer_view',
+    'modules/grid/grid_pagination_view',
+    'base/collectionView'
+], function(_, ko, Backbone, View, Wrapper, Header, Row, Footer, PaginationView, CollectionView) {
+    "use strict";
+
+    var GridModule = Backbone.Model.extend( /** @lends Grid.prototype */ {
+        /**
+         * @class Grid &lt;p>The grid module allows for easy rendering and manipulation of collections.  The default display
+         * renders as a grid, but by overriding a template/view (header, footer, row, wrapper), any appearance can be achieved (such as list views).
+         * This grid module integrates with Breeze data without any additional configuration.  This module is expecting a collection
+         * of similar models (each model possesses the same attributes).  By default, columns will
+         * be derived from ready a collection model's entityType dataproperties.&lt;/p>
+         * &lt;p>&lt;a href="tutorials/grid_module.html">View Docco&lt;/a>&lt;/p>&lt;ul>
+         * &lt;li>TODO : Appears to be a bug with pagination offset while filtering&lt;/li>
+         * &lt;li>TODO : Add support for sorting on date/time&lt;/li>
+         * &lt;li>TODO : Add filtering interface for enums/dates, update filtering UI&lt;/li>
+         * &lt;li>TODO : Hide/show columns widget (available currently via api)&lt;/li>
+         * &lt;li>TODO : Add support for loading spinners&lt;/li>
+         * @example
+         * // Rendering a grid within a controller action.
+         * var grid = new Grid({
+         *     resource: 'Activities',
+         *     row: myRowView,
+         *     columns: {
+         *         active : ['Physician','MemberName','Service','Status']
+         *     }
+         * });
+         *
+         * this.setView(grid.getView());
+         *
+         * @augments Backbone.Model
+         * @constructs
+         * @requires Backbone, Backbone.QueryCollection
+         * @param {Object} [options] - Backbone.Model options, pass in any of the properties below as a param to override the property.
+         * @property {View} [row] - A Backbone.View to use for each item in the collection view
+         * @property {View} [wrapper] - A Backbone.View to use as the collection view Wrapper
+         * @property {View} [header] - A Backbone.View to render in the '.header'
+         * @property {View} [footer] - A Backbone.View to render in the '.footer'
+         * @property {Object} [columns] - Object Defining default columns to render, columns to rename, and custom columns
+         * @property {Array.&lt;String>} [columns.active] - Columns to be displayed/active by default. Also defines column order.
+         * @property {Object} [columns.rename] - Key/Value pair object where key = property name and value = related column header displayname
+         * @property {Array.&lt;Object>} [columns.custom] - Array of object containing information for custom columns headers to add
+         * @property {String} columns.custom.name - Display name for the column
+         * @property {String} columns.custom.prop - viewModel property (from the row's viewModel) related to this custom property
+         * @property {String} [title] - Title to be displayed if title binding used in wrapper template
+         * @property {String} [description] - Description to be displayed if description binding used in wrapper template
+         * @property {Number} [limit=7] - The number of columns to display by default
+         * @property {Array.&lt;String>} [exclude] - Properties to exclude from available columns. By default contains Id, id, and _id
+         * @property {QueryEngine} [collection] - The collection to be consumed for displayed data (only optional if this.get('resource'))
+         * @property {Object} [defaultSort] - Object containing default sort data (empty by default)
+         * @property {String} defaultSort.prop - Entity property to sort on
+         * @property {String} [defaultSort.type] - Entity property type (if empty the type will be discovered)
+         * @property {String} [defaultSort.dir=desc] - Direction for the sort 'asc' or 'desc'
+         * @property {Object} [sortBy] - The currently active sort properties
+         * @property {String} sortBy.prop - Entity property to sort on
+         * @property {String} [sortBy.type] - Entity property type (if empty the type will be discovered)
+         * @property {String} [sortBy.dir=desc] - Direction for the sort 'asc' or 'desc'
+         * @property {Number} [pageSize=10] - The number of records to display per page
+         * @property {Number} _inlineCount - The total number of records in the database
+         * @property {Number} _offset - The current page index
+         * @property {Object} _entityInfo - Entity information for Entities in this collection
+         * @property {String} [resource] - The resource for entities associated with this collection (only optional if no queries required)
+         * @property {Number} [take=30] - The amount of records to initialize the grid with (take from Breeze)
+         * @property {Object} [predicate] - A breeze predicate to apply to ALL server communications
+         * @property {Object} manager - Breeze entity manager to use for queries
+         * @property {String} [select] - Breeze select parameter
+         * @property {Object} [params] - Parameters to append to a resource URL (used for custom calls). Grid will assume collection complete on fetch complete. Key/value (value can be a function)
+         * @property {String} [expand] - Breeze expand parameter
+         * @property {Object} _filter - Internally tracks filter usage for breeze
+         * @property {Object} _filter - Internally tracks filter usage for breeze
+         * @property {Boolean} refresh - Always refresh on _fetch (good for debug or if the collection may frequently change server side)
+         * @property {Number} size - the current size of associated collection
+         * @property {Backbone.Collection} _collection - only applied if a simple backbone collection passed to grid, used to sync grid
+         * query engine with original collection
+         * @property {Array.&lt;String>} [fetchEvents=['location:change']] - Describes events to subscribe to that will refresh grid data (defaults with location:change)
+         * @property {Boolean} [sortEnabled=true] - Will disable sorting across the grid.
+         * @property {Boolean} [selectable=true] - Disable/enable row select
+         * @property {Boolean} [selectMultiple=true] - Disable/enable multiselect
+         * @property {Boolean} [emptyListCaption="No data to display."] - Enables collection sort
+         * @property {String} [glyphicon] - glyphicon to display with title
+         * @property {Boolean} [rowActions=false] - Set to true to reserve a column header on default wrapper template for row action column
+         */
+        initialize: function(attributes, options) {
+            _.bindAll(this,
+                '_buildLayout', '_buildViewModel', '_loadEntityData', '_fetch',
+                '_afterRender', '_sortHandler', '_sortEngine', '_applyFilter', '_predicateFilter', 'filter', '_filter',
+                'updateViewModels', '_buildColumns', 'addColumns', 'removeColumns', 'render');
+
+            // Setup module defaults / options
+            // -------------------------------
+
+            // Setup the collection
+            var collection = this.get('collection');
+            var resource = this.get('resource');
+            if (!this.get('collection')) {
+                // If no collection or resource, we will just setup a default queryEngine Collection 
+                if (!resource) collection = this.set('collection', new QueryEngine.createLiveCollection());
+                else {
+                    // If a resource exists, we setup a childCollection from the API.
+                    var shortName = app.api.manager.metadataStore.getEntityTypeNameForResourceName(resource);
+                    // shortName may be undefined or null if issue with metadata, fallback to local if so
+                    if (shortName) {
+                        if ($.inArray('location:change', this.get('fetchEvents')) >= 0) collection = app.api.getLocationCollection(shortName.split(':')[0]).createLiveChildCollection().query();
+                        else collection = app.api.getChildCollection(shortName.split(':')[0]).query();
+                        this.set('collection', collection);
+                    } else {
+                        collection = new QueryEngine.createLiveCollection();
+                        this.set({
+                            resource: null,
+                            collection: collection
+                        });
+                        console.log("shortName for this resource:" + resource + " not found, using local collection.")
+                    }
+                }
+            }
+
+            // Check if the passed collection is query engine or not
+            if (!resource &amp;&amp; collection &amp;&amp; !collection.createLiveCollection) {
+                // We dont know why or how the collection was passed in or being used, so setup a sync between the two
+                var _collection = attributes.collection;
+                collection = new QueryEngine.createLiveCollection(_collection.models);
+                this.set({
+                    _collection: _collection,
+                    collection: collection
+                });
+                _collection.on('remove', function(event) {
+                    this.get('collection').remove(event);
+                }, this);
+                _collection.on('add', function(event) {
+                    this.get('collection').add(event);
+                }, this);
+                _collection.on('reset', function(event) {
+                    this.get('collection').reset(event.models);
+                }, this);
+                collection.on('remove', function(event) {
+                    this.get('_collection').remove(event);
+                }, this);
+                collection.on('add', function(event) {
+                    this.get('_collection').add(event);
+                }, this);
+                collection.on('reset', function(event) {
+                    this.get('_collection').reset(event.models, {
+                        silent: true
+                    });
+                }, this);
+            }
+
+            // Extend the row definition to provide a reference to this grid instance
+            if (this.get('row')) Row = this.get('row');
+            var row = Row.extend({
+                grid: this
+            });
+
+            // This queryEngine will be used in the collection view
+            var queryEngine = collection.createLiveChildCollection();
+
+            // Setup default search filter by name for queryEngine
+            queryEngine.setFilter('search', this._filter);
+            // If a predicate was passed, we are using a breeze entity collection,
+            // to ensure our data is clean (we cannot be 100% sure if the grid is using
+            // a collection inherited from app.api collections), we apply a filter based
+            // on our predicate to our collection.
+            collection.setFilter('predicate', this._predicateFilter);
+            collection.query();
+
+            this.set({
+                header: (this.get('header')) ? this.get('header') : Header,
+                wrapper: (this.get('wrapper')) ? this.get('wrapper') : Wrapper,
+                row: row,
+                queryEngine: queryEngine,
+                schema: (this.get('schema')) ? this.get('schema') : {},
+                size: queryEngine.length
+            }, {
+                silent: true
+            });
+
+            queryEngine.on('add remove reset', this._updateCollections, this);
+            collection.on('add remove reset', this._updateCollections, this);
+            queryEngine.query();
+
+            // Now that we have our collection and have applied our predicate, get our initial inline count. 
+            this.set('_inlineCount', collection.length);
+            this.set('size', queryEngine.length);
+
+            // Create reference from collection to this module for easy access
+            collection.grid = this;
+
+            // Apply listeners
+            this.on("change:sortBy", this._sortHandler);
+            this.set('sortBy', this.get('defaultSort'));
+
+            // This looks at breeze entityAspect or model.attributes to define columns and sort/filter types
+            if (collection.models.length === 0) collection.on("add reset", this._loadEntityData);
+            else this._loadEntityData({
+                silent: true
+            });
+
+            // Setup layout.  
+            this._buildLayout();
+
+            // Collection setup, fire out query to make sure data up to date
+            this._fetch({
+                refresh: true
+            });
+
+            // If using location data, make sure to sync when location changes.
+            // Using locationCollection will keep up to date, but we need an initial
+            var fetchEvents = this.get('fetchEvents');
+            for (var f = 0; f &lt; fetchEvents.length; f++) {
+                this.listenTo(Backbone.EventBroker, fetchEvents[f], function(event) {
+                    this._fetch({
+                        refresh: true
+                    });
+                }, this);
+            }
+
+            this.on('change:size', function() {
+                var pageSize = this.get('pageSize');
+                var size = this.get('size');
+
+                var maxOffset = Math.ceil(size / pageSize) * pageSize - pageSize;
+                maxOffset = (maxOffset &lt; 0) ? 0 : maxOffset;
+                if (this.get('_offset') > maxOffset) this.set('_offset', maxOffset);
+
+            }, this);
+
+            // Setup subscriptions to pagination events
+            this.on('change:_offset', function() {
+                var cview = this.get('collectionView');
+                // Offset changes when the page changes, we need to make sure we have enough results
+                // to render the next page of the grid.
+                this.set('take', this.get('_offset') + this.get('pageSize'));
+                // Go fetch records
+                this._fetch();
+                if (cview) {
+                    cview._offset = this.get('_offset');
+                    cview.render();
+                }
+            }, this);
+
+            this.on('change:pageSize', function(changed) {
+                var pageSize = this.get('pageSize');
+                // If the pagesize has updated, we want to make sure our offset stays in sync
+                var _offset = ((Math.floor(this.get('_offset') + pageSize) / pageSize) * pageSize) - pageSize;
+                // We dont want to trigger rendering/fetching 2x.
+                this.set({
+                    _offset: _offset
+                }, {
+                    silent: true
+                });
+                // We also want to make sure that our minimum fetch value is equal to our page size
+                var take = this.get('take');
+                // Use pagesize if query is using skip - skip though is disabled atm
+                // if(take &lt; pageSize) this.set('take', pageSize);
+                // For now we update take to grab everything up to the page we are traveling too
+                // TODO will want to update this on peformance pass if necessary
+                this.set('take', _offset + pageSize);
+
+                // Update our collection view 
+                var cview = this.get('collectionView');
+                if (cview) {
+                    cview._offset = _offset;
+                    cview._pageSize = pageSize;
+                    cview.render();
+                }
+
+                this._fetch();
+            }, this);
+        },
+
+        defaults: {
+            title: null,
+            description: '',
+            glyphicon: 'glyphicon-list',
+            limit: 7,
+            exclude: ['id', '_id', 'Id'],
+            columns: {},
+            collection: null,
+            defaultSort: {
+                prop: 'Id',
+                type: 'Number',
+                dir: 'desc'
+            },
+            sortBy: {
+                prop: '',
+                type: 'string',
+                dir: ''
+            },
+            sortEnabled: true,
+            pageSize: 10,
+            size: 0,
+            _collection: null,
+            useActiveLocation: true,
+            row: Row,
+            paging: null,
+            zone1: null,
+            footer: null,
+            selectable: true,
+            selectMultiple: true,
+            sortable: false,
+            emptyListCaption: "No data to display.",
+            sortableOptions: {},
+            rowActions: false,
+            fetchEvents: ['location:change'],
+
+            // Breeze properties
+            params: null,
+            take: 30,
+            refresh: false,
+            resource: null,
+            manager: app.api.manager,
+            expand: null,
+            predicate: null,
+            select: null,
+
+            // Internal properties
+            _dataProperties: [],
+            _columns: new Backbone.Collection([]),
+            _inlineCount: 0, // this will need to be an updating figure
+            _offset: 0,
+            _entityInfo: {},
+            _filters: {},
+            _filterPredicate: null
+        },
+
+        // Module API functions 
+        // --------------------
+
+        // The following functions are designed to be public functions to be used by applicable controllers and views.
+
+        /**
+         * Remove columns
+         * @param {Array} cols - An array of column names to be removed
+         */
+        removeColumns: function(columns) {
+            columns = (!_.isArray(columns)) ? [columns] : columns;
+            var _columns = this.get('_columns');
+            for (var c = 0; c &lt; columns.length; c++) {
+                _columns.remove(_columns.findWhere({
+                    prop: columns[c]
+                }));
+            }
+        },
+
+
+        /**
+         * Used in this._buildViewmodel to add custom columns to the viewModel
+         * @private
+         * @params {Array} columns - Array of objects or string property names
+         * @params {Boolean} [columns.sort] - Boolean if this is a property being sorted on
+         * @params {Boolean} [columns.filter] - Boolean if this is a property being filtered
+         * @params {String} [columns.type] - Data type
+         * @params {String} [columns.value]
+         * @returns {_columns} - this.get('_columns')
+         */
+        addColumns: function(columns) {
+            var _columns = this.get('_columns');
+            var sortOn = this.get('sortBy').prop;
+            var config = this.get('columns');
+            // By default cols are named by props, this allows custom col names
+            var rename = (config.rename) ? _.keys(config.rename) : [];
+
+            if (!_.isArray(columns)) columns = [columns];
+            for (var c = 0; c &lt; columns.length; c++) {
+                if (typeof columns[c] === 'object') _columns.add(columns[c]);
+                else {
+                    var prop = columns[c];
+                    var col = {};
+                    // Check for a prop rename, if not by default prettify the property name
+                    col.name = (rename &amp;&amp; $.inArray(prop, rename) >= 0) ? config.rename[prop] : prop.replace(/([a-z])([A-Z])/g, '$1 $2');
+                    col.prop = prop;
+                    col.sort = (prop == sortOn) ? true : false;
+                    col.filtered = false;
+                    col.value = null;
+                    col.type = this._getDataType(prop);
+                    col.active = true;
+                    _columns.add(col);
+                }
+            }
+            return this.get('_columns');
+        },
+
+        /**
+         * Get the viewModel for the grid (includes columns etc).  If the viewModel is not constructed yet, it will be built.
+         * (This is an alternative to this.get('viewModel') that always will return the viewModel)
+         * @returns {Object} viewModel - Grid viewModel
+         */
+        getViewModel: function() {
+            if (!this.get('viewModel')) this._buildViewModel();
+            return this.get('viewModel');
+        },
+
+        /**
+         * Helper function for retrieving the grid's layout/view
+         * @returns {View} this.grid.get('layout')
+         */
+        getView: function() {
+            return this.get('layout');
+        },
+
+        /**
+         * Shortcut to the grid layout's render function.  Renders the grid module layout/views.
+         */
+        render: function() {
+            var layout = this.get('layout');
+            layout.render();
+        },
+
+        /**
+         * Update/build viewModels and render.  Call this when the viewModel needs to be manually updated.
+         * This may be deprecated. Cant see a reason this might be used with the recent updates to rendering in the app.
+         * @param (Boolean) render - If true, re-render the grid
+         */
+        updateViewModels: function(render) {
+            this.get('layout').updateViewModel();
+            this.get('header').updateViewModel();
+            this.get('paging').updateViewModel();
+            if (this.get('zone1')) this.get('zone1').updateViewModel();
+            if (this.get('footer')) this.get('footer').updateViewModel();
+
+            if (render) {
+                // Cleanup old views
+                this.get('layout').removeView();
+                this.render();
+            }
+        },
+
+        /**
+         * Dispose the grid, its data, its views, and viewModels
+         */
+        dispose: function() {
+            this.off();
+            if (this.get('collectionView')) this.get('collectionView').remove();
+            if (this.get('layout')) this.get('layout').remove();
+        },
+
+        /**
+         * Get currently selected models
+         * @param {Object} [args] - Criteria by which to return selected models, ex { by : "view"},  { by : "id"} will return ids
+         * @param {Object} [args.by] - Can be "id", "cid", "offset", "view"
+         * @returns {Array} Selected Models
+         */
+        getSelected: function(args) {
+            return this.get('collectionView').getSelectedModels(args);
+        },
+
+        /**
+         * Set which models are selected
+         * @param {Object} [args] - Criteria by which to return selected models, ex { by : "view"},  { by : "id"} will return ids
+         * @param {Object} [args.by] - Can be "id", "cid", "offset", "view"
+         * @returns {Array} Selected Models
+         */
+        setSelected: function(args) {
+            return this.get('collectionView').setSelectedModels(args);
+        },
+
+        // Internal Methods 
+        // ----------------
+
+        /**
+         * Retreives entities from the server by constructing breeze queries based on existing model properties.  Will return false
+         * if no resource is available.
+         * @private
+         * @param {Object} [args] - Key/Value pair object with function arguments
+         * @param {Boolean} [args.refresh] - Will force a breeze query to execute even if the local copy appears to be complete
+         */
+        _fetch: function(args) {
+            // Update to add predicate for current location if applicable
+            var resource = this.get('resource');
+            var refresh = (args &amp;&amp; args.refresh || this.get('refresh')) ? true : (this.get('collection').length &lt; this.get('_inlineCount'));
+
+            if (resource &amp;&amp; refresh) {
+                var query, params = this.get('params');
+                if (params) {
+                    var resourceString = resource + '?';
+                    $.each(params, function(key, value) {
+                        var _value = (_.isFunction(value)) ? value() : value;
+                        resourceString += '&amp;' + key + '=' + _value;
+                    });
+                    query = app.api.breeze.EntityQuery.from(resourceString)
+                        .using(this.get('manager'));
+                } else {
+                    // We have a resource and are not working with a complete local collection, build our query
+                    query = app.api.breeze
+                        .EntityQuery
+                        .from(resource)
+                        .using(this.get('manager'))
+                        .inlineCount()
+                        .take(this.get('take'));
+                    // when going to pagination, take will need to take into account the current page index as well (take more perhaps)
+
+                    // Expand this as needed to handle location by queries
+                    if ($.inArray('location:change', this.get('fetchEvents')) >= 0) {
+                        var prop = 'LocationId';
+                        switch (this.get('resource')) {
+                            case 'Locations':
+                                prop = 'ParentId';
+                                break;
+                        }
+                        var location = new app.api.Predicate(prop, 'eq', app.location.get('active'));
+                        query = query.where(location);
+                    }
+
+                    var predicate = this.get('predicate');
+                    if (predicate) query = query.where(predicate);
+
+                    // Apply predicates if applicable
+                    var _filter = this.get('_filterPredicate');
+                    if (_filter) query = query.where(_filter);
+
+                    // Apply order by if applicable
+                    var sort = this.get('sortBy');
+                    sort = (sort &amp;&amp; sort.prop === '') ? this.get('defaultSort') : sort;
+                    if (sort &amp;&amp; sort.prop) {
+                        sort = (sort.dir === 'desc') ? sort.prop + ' desc' : sort.prop;
+                        query = query.orderBy(sort);
+                    }
+
+                    // Apply expand argument if applicable
+                    var expand = this.get('expand');
+                    if (expand) query = query.expand(expand);
+
+                    // Apply select argument if applicable
+                    var select = this.get('select');
+                    if (select) query = query.select(select);
+
+                    // TODO Need to update this on performance pass... 
+                    // Right now if the offset is greater than take, we take more records so that
+                    // our paged view displays results (since the collection view counts records by offset)
+                    // otherwise if we skip ahead to a distant page, that page will show no data.
+                    // May need to update grid to use a 'display' collection if this is a performance issue
+                    // but generally, users will navigate on 'near' pages, making this negligable
+                    /*
+                            var offset = this.get('_offset');
+                            if(offset > 0) query = query.skip(offset);
+                            */
+                }
+
+                var _this = this;
+                app.api.get(query, {
+                    refresh: true,
+                    callback: function(data) {
+                        _this.set('_inlineCount', (data.inlineCount) ? data.inlineCount : (data.results &amp;&amp; data.results.length) ? data.results.length : 0);
+                        // If using a 'resource', this should populate by default, and the adds will fail
+                        // as they will already be existing in the collection.  However, if this grid does 
+                        // not use a 'resource', then we will need to manually update the collection.
+                        _this.get('collection').add(data.results);
+                        _this.get('queryEngine').trigger('reset');
+                    }
+                });
+            }
+        },
+
+        /**
+         * Updates collection stats and if applicable syncs related collection (if grid created without queryEngine).
+         * Used during collection change events.
+         * @private
+         */
+        _updateCollections: function(event) {
+            this.set('size', this.get('queryEngine').length);
+            if (!this.get('resource')) this.set('_inlineCount', this.get('collection').length);
+        },
+
+        /**
+         * Gets datatype for a property. Under construction. TODO: finish this method for date/time sorting/filtering etc.
+         * @private
+         * @param {String} prop - property name
+         * @returns {String} data type
+         */
+        _getDataType: function(prop) {
+            // First check if dataType is accessible from entityInfo
+            var entityInfo = this.get('entityInfo');
+            if (entityInfo &amp;&amp; entityInfo.entityType &amp;&amp; entityInfo.entityType.dataProperties) {
+                for (var d = 0; d &lt; entityInfo.entityType.dataProperties.length; d++) {
+                    if (entityInfo.entityType.dataProperties[d].name == prop)
+                        return entityInfo.entityType.dataProperties[d].dataType.name;
+                }
+            }
+            // Default to string if not found
+            return 'string';
+        },
+
+        /**
+         * Builds/Updates column information (to be consumed by wrapper and row)
+         * @private
+         */
+        _buildColumns: function() {
+            var config = this.get('columns');
+            // By default cols are named by props, this allows custom col names
+            var rename = (config.rename) ? _.keys(config.rename) : [];
+            // Columns to enable for the grid
+            var active = (config.active) ? config.active : this.get('_dataProperties');
+            // Array to hold new column objects to be passed to grid
+            var _columns = [];
+
+            var sortOn = this.get('sortBy').prop;
+            var exclude = this.get('exclude');
+
+            for (var c = 0; c &lt; this.get('limit'); c++) {
+                if (!active[c]) break; // Default active set below limit.
+
+                if ($.inArray(active[c], exclude) &lt; 0) {
+                    // Setup proper reference to prop, could be working a flat array or entity dataproperties
+                    var prop = (typeof active[c] == 'string') ? active[c] : active[c].name;
+                    var col = {};
+
+                    // Check for a prop rename, if not by default prettify the property name
+                    col.name = (rename &amp;&amp; $.inArray(prop, rename) >= 0) ? config.rename[prop] : prop.replace(/([a-z])([A-Z])/g, '$1 $2');
+                    col.prop = prop;
+                    col.sort = (prop == sortOn) ? true : false;
+                    col.filtered = false;
+                    col.value = null;
+                    col.active = true;
+                    col.type = this._getDataType(prop);
+                    _columns.push(col);
+                }
+            };
+
+            this.get('_columns').reset(_columns);
+        },
+
+        /**
+         * Builds viewModel to be consumed by wrapper, header, footer
+         * Row viewModel is left up to the row, but should include a reference to
+         * this viewModel.columns property in order to synchronize with hide/show columns.
+         * TODO : Review this for a bug with column order
+         * @private
+         */
+        _buildViewModel: function() {
+            this._buildColumns();
+            this.set('viewModel', {
+                limit: kb.observable(this, 'limit'),
+                columns: kb.observable(this, '_columns'),
+                title: kb.observable(this, 'title'),
+                description: kb.observable(this, 'description'),
+                pageSize: kb.observable(this, 'pageSize'),
+                sortEnabled: kb.observable(this, 'sortEnabled'),
+                selectMultiple: kb.observable(this, 'selectMultiple'),
+                selectable: kb.observable(this, 'selectable'),
+                glyphicon: ko.observable('glyphicon ' + this.get('glyphicon')),
+                rowActions: kb.observable(this, 'rowActions')
+            });
+        },
+
+        /**
+         * Initialize the main view, apply viewModels
+         * @private
+         */
+        _buildLayout: function() {
+            var Header, HeaderView, Wrapper, WrapperView;
+
+            Header = this.get("header");
+            HeaderView = Header.extend({
+                grid: this
+            });
+
+            Wrapper = this.get('wrapper');
+            WrapperView = Wrapper.extend({
+                grid: this,
+                afterRender: this._afterRender
+            });
+
+            var buildLayout = {
+                layout: new WrapperView(),
+                header: new HeaderView(),
+                paging: new PaginationView({
+                    model: this
+                })
+            };
+
+            var Footer = this.get("footer");
+            if (Footer) {
+                var FooterView = Footer.extend({
+                    grid: this
+                });
+                buildLayout.footer = new FooterView();
+            };
+
+            var Zone1 = this.get('zone1');
+            if (Zone1) {
+                var Zone1View = Zone1.extend({
+                    grid: this
+                });
+                buildLayout.zone1 = new Zone1View();
+            };
+
+            this.set(buildLayout, {
+                silent: true
+            });
+        },
+
+        /**
+         * Overwrites this.get('layout').afterRender function
+         * @private
+         */
+        _afterRender: function() {
+
+            //this.updateViewModels();
+            var layout = this.get('layout');
+            layout.renderBindings();
+
+            layout.setView('.header', this.get('header'));
+            layout.setView('tfoot', this.get('paging'));
+            if (this.get('zone1')) layout.setView('.zone1', this.get('zone1'));
+            if (this.get('footer')) layout.setView('.footer', this.get('zone1'));
+
+            layout.renderViews();
+
+            // Apply collection view after render in order to 
+            // properly discover collection target and reset
+            // associated dom element (if module view is recycled)
+            // TODO need to setup a cleanup listener to cleanup colleciton view when grid removed
+            var cview = this.get("collectionView");
+            if (!cview) {
+                var Cview = CollectionView.extend({
+                    _offset: this.get('_offset'),
+                    _pageSize: this.get('pageSize')
+                });
+                cview = new Cview({
+                    el: $(".grid_view", layout.$el),
+                    modelView: this.get('row'),
+                    collection: this.get('queryEngine'),
+                    selectable: this.get('selectable'),
+                    selectMultiple: this.get('selectMultiple'),
+                    emptyListCaption: this.get('emptyListCaption')
+                });
+                this.set('collectionView', cview);
+            } else {
+                cview.setElement($(".grid_view", layout.$el));
+            }
+            cview.render();
+        },
+
+        /**
+         * Helper function for loading breeze data.  If no breeze entityAspect discovered, will return false
+         * @private
+         * @returns {Object} Entity information about the model including 'entityManager', 'shortName', and 'entityType'
+         */
+        _getEntityInfo: function(model) {
+            if (model.entityAspect) {
+                var entityInfo = {};
+                entityInfo.entityManager = model.entityAspect.entityManager;
+                entityInfo.shortName = model.entityAspect.entityGroup.entityType.shortName;
+                entityInfo.entityType = entityInfo.entityManager.metadataStore.getEntityType(entityInfo.shortName);
+                return entityInfo;
+            }
+            return false;
+        },
+
+        /**
+         * If the grid is using breeze data, this function will listen once or be applied if there is already a model in the collection
+         * Retreives entity type info.
+         * @private
+         * @param {Object} [args] - Arguments for the function
+         * @param {Boolean} [args.silent] - Suppress the call to updateViewModels
+         */
+        _loadEntityData: function(args) {
+            var collection = this.get('collection');
+            if (collection.length > 0) {
+                collection.off("add reset", this._loadEntityData);
+                var schema = this._getEntityInfo(collection.models[0]);
+                if (!schema) {
+                    // Not a breeze entity, look at attributes directly
+                    schema = {
+                        entityType: {
+                            dataProperties: []
+                        }
+                    };
+                    $.each(collection.models[0].attributes, function(key, value) {
+                        schema.entityType.dataProperties.push({
+                            name: key,
+                            validators: [],
+                            dataType: {
+                                name: typeof value
+                            }
+                        });
+                    });
+                }
+                this.set({
+                    _dataProperties: schema.entityType.dataProperties,
+                    entityInfo: schema
+                }, {
+                    silent: true
+                });
+                if (!args || args &amp;&amp; !args.silent) this._buildColumns();
+                /**
+                 * hasData is triggered when at least 1 model is in the collection, and entityInfo is loaded.
+                 * This is a local trigger.
+                 * @event Grid#hasData
+                 */
+                this.trigger('hasData');
+            }
+        },
+
+        /**
+         * Handle sorting for query engine.  Will communicate with breeze if using a 'resource'
+         * @private
+         */
+        _sortHandler: function() {
+            var engine = this.get('queryEngine');
+
+            engine.setComparator(this._sortEngine);
+            engine.sortCollection();
+            engine.trigger('reset');
+
+            // Get breeze data and reset
+            // also check if we are at a full collection or not
+            this._fetch();
+        },
+
+        /**
+         * Primary comparator function for collection sorting
+         * References entity data type to apply applicable sort method
+         * for a given column.
+         * @private
+         */
+        _sortEngine: function(modelA, modelB) {
+            var sortby, modela, modelb, prop, compa, compb, result;
+
+            // are passed in models objects or backbone models?
+            modela = (typeof modelA.get === 'function') ? modelA.attributes : modelA;
+            modelb = (typeof modelB.get === 'function') ? modelB.attributes : modelB;
+
+            // Get sorting options
+            sortby = this.get('sortBy');
+            prop = (typeof sortby.prop == 'undefined') ? _.keys(modela)[0] : sortby.prop;
+
+            // Is sortby using alternate/multiple column names? If so, grab the first available that matches on the models
+            // colname-colname set in sortby allows user to sort on alternative collumns if one column gives a falsy value
+            var _t = prop.split('-');
+            compa = compb = ''; // setup a default blank value to compare on
+            if (_t.length > 1) {
+                for (var i = 0; i &lt; _t.length; i++) {
+                    if ((modela[_t[i]] !== null) &amp;&amp; (modela[_t[i]].trim() !== '')) {
+                        compa = modela[_t[i]];
+                        break;
+                    }
+                }
+                for (var b = 0; b &lt; _t.length; b++) {
+                    if ((modelb[_t[b]] !== null) &amp;&amp; (modelb[_t[b]].trim() !== '')) {
+                        compb = modelb[_t[b]];
+                        break;
+                    }
+                }
+            } else {
+                compa = modela[prop];
+                compb = modelb[prop];
+            }
+
+            // Test if we are hitting custom viewModel properties
+            if (typeof compa === "undefined" &amp;&amp; modelA.viewModel) compa = modelA.viewModel[prop]();
+            if (typeof compb === "undefined" &amp;&amp; modelB.viewModel) compb = modelB.viewModel[prop]();
+
+            if (typeof compa === "undefined" || typeof compb === "undefined") return 0;
+
+            // Actual sort functions dependant as set by sortby.sortType
+            switch (sortby.type) {
+                case 'date':
+                    compa = new Date(compa);
+                    compb = new Date(compb);
+                    if (compa &lt; compb) {
+                        result = -1;
+                    } else if (compa > compb) {
+                        result = 1;
+                    } else if (compa == compb) {
+                        result = 0;
+                    }
+                    break;
+                default:
+                    if (sortby.type == 'String') {
+                        compa = (typeof compa != 'undefined') ? compa.toLowerCase() : 0;
+                        compb = (typeof compb != 'undefined') ? compb.toLowerCase() : 0;
+                    }
+                    if (compa &lt; compb) {
+                        result = -1;
+                    } else if (compa > compb) {
+                        result = 1;
+                    } else if (compa == compb) {
+                        result = 0;
+                    }
+
+                    break;
+            }
+            return (sortby.dir == 'asc') ? result : 0 - result;
+        },
+
+        /**
+         * Main filter function, applies search string from arguments to query engine
+         * and creates a breeze predicate to update the collection if applicable.
+         * @param {String} filterName - The name of the filter (use property names)
+         * @param {Predicate} predicate - the breeze predicate to apply
+         * @param {String} displayValue - the value that may display in the header filter hover
+         */
+        filter: function(filterName, predicate, displayValue) {
+            if (filterName &amp;&amp; predicate) {
+                var _filter = $.extend(true, {}, this.get('_filter'));
+                _filter[filterName] = predicate;
+                this.set({
+                    _filter: _filter,
+                    _filterPredicate: this._assemblePredicate(_filter)
+                });
+                try {
+                    this.get('_columns').findWhere({
+                        prop: filterName
+                    }).set({
+                        value: (displayValue) ? displayValue : predicate._value,
+                        filtered: true
+                    });
+                } catch (err) {
+                    // A column does not exist for this filterName?
+                }
+            }
+
+            this._applyFilter()
+
+        },
+
+        /** 
+         * Helper method for filter and removeFilter functions
+         * @private
+         */
+        _applyFilter: function() {
+            this.get('queryEngine').query();
+            this.set('size', this.get('queryEngine').length);
+            this._fetch();
+        },
+
+        /**
+         * Takes the passed in key/value pair of filterNames/predicates and creates a combined predicate
+         * @params {Object} _filter - key/value where key is filterName and value is a predicate
+         * @returns {Predicate} a combined predicate
+         */
+        _assemblePredicate: function(_filter) {
+            var predicates = [];
+            $.each(_filter, function(k, value) {
+                predicates.push(value);
+            });
+            return app.api.Predicate.and(predicates);
+        },
+
+        /**
+         * Removes a filter that has been applied to the grid
+         * @param {String} filterName - name (usually property) of filter to remove
+         */
+        removeFilter: function(filterName) {
+            var _filter = $.extend({}, true, this.get('_filter'));
+            delete _filter[filterName];
+            this.set({
+                _filter: _filter,
+                _filterPredicate: this._assemblePredicate(_filter)
+            });
+
+            try {
+                this.get('_columns').findWhere({
+                    prop: filterName
+                }).set({
+                    value: null,
+                    filtered: false
+                });
+            } catch (err) {
+                // A column does not exist for this filterName?
+            }
+
+            this._applyFilter();
+        },
+
+        /**
+         * Applies grid predicate (if applicable) as (a) filter(s) for the collection
+         * @private
+         */
+        _predicateFilter: function(model, searchString) {
+            var predicate = this.get('predicate');
+            if (predicate) return app.api.validatePredicate(model, predicate);
+            else return true;
+        },
+
+        /**
+         * Internal filter function passed to query engine
+         * TODO - need to fix the column widths to avoid the bouncing as searches go through
+         * @private
+         */
+        _filter: function(model, searchString) {
+            var predicate = this.get('_filterPredicate');
+            if (predicate) return app.api.validatePredicate(model, predicate);
+            else return true;
+        }
+
+    });
+
+    return GridModule;
+
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue May 13 2014 13:18:45 GMT-0400 (Eastern Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
