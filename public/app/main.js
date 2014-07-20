@@ -1,7 +1,12 @@
 /* global require, app, window, Backbone, DEBUG */
 // Requiring 'modernizer' fires off modernizer's shim loader
 require(["config"], function() {
-    require(["app", "router", "lib/dataservice", "Q", "kbconfig", "modernizer", "jquery"],
+    require(["Q", "breeze"], function(Q, breeze) {
+
+        window.Q = Q;
+        window.breeze = breeze;
+
+    require(["app", "router", "lib/dataservice_mongo_old", "Q", "kbconfig", "modernizer", "jquery"],
         function(Application, Router, DataService, Q) {
 
             // Application Initialization
@@ -41,4 +46,5 @@ require(["config"], function() {
                 root: app.root
             });
         });
+    });
 });

@@ -5,7 +5,7 @@ var metadata;
 
 var host = 'localhost';
 var port = 27017;
-var dbName = 'dm';
+var dbName = 'bidclinic';
 var serverBase = 'public';
 var dbServer = new mongodb.Server(host, port, { auto_reconnect: true});
 var db = new mongodb.Db(dbName, dbServer, {
@@ -53,6 +53,35 @@ exports.getExampleResource = function(req, res, next) {
     // Case of collection name matters, e.g. "Product", not "product"
     query.execute(db, "ExampleResource", processResults(res, next));
 };
+
+exports.getPatients = function(req, res, next) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    // add your own filters here
+    // Case of collection name matters, e.g. "Product", not "product"
+    query.execute(db, "Patients", processResults(res, next));
+};
+
+exports.getBids = function(req, res, next) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    // add your own filters here
+    // Case of collection name matters, e.g. "Product", not "product"
+    query.execute(db, "Bids", processResults(res, next));
+};
+
+exports.getDoctors = function(req, res, next) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    // add your own filters here
+    // Case of collection name matters, e.g. "Product", not "product"
+    query.execute(db, "Doctors", processResults(res, next));
+};
+
+exports.getCases = function(req, res, next) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    // add your own filters here
+    // Case of collection name matters, e.g. "Product", not "product"
+    query.execute(db, "Cases", processResults(res, next));
+};
+
 
 // if you don't want to use a Mongo query
 function executeQuery(db, collectionName, query, fn) {

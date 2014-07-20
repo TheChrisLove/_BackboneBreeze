@@ -7,6 +7,7 @@ require.config({
     paths: {
         // Shortcut to vendor, can be utilized to pull in vendor files within app require functions
         vendor: "../vendor",
+        meta : "lib/metadata",
 
         // Core Application Vendor libraries
         backbone: "../vendor/backbone", // Version 1.1.0, http://backbonejs.org/
@@ -21,6 +22,7 @@ require.config({
 
         // Breeze and Dataservice libraries
         breeze: "../vendor/breeze.debug", // Version 1.4.7, http://www.breezejs.com/
+        mongodb: "../vendor/breeze-mongodb",
         //Q is a breeze dependancy, but is loaded/referenced as a global in app/main.js
         Q: "../vendor/q", // Version 1, https://github.com/kriskowal/q
         metadata: "metadata",

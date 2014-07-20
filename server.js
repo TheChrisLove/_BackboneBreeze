@@ -31,7 +31,10 @@ app.configure(function(){
 app.configure(function() {
     app.get('/breeze/zza/Metadata', routes.getMetadata);
     app.post('/breeze/zza/SaveChanges', routes.saveChanges);
-    app.get('/breeze/zza/ExampleResource', routes.getExampleResource); 
+    app.get('/breeze/zza/Patients', routes.getPatients); 
+    app.get('/breeze/zza/Bids', routes.getBids); 
+    app.get('/breeze/zza/Cases', routes.getCases); 
+    app.get('/breeze/zza/Doctors', routes.getDoctors); 
     app.get('/breeze/zza/:slug', routes.get); // must be last API route
 });
 

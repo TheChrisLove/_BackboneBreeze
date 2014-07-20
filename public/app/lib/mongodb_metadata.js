@@ -1,18 +1,21 @@
 define([
-  "meta/exampleEntity",
-  "meta/exampleComplexType",
-], function(exampleEntity, exampleComplexType) {
+  "meta/Patient",
+  "meta/Bid",
+  "meta/Case",
+  "meta/Doctor"
+], function(Patient, Bid, Case, Doctor) {
     "use strict";
 
     var Metadata = function(){
 
       this.types = [
-        exampleEntity
+        Patient,
+        Doctor,
+        Bid,
+        Case
       ];
 
-      this.complexTypes = [
-        exampleComplexType
-      ];
+      this.complexTypes = [];
 
       this.namespace = "dm";
 

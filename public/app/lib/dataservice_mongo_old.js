@@ -16,6 +16,8 @@ DataService = function(){
 
 
     breeze.config.initializeAdapterInstance("dataService", "mongo", true);
+
+    this.clear = function(){};
     
 
 
