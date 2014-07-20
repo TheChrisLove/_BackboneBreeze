@@ -7,9 +7,9 @@ define([
     'text!templates/shared/layout_generic.html',
     'views/shared/warning_view',
     'views/shared/modal_view',
-    'controllers/auth',
     'text!templates/shared/error.html'
-], function(_, Backbone, View, layout_main, layout_generic, Warning, Modal, Login, error_template) {
+    //'controllers/auth',
+], function(_, Backbone, View, layout_main, layout_generic, Warning, Modal, error_template) {
     "use strict";
 
     var Router = Backbone.Router.extend( /** @lends Router.prototype */ {
@@ -91,7 +91,7 @@ define([
         // the route/function below will match classical MVC style URLs
         // (ex: members/manage/memberId=123)
         routes: {
-            "auth(/:action)*args": "login",
+            //"auth(/:action)*args": "login",
             "(:controller)(/:action)*args": "default"
         },
 
@@ -139,7 +139,7 @@ define([
         default: function(module, action, args) {
 
             // Verify the user is logged in before even proceeding with any controller initialization
-            if (app.user.verify() !== true) return this.go('auth');
+            //if (app.user.verify() !== true) return this.go('patient');
 
             // Setup the 'Main' controller page layout (if not already setup and active)
             var activeLayout = this._getActiveLayout();

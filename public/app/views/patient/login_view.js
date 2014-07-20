@@ -5,7 +5,7 @@ define([
     'base/view',
     'knockback',
     'knockout',
-    'text!templates/auth/login.html'
+    'text!templates/patient/login.html'
 ], function(_, Backbone, View, kb, ko, template) {
     "use strict";
 

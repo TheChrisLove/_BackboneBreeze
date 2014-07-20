@@ -48,7 +48,7 @@ define([
         // The root path to run the application through.
         // This is basically the only point of configuration you will need.
         // The other point of config is the base url in config.js
-        root: "/",
+        root: "",
 
         // Referencing application libraries
         // ---------------------------------
@@ -72,10 +72,10 @@ define([
         // will not be held applicable to claims (unless specifically handled elsewhere),
         // and will not persist (when user navigates away from module).
         info: new Modules({
-            home: 'auth', // Default 'index' - router will navigate to this module if no route defined
+            home: 'patient', // Default 'index' - router will navigate to this module if no route defined
             modules: new Backbone.Collection([{
                 name: 'Login', // Displayed where module info rendered in UI (ex: #sidebar)
-                url: 'auth', // Route to this controller, ie https://www.example.com/app.root/#auth
+                url: 'patient', // Route to this controller, ie https://www.example.com/app.root/#auth
                 display: false, // Whether to display where module info rendered in UI (ex: #sidebar)
                 active: true, // True if the currently active controller/route
                 persist: false, // If false will be disposed on route change (requiring re-initialization)

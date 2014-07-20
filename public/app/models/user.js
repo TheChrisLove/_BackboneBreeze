@@ -23,13 +23,16 @@ define([
         defaults: {
             username: "",
             password: "",
-            loggingIn: false
+            loggingIn: false,
+            loggedIn: false
         },
 
         /**
          * Login function retrieves user credentials
          */
-        login: function(callback) {},
+        login: function(callback) {
+            this.set('loggedIn', true);
+        },
 
         /**
          * Function to create application user and navigate to home after successful login.
