@@ -6,7 +6,7 @@ require(["config"], function() {
         window.Q = Q;
         window.breeze = breeze;
 
-    require(["app", "router", "lib/dataservice_mongo_old", "Q", "kbconfig", "modernizer", "jquery"],
+    require(["app", "router", "lib/dataservice_mongo", "Q", "kbconfig", "modernizer", "jquery"],
         function(Application, Router, DataService, Q) {
 
             // Application Initialization

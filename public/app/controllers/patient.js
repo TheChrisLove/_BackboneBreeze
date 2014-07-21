@@ -37,10 +37,16 @@ define([
                     },
                     fn: function(args) {
 
-                      var predicate = app.api.breeze.Predicate.create('PatientId', 'Equals', app.user.get('_id'));
+                      var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, '_' + app.user.get('_id'));
                       var grid = new Grid({
+                        title: 'My Cases',
                         resource: 'Cases',
-                        predicate: predicate
+                        predicate: predicate,
+                        defaultSort: {
+                          prop: '_id',
+                          type: 'Int32',
+                          order: 'desc'
+                        }
                       });
 
                       this.setView(grid.getView());

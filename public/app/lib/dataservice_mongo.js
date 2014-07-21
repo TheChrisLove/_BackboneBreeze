@@ -45,7 +45,6 @@ define([
         // Service name is route to the Web API controller (for breeze)
         var serviceName = this.serviceName = this.root + '/breeze/zza';
 
-
         // Setup Entity Manager
         // --------------------
 
@@ -258,6 +257,17 @@ define([
                 // if the above returned an error, it is likely due to missing metadata 
                 query.execute().then(success).fail(failure);
             }
+        };
+
+        this.clear = function(manager) {
+            var entities = manager.getEntities();
+            manager.rejectChanges();
+            manager.clear();
+            for (var i = 0; i < entities.length; i++) {
+                entities[i].stopListening();
+                entities[i].entityAspect = null;
+            };
+
         };
 
         /*

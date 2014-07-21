@@ -44,7 +44,7 @@ define([
         },
 
         _createCase: function(){
-          this.model.get('newCase').set('PatientId', app.user.get('_id'));
+          this.model.get('newCase').set('PatientId', '_' + app.user.get('_id'));
           app.api.manager.createEntity('Case', this.model.get('newCase').toJSON());
           app.api.manager.saveChanges().then(function(){
             $.gritter.add({
