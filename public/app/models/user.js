@@ -92,7 +92,7 @@ define([
             // Refresh the app back to default state.
             // window.location.href = window.location.origin + window.location.pathname {Window re-direct works in all browsers};
             //window.location.href = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
-            window.location.href = 'localhost:3000/';
+            window.location.reload();
         }
 
     });

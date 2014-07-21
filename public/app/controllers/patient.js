@@ -42,7 +42,7 @@ define([
                         resource: 'Cases',
                         predicate: predicate
                       });
-                      
+
                       this.setView(grid.getView());
                     }
                 },
@@ -69,7 +69,8 @@ define([
                       return app.user.get('loggedIn'); 
                     },
                     fn: function(args) {
-                        app.user.logout();
+                        if(app.user.get('loggedIn')) app.user.logout();
+                        else app.router.go('patient/createCase/');
                     }
                 }
 	        }
