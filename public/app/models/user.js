@@ -32,6 +32,8 @@ define([
          */
         login: function(callback) {
             this.set('loggedIn', true);
+            Backbone.EventBroker.trigger('user:login', app.user);
+            this.set(callback.toJSON());
         },
 
         /**
@@ -89,7 +91,8 @@ define([
             Backbone.EventBroker.trigger('user:logout', this);
             // Refresh the app back to default state.
             // window.location.href = window.location.origin + window.location.pathname {Window re-direct works in all browsers};
-            window.location.href = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
+            //window.location.href = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
+            window.location.href = 'localhost:3000/';
         }
 
     });

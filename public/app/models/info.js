@@ -34,7 +34,7 @@ define([
                 'applyClaimsAccess', 'renderModule', 'recycle', 'cleanViews', 'getGrids');
 
             this.listenTo(Backbone.EventBroker, 'user:login', function(user) {
-                this.applyClaimsAccess(user.get('claims'));
+                //this.applyClaimsAccess(user.get('claims'));
             });
         },
 

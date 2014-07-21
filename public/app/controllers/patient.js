@@ -15,7 +15,11 @@ define([
 
         title: "Patient",
 
-        start: function (attributes, options) { },
+        start: function (attributes, options) {
+          this.listenTo(Backbone.EventBroker, 'user:login', function(){
+            this.buildMenuActions();
+          }, this);
+         },
 
         defaults: {
             index: 'createCase',
@@ -32,9 +36,13 @@ define([
                       return app.user.get('loggedIn'); 
                     },
                     fn: function(args) {
+
+                      var predicate = app.api.breeze.Predicate.create('PatientId', 'Equals', app.user.get('_id'));
                       var grid = new Grid({
-                        resource: 'Cases'
+                        resource: 'Cases',
+                        predicate: predicate
                       });
+                      
                       this.setView(grid.getView());
                     }
                 },

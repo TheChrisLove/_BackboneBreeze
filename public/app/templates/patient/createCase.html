@@ -1,1 +1,25 @@
-<p>Create Case</p>
+<h4>Welcome to BidClinic, create a case now!</h4>
+<form>
+	<div class="form-group">
+	    <label for="Description">Description</label>
+	    <input type="text" class="form-control" id="Description" placeholder="Enter Description" data-bind="value: Description">
+	</div>
+
+	<div class="form-group">
+	    <label for="ImageUrl">Image URL</label>
+	    <input type="text" class="form-control" id="ImageUrl" placeholder="Enter Image Url" data-bind="value: ImageUrl">
+	</div>
+
+	<div class="form-group" data-bind="visible: !loggedIn()">
+	    <label for="Email">Email address</label>
+	    <input type="email" class="form-control" id="Email" placeholder="Enter email" data-bind="value: Email">
+	</div>
+
+	<div class="form-group">
+	    <label for="Zipcode">Zipcode</label>
+	    <input type="text" class="form-control" id="Zipcode" placeholder="Enter Zipcode" data-bind="value: Zipcode">
+	</div>
+
+	<button type="submit" class="btn btn-default">Create Case</button>
+
+</form>

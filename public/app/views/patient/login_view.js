@@ -11,8 +11,6 @@ define([
 
     var LogInItem = View.extend({
 
-        className: "login",
-
         template: _.template(template),
 
         model: new Backbone.Model({
@@ -35,6 +33,7 @@ define([
             var btn = $('.js-loginButton', this.$el)
             btn.button('loading');
 
+            /*
             app.user.set({
                 grant_type: "password",
                 username: this.$el.find('input[name="username"]').val(),
@@ -47,6 +46,20 @@ define([
                 if (app.user.get("error_message"))
                     _this.model.set("error_message", app.user.get("error_message"));
             });
+            */
+
+            //TODO temp login
+            app.api.breeze.EntityQuery
+                .from('Patients')
+                .using(app.api.manager)
+                .where('Email', 'Equals', this.$el.find('input[name="username"]').val())
+                .execute()
+                .then(function(data){
+                    app.user.login(data.results[0]);
+                    btn.button('reset');
+                    app.router.go('patient/createCase');
+                });
+
         },
 
     });
