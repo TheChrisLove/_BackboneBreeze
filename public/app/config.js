@@ -60,6 +60,11 @@ require.config({
         //Misc Widgets
         spinner: "../vendor/widgets/spinner.min", // Version 2.0.1 http://fgnass.github.io/spin.js/#v1.3
         idleTimer: "../vendor/idleTimer", // Version 0.8.092209 // http://github.com/paulirish/yui-misc/tree/
+        
+        // Slider Revolution
+		themepunch: "../vendor/jquery.themepunch.plugins.min",
+		revolution_min: "../vendor/jquery.themepunch.revolution.min",
+        revolution: "../vendor/jquery.themepunch.revolution"
 
     },
 
@@ -82,10 +87,13 @@ require.config({
         // jQuery Plugins
         "jqueryUI": ["jquery"],
         "gritter": ["jquery"],
+        "themepunch": ["jquery"],
+        "revolution_min": ["jquery", "themepunch"],
+        "revolution": ["jquery", "themepunch"],
         "validate": ["jquery"],
         "validateAddons": ["jquery", "validate"],
         "validateCustomAddons": ["jquery", "validate"],
-
+        
         // Backbone Extensions
         "queryengine": ["backbone"],
         "collectionview": ["backbone"],
