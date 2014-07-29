@@ -25,6 +25,7 @@ define([
 
     // The application instance is created using Backbone.Model, is created in main.js and assigned to the global window.app (for easy reference).
     var app = Backbone.Model.extend( /** @lends App.prototype */ {
+        //test
         /**
          * @class App Globally accessible application instance. Available at window.app.
          * @constructs
