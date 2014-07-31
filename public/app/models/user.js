@@ -73,8 +73,7 @@ define([
          * @returns {Boolean} If user is valid or not.
          */
         verify: function() {
-            if (DEBUG === true) return true;
-            if (this.get('userId')) return true;
+            if (this.get('_id')) return true;
             else return false;
         },
 

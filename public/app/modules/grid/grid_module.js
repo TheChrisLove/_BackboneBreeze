@@ -121,8 +121,7 @@ define([
                     // shortName may be undefined or null if issue with metadata, fallback to local if so
                     if (shortName) {
                         // If grid is listeniing for location:change, get a LocationCollection instead
-                        if ($.inArray('location:change', this.get('fetchEvents')) >= 0) collection = app.api.getLocationCollection(shortName.split(':')[0]).createLiveChildCollection().query();
-                        else collection = app.api.getChildCollection(shortName.split(':')[0]).query();
+                        collection = app.api.getChildCollection(shortName.split(':')[0]).query();
                         this.set('collection', collection);
                         liveCollection = true;
                     } else {
@@ -295,9 +294,7 @@ define([
 
             // Fetch/Breeze properties
             // event, fn
-            fetchEvents: [{
-                event: 'location:change'
-            }],
+            fetchEvents: [],
             take: 30, // Initial fetch
             buffer: 30, // How many to fetch ahead of current page
             manager: app.api.manager,
@@ -585,19 +582,6 @@ define([
                         .inlineCount()
                         .take(this.get('take'));
                     // when going to pagination, take will need to take into account the current page index as well (take more perhaps)
-
-                    // Expand this as needed to handle location by queries
-                    var getLocation = ((args && args.getLocation)) ? args.getLocation : this.get('getLocation');
-                    if ((getLocation !== false) && ($.inArray('location:change', this.get('fetchEvents')) >= 0)) {
-                        var prop = 'LocationId';
-                        switch (this.get('resource')) {
-                            case 'Locations':
-                                prop = 'ParentId';
-                                break;
-                        }
-                        var location = new app.api.Predicate(prop, 'eq', app.location.get('active'));
-                        query = query.where(location);
-                    }
 
                     var predicate = this.get('predicate');
                     if (predicate) query = query.where(predicate);

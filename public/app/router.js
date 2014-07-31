@@ -7,9 +7,10 @@ define([
     'text!templates/shared/layout_generic.html',
     'views/shared/warning_view',
     'views/shared/modal_view',
+    'views/shared/footer_view',
     'text!templates/shared/error.html'
     //'controllers/auth',
-], function(_, Backbone, View, layout_main, layout_generic, Warning, Modal, error_template) {
+], function(_, Backbone, View, layout_main, layout_generic, Warning, Modal, Footer, error_template) {
     "use strict";
 
     var Router = Backbone.Router.extend( /** @lends Router.prototype */ {
@@ -150,6 +151,7 @@ define([
                         el: "main",
                         template: _.template(layout_main),
                         views: {
+                            //'#footer' : new Footer(),
                             '#peripheral': [new Modal(), new Warning()]
                         }
                     })

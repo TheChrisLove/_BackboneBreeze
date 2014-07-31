@@ -7,8 +7,9 @@ define([
   'base/controller',
   'modules/grid/grid_module',
   'views/patient/createCase_view',
-  'views/patient/login_view'
-], function (_, Backbone, View, Controller, Grid, CreateCaseView, LoginView) {
+  'views/patient/login_view',
+  'text!templates/shared/theme.html'
+], function (_, Backbone, View, Controller, Grid, CreateCaseView, LoginView, template) {
     "use strict";
 
     var IndexController = Controller.extend({
@@ -18,9 +19,15 @@ define([
         start: function (attributes, options) {
             
          },
+
+         defaults: {
+          template: template
+
+         },
         
         renderComplete: function() {
             /***********************  Slider Revolution  ***************************/
+            /*
             if($('.banner', this.$el).length) {
                 $('.banner', this.$el).revolution({
                     startheight:500,
@@ -32,6 +39,7 @@ define([
                     shadow:0,
                 });    
             }
+            */
         }
     });
 

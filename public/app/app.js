@@ -73,7 +73,7 @@ define([
         // will not be held applicable to claims (unless specifically handled elsewhere),
         // and will not persist (when user navigates away from module).
         info: new Modules({
-            home: 'index', // Default 'index' - router will navigate to this module if no route defined
+            home: 'patient', // Default 'index' - router will navigate to this module if no route defined
             modules: new Backbone.Collection([{
                 name: 'Login', // Displayed where module info rendered in UI (ex: #sidebar)
                 url: 'patient', // Route to this controller, ie https://www.example.com/app.root/#auth
