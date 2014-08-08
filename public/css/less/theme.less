@@ -126,7 +126,7 @@ strong.highlight {
   -o-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  background: #2baea6;
+  background: #722881;
 }
 .dropcap {
     background-color: #F8F8F8;
@@ -245,7 +245,7 @@ strong.highlight {
 }
 .coupon .oldnumber,
 .coupon .newnumber {
-  color: #52c1ba;
+  color: #722881;
   text-transform: uppercase;
   display: inline-block;
   margin-bottom: 10px;
@@ -256,7 +256,7 @@ strong.highlight {
   margin-right: 10px;
 }
 .coupon .free {
-  color: #52c1ba;
+  color: #722881;
   display: inline-block;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -703,10 +703,10 @@ form.search .input-group-addon {
 }
 .list-group .list-group-item:hover {
   background: none;
-  color: #52c1ba;
+  color: #722881;
 }
 .list-group .list-group-item:hover i {
-  color: #52c1ba;
+  color: #722881;
 }
 .list-group .list-group-item i {
   color: #9499af;
@@ -1048,7 +1048,7 @@ header .navbar .navbar-form .form-group .input-group-btn .btn {
   padding: 0 30px 0 0;
 }
 #spuppie .price {
-  color: #52c1ba;
+  color: #722881;
 }
 #spuppie #carousel-thumb-puppie {
   margin: 45px 0 0 0;
@@ -1229,10 +1229,10 @@ aside .recent-news img {
   border-radius: 5px;  
 }
 aside .recent-news a {
-  color: #52c1ba;
+  color: #722881;
 }
 aside .recent-news a:hover {
-  color: #52c1ba;
+  color: #722881;
 }
 
 
@@ -3910,4 +3910,153 @@ website:   	http://www.themepunch.com
 @keyframes moveToFront { 
 	0% { transform: translateX(100%) scale(.8); }
 	100% { visibility: visible; opacity: 1; transform: translateX(0%) scale(1); }
+}
+
+
+
+
+/************************************************************
+	-	MISCELLANEOUS CSS FOR FORMS -
+************************************************************/
+
+.panel-default {
+  opacity: 0.9;
+  margin-top:30px;
+}
+
+.panel-purple {
+  background-color: #722881;
+}
+
+.panel-purple {
+  border-color: #722881;
+}
+
+.panel-purple > .panel-heading {
+  color: #ffffff;
+  background-color: #722881;
+  border-color: #722881;
+}
+
+.panel-purple > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #722881;
+}
+
+.panel-purple > .panel-heading > .dropdown .caret {
+  border-color: #ffffff transparent;
+}
+
+.panel-purple > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #722881;
+}
+
+.form-group.last { 
+    margin-bottom:0px; 
+}
+
+.wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+p.form-title
+{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    margin-top: 5%;
+}
+
+form
+{
+    width: 80%;
+    margin: 0 auto;
+}
+    
+form-group
+{
+    margin-left: 0!important;;
+    margin-right: 0!important;
+}
+
+form.login input[type="text"], form.login input[type="file"], form.login input[type="email"], form.login textarea[type="text"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0.5px
+    border-bottom: 1px solid #FFFFFF;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 0;
+    color: #000000;
+}
+
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+form.login a
+{
+    transition: color 0.5s ease;
+}
+
+form.login a:hover
+{
+    color: #2ecc71;
+}
+
+.image-preview-input {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
 }

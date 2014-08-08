@@ -510,7 +510,7 @@ strong.highlight {
   -o-transform: scale(1.1);
   -ms-transform: scale(1.1);
   transform: scale(1.1);
-  background: #2baea6;
+  background: #722881;
 }
 .dropcap {
   background-color: #F8F8F8;
@@ -619,7 +619,7 @@ strong.highlight {
 }
 .coupon .oldnumber,
 .coupon .newnumber {
-  color: #52c1ba;
+  color: #722881;
   text-transform: uppercase;
   display: inline-block;
   margin-bottom: 10px;
@@ -630,7 +630,7 @@ strong.highlight {
   margin-right: 10px;
 }
 .coupon .free {
-  color: #52c1ba;
+  color: #722881;
   display: inline-block;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -1042,10 +1042,10 @@ form.search .input-group-addon {
 }
 .list-group .list-group-item:hover {
   background: none;
-  color: #52c1ba;
+  color: #722881;
 }
 .list-group .list-group-item:hover i {
-  color: #52c1ba;
+  color: #722881;
 }
 .list-group .list-group-item i {
   color: #9499af;
@@ -1351,7 +1351,7 @@ header .navbar .navbar-form .form-group .input-group-btn .btn {
   padding: 0 30px 0 0;
 }
 #spuppie .price {
-  color: #52c1ba;
+  color: #722881;
 }
 #spuppie #carousel-thumb-puppie {
   margin: 45px 0 0 0;
@@ -1521,10 +1521,10 @@ aside .recent-news img {
   border-radius: 5px;
 }
 aside .recent-news a {
-  color: #52c1ba;
+  color: #722881;
 }
 aside .recent-news a:hover {
-  color: #52c1ba;
+  color: #722881;
 }
 /************************ Clients ************************/
 .images_holder {

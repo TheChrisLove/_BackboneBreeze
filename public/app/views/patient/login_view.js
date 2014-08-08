@@ -25,13 +25,33 @@ define([
 
         start: function() {
             this.model.set("error_message", "");
+            _.bindAll(
+                this,
+                'login',
+                '_login'
+            );
+        },
+        
+        _login: function(event, modal) {
+          app.modal.close();  
         },
 
-        login: function(event) {
+        login: function(event, modal) {
             event.preventDefault();
             this.model.set("error_message", "");
             var btn = $('.js-loginButton', this.$el)
             btn.button('loading');
+            
+//            app.modal.show({
+//                title: 'Login',
+//                view: new View({
+//                    template: 'app/templates/patient/login.html'
+//                }),
+//                buttons: [{
+//                    name: 'Login',
+//                    fn: this._login
+//                }]
+//            });
 
             /*
             app.user.set({
