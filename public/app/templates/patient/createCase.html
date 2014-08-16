@@ -1,32 +1,239 @@
+<style type="text/css">
+body
+{
+    background: url(/img/slider/DogGrammyBkg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
 
-<form role="form">
-	<div class="form-group">
-	    <label for="Description">Description</label>
-	    <input type="text" class="form-control" id="Description" placeholder="Enter Description" data-bind="value: Description">
-	</div>
+.wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
 
-	<div class="form-group">
-	    <label for="ImageUrl">Image URL</label>
-	    <input type="text" class="form-control" id="ImageUrl" placeholder="Enter Image Url" data-bind="value: ImageUrl">
-	</div>
+p.form-title
+{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #000000;
+    margin-top: 5%;
+}
 
-	<div class="form-group" data-bind="visible: !loggedIn()">
-	    <label for="Email">Email address</label>
-	    <input type="email" class="form-control" id="Email" placeholder="Enter email" data-bind="value: Email">
-	</div>
+form
+{
+    width: 80%;
+    margin: 0 auto;
+}
+    
+form-group
+{
+    margin-left: 0!important;;
+    margin-right: 0!important;
+}
 
-	<div class="form-group">
-	    <label for="Zipcode">Zipcode</label>
-	    <input type="text" class="form-control" id="Zipcode" placeholder="Enter Zipcode" data-bind="value: Zipcode">
-	</div>
+form.login input[type="text"], form.login input[type="file"], form.login input[type="email"], form.login textarea[type="text"]
+{
+    width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: 0;
+    border: 0.5px
+    border-bottom: 1px solid #FFFFFF;
+    outline: 0;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 0;
+    color: #000000;
+}
+
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+form.login a
+{
+    transition: color 0.5s ease;
+}
+
+form.login a:hover
+{
+    color: #722881;
+}
+
+.image-preview-input {
+    position: relative;
+	overflow: hidden;
+	margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+</style>
+
+<script type="text/javascript">
+$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+        }, 
+         function () {
+           $('.image-preview').popover('hide');
+        }
+    );    
+});
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no image",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        // Set preview image into the popover data-content
+        reader.onload = function (e) {
+            $(".image-preview-input-title").text("Change");
+            $(".image-preview-clear").show();
+            $(".image-preview-filename").val(file.name);            
+            img.attr('src', e.target.result);
+            $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+        }        
+        reader.readAsDataURL(file);
+    });  
+});
+</script>
 
 
-<p class="text-right">
-	<button type="submit" class="btn btn-primary pull-right">Create Case</button>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 col-md-offset-7">
+            <div class="wrap">
+                <div class="well" style="border-color: #694D9F; border-width:2px; background-color: #FFF;">
+                <p class="form-title">You are the Best Pet Owner ... EVER!</p>
+                <form class="login" role="form">
+                <div class="form-group">
+<!--                    <label for="Description">Description</label>-->
+                    <textarea type="text" class="form-control" id="Description" placeholder="Briefly tell us about your case" data-bind="value: Description" autofocus=autofocus></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="input-group image-preview">
+                        <input type="text" class="form-control image-preview-filename" placeholder="Upload an image" disabled="disabled"> 
+                        <!-- don't give a name === doesn't send on POST/GET -->
+                        <span class="input-group-btn">
+                            <!-- image-preview-clear button -->
+                            <button type="button" class="btn btn-primary image-preview-clear" style="display:none;">
+                                <span class="glyphicon glyphicon-remove"></span> Clear
+                            </button>
+                            <!-- image-preview-input -->
+                            <div class="btn btn-primary image-preview-input">
+                                <span class="glyphicon glyphicon-folder-open"></span>
+                                <span class="image-preview-input-title">Browse</span>
+                                <input type="file" accept="image/png, image/jpeg, image/gif" name="caseInput-file-preview" class="form-control" id="ImageUrl" placeholder="Enter Image Url" data-bind="value: ImageUrl"/> 
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group" data-bind="visible: !loggedIn()">
+<!--                    <label for="Email">Email address</label>-->
+                    <input type="email" class="form-control" id="Email" placeholder="Enter email address" data-bind="value: Email">
+                </div>
+
+                <div class="form-group">
+<!--                    <label for="Zipcode">Zipcode</label>-->
+                    <input type="text" class="form-control" id="Zipcode" placeholder="Enter Zipcode" data-bind="value: Zipcode">
+                </div>
+                    <input type="submit" class="btn js-createCase" value="Create Case" style="background-color: #694D9F; color: #FFF;"/>
+                </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 </form>
-
-
 
 

@@ -12,12 +12,12 @@ jQuery(document).ready(function() {
 	
 	$("html").niceScroll({
 		background:"#ccc",
-		cursorcolor:"#52C1BA",
+		cursorcolor:"#722881",
 		cursorwidth:15, 
 		boxzoom:true, 
 		autohidemode:false,
 		zindex:99999,
-		cursorborder:"1px solid #52C1BA",
+		cursorborder:"1px solid #722881",
 	});
 
 
