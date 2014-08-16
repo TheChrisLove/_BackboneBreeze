@@ -15,7 +15,10 @@ define([
          * @requires Backbone
          * @param {object} options - Backbone.Model options
          */
-        initialize: function(options) {},
+        initialize: function(options) {
+
+            _.bindAll(this, 'getPatientId', 'getDoctorId');
+        },
 
         title: 'User Model',
 
@@ -24,22 +27,73 @@ define([
             username: "",
             password: "",
             loggingIn: false,
-            loggedIn: false
+            loggedIn: false,
+            info: null,
+            error_message: ""
+        },
+
+        getPatientId: function(){
+            return this.get('info').get('Patient').get('_id');
+
+        },
+
+        getDoctorId: function(){
+            return this.get('info').get('Doctor').get('_id');
+
         },
 
         /**
          * Login function retrieves user credentials
          */
-        login: function(callback) {
+        login: function(args) {
+            args = (!args) ? {} : args;
+            if(args.username || args.password){
+                this.set({
+                    username: username,
+                    password: password
+                });
+            };
+
+            var _this = this;
             this.set('loggedIn', true);
-            Backbone.EventBroker.trigger('user:login', app.user);
-            this.set(callback.toJSON());
+
+            return app.api.breeze.EntityQuery
+                .from('Users')
+                .using(app.api.manager)
+                .where('Email', 'Equals', this.get('username'))
+                .execute()
+                .then(function(data){
+                    // Determine user type
+                    var user = data.results[0];
+                    var type = user.get('AccountType');
+                    if(!user.get(type)){
+                        app.api.breeze.EntityQuery
+                            .from(type + 's')
+                            .using(app.api.manager)
+                            .where('UserId', 'Equals', user.get('_id'))
+                            .execute()
+                            .then(function(data){
+                                _this.loginSuccess(user, args.noRedirect);
+                            });
+                    } else _this.loginSuccess(user, args.noRedirect);
+                });
         },
+
+
 
         /**
          * Function to create application user and navigate to home after successful login.
          */
-        loginSuccess: function(userdata) {
+        loginSuccess: function(user, noRedirect) {
+            var type = user.get('AccountType');
+            this.set('info', user);
+
+            if(!noRedirect){
+                if(type == 'Patient') app.router.go('patient/createCase');
+                else if (type == 'Doctor') app.router.go('doctors/');
+                else app.router.go('/');
+            }
+            
             /**    
              * User login event triggered on successful login.
              * @event User#user:login
@@ -73,7 +127,7 @@ define([
          * @returns {Boolean} If user is valid or not.
          */
         verify: function() {
-            if (this.get('_id')) return true;
+            if (this.get('info') && this.get('info').get('_id')) return true;
             else return false;
         },
 

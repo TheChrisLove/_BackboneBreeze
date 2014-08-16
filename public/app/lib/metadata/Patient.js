@@ -25,6 +25,7 @@ define([], function() {
         { "name": "Password", "dataType": "String" },
         { "name": "MobilePhone", "dataType": "String" },
         { "name": "Rating", "dataType": "String" },
+        { "name": "UserId", "dataType" : "MongoObjectId" }
       ],
       "navigationProperties":[
         {

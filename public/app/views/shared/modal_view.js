@@ -112,7 +112,7 @@ define([
                 else this.model.get('buttons').reset();
 
                 if (args.view) this.setContentView(args.view);
-                else this.removeView('.content');
+                else this.removeView('.modal_content');
             }
 
             this.$el.find('.modal').modal();
@@ -123,7 +123,7 @@ define([
          * @param {View} view - An instance of a view to apply to the main content area of the modal.
          */
         setContentView: function(view) {
-            this.setView('.content', view);
+            this.setView('.modal_content', view);
             this.renderViews();
         },
 

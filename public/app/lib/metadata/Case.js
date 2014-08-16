@@ -22,7 +22,7 @@ define([], function() {
         { "name": "Description", "dataType": "String" },
         { "name": "ImageUrl", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
-        { "name": "PatientId", "dataType": "String" }
+        { "name": "PatientId", "dataType": "MongoObjectId" }
       ],
       "navigationProperties":[
         {

@@ -19,8 +19,8 @@ define([], function() {
             }
           ]
         },
-        { "name": "CaseId", "dataType": "String" },
-        { "name": "DoctorId", "dataType": "String" },
+        { "name": "CaseId", "dataType": "MongoObjectId" },
+        { "name": "DoctorId", "dataType": "MongoObjectId" },
         { "name": "Bid", "dataType": "String" },
         { "name": "Created", "dataType": "String" },
         { "name": "Modified", "dataType": "String" },

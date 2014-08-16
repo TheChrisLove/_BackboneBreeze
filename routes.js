@@ -82,6 +82,14 @@ exports.getCases = function(req, res, next) {
     query.execute(db, "Cases", processResults(res, next));
 };
 
+exports.getUsers = function(req, res, next) {
+    var query = new breezeMongo.MongoQuery(req.query);
+    debugger;
+    // add your own filters here
+    // Case of collection name matters, e.g. "Product", not "product"
+    query.execute(db, "Users", processResults(res, next));
+};
+
 
 // if you don't want to use a Mongo query
 function executeQuery(db, collectionName, query, fn) {

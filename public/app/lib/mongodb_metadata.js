@@ -2,8 +2,9 @@ define([
   "meta/Patient",
   "meta/Bid",
   "meta/Case",
-  "meta/Doctor"
-], function(Patient, Bid, Case, Doctor) {
+  "meta/Doctor",
+  "meta/User"
+], function(Patient, Bid, Case, Doctor, User) {
     "use strict";
 
     var Metadata = function(){
@@ -12,7 +13,8 @@ define([
         Patient,
         Doctor,
         Bid,
-        Case
+        Case,
+        User
       ];
 
       this.complexTypes = [];

@@ -7,7 +7,7 @@ define([
   'base/controller',
   'modules/grid/grid_module',
   'views/patient/createCase_view',
-  'views/patient/login_view',
+  'views/shared/login_view',
   'views/patient/index_view',
   'views/patient/settings_view'
 ], function (_, Backbone, View, Controller, Grid, CreateCaseView, LoginView, IndexView, SettingsView) {
@@ -67,7 +67,7 @@ define([
                       else {
                         this.cleanViews();
 
-                        var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, '_' + app.user.get('_id'));
+                        var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
                         var grid = new Grid({
                           title: 'My Cases',
                           resource: 'Cases',

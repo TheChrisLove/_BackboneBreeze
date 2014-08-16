@@ -5,7 +5,7 @@ define([
     'base/view',
     'knockback',
     'knockout',
-    'text!templates/patient/login.html'
+    'text!templates/shared/login.html'
 ], function(_, Backbone, View, kb, ko, template) {
     "use strict";
 
@@ -13,10 +13,7 @@ define([
 
         template: _.template(template),
 
-        model: new Backbone.Model({
-            error_message: "",
-            loggingIn: false
-        }),
+        model: app.user,
 
         events: {
             "click .js-loginButton": "login",
@@ -32,6 +29,9 @@ define([
             this.model.set("error_message", "");
             var btn = $('.js-loginButton', this.$el)
             btn.button('loading');
+            this.model.login().fail(function(){
+                btn.reset();
+            });
 
             /*
             app.user.set({
@@ -49,16 +49,7 @@ define([
             */
 
             //TODO temp login
-            app.api.breeze.EntityQuery
-                .from('Patients')
-                .using(app.api.manager)
-                .where('Email', 'Equals', this.$el.find('input[name="username"]').val())
-                .execute()
-                .then(function(data){
-                    app.user.login(data.results[0]);
-                    btn.button('reset');
-                    app.router.go('patient/createCase');
-                });
+            
 
         },
 
