@@ -35,25 +35,37 @@ define([
                 return this.Bids().length;
             }, viewModel);
 
-            viewModel.winningBid = ko.computed(function(){
+            viewModel._winningBid = ko.computed(function(){
                 var bids = this.Bids();
                 var run = bids.length;
                 var winner = null;
                 while(run--){
                     if(bids[run].Bid() > winner) winner = bids[run].Bid();
                 }
+                return winner;
+            });
 
 
-                return (winner) ? '$' + winner : 'N/A';
+            viewModel.winningBid = ko.computed(function(){
+                return (this._winningBid()) ? '$' + this._winningBid() : 'N/A';
             }, viewModel);
 
             if(app.user.get('AccountType') == 'Doctor'){
                 viewModel.myBid = ko.computed(function(){
+                    var bids = this.Bids();
+                    var run = bids.length;
+                    var myBid = null;
+                    while(run--){
+                        if(bids[run].Bid() > winner) winner = bids[run].Bid();
+                    }
                     return '$290';
                 }, viewModel);
-            }
 
-           
+                viewModel.nextBid = ko.computed(function(){
+                    var nextBid = this._winningBid();
+                    return (nextBid) ? '$' + (nextBid + 10) : '$10';
+                }, viewModel);
+            }
 
             return viewModel;
         }
