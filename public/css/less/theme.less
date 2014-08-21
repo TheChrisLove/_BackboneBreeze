@@ -63,7 +63,6 @@ h6 {
   color: #281c4c;
   font-family: 'Bree Serif', sans-serif;
   margin-top: 0;
-  letter-spacing: 1px;
 }
 h2 {
   font-size: 1.7em;
@@ -76,7 +75,6 @@ h3 {
   padding: 0;
 }
 h4 {
-  text-transform: uppercase;
 }
 img {
   width: 100%;
@@ -507,8 +505,11 @@ article .header {
   font-size: 0.8em;
   font-weight: 700;
 }
-.featured .foot span {
+.featured .foot span.glyphicon {
   margin-left: 20px;
+}
+.featured .foot span.glyphicon:first-child{
+  margin-left: 0px;
 }
 .featured h4 i {
   color: #722881;
@@ -3992,7 +3993,7 @@ form.login input[type="text"], form.login input[type="file"], form.login input[t
     margin: 0;
     padding: 5px 10px;
     background: 0;
-    border: 0.5px
+    border: 0.5px;
     border-bottom: 1px solid #FFFFFF;
     outline: 0;
     font-style: italic;

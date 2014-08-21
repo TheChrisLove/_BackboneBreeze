@@ -13,7 +13,9 @@ define([
 	            "Description" : '',
 	            "ImageUrl" : '', 
 	            "Zipcode" : '', 
-	            "PatientId" : ''
+	            "PatientId" : '',
+              "Created" : null,
+              "PatientEmail" : null
 	          }),
 	          email: '',
 	          user: app.user
@@ -25,6 +27,8 @@ define([
 
         _createCase: function(){
           this.get('newCase').set('PatientId', this.get('user').get('info').get('Patient').get('_id'));
+          this.get('newCase').set('PatientId', this.get('user').get('info').get('Patient').get('Email'));
+          this.get('newCase').set("Created", new Date());
           var newCase = app.api.manager.createEntity('Case', this.get('newCase').toJSON());
           return app.api.manager.saveChanges([newCase]).then(function(){
              app.router.go('/patient/caseCreated/');

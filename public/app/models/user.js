@@ -89,7 +89,7 @@ define([
             this.set('info', user);
 
             if(!noRedirect){
-                if(type == 'Patient') app.router.go('patient/createCase');
+                if(type == 'Patient') app.router.go('patient/cases');
                 else if (type == 'Doctor') app.router.go('doctors/');
                 else app.router.go('/');
             }

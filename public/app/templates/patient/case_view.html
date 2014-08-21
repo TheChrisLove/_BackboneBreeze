@@ -1,0 +1,44 @@
+	<div class="panel panel-default featured">
+		<div class="panel-body">
+			<div class="row">
+                <div class="col-md-9">
+                    <img src="img/featured.jpg" alt="featured" class="img-rounded thumb" style="max-height: 157px; width: auto;">
+                    <p data-bind="text: Description"></p>
+                    <div class="foot">
+                        <span class="glyphicon glyphicon-th"></span> 
+                        <span>Posted</span>
+                        <span data-bind="text: Created"></span>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span data-bind="text: PatientEmail"></span>
+                    	<span class="glyphicon glyphicon-globe"></span> <span data-bind="text: Zipcode"></span>
+                    </div>
+                </div>
+                <div class="col-md-3 vitals" style="padding-right: 15px;">
+                    <h4><span class="glyphicon glyphicon-user"></span> Current Bidders</h4>
+                    <p>
+                        <strong>Winning Bid:</strong> <span data-bind="text: winningBid"></span>
+                        <br>
+                        <strong>Total Bids:</strong> <span data-bind="text: numberBids"></span>
+                        <br>
+                        <!-- ko if: app.user.get('info').get('AccountType') == 'Doctor' -->
+                        <strong>My Bid: </strong> <span data-bind="text: $data.myBid"></span>
+                        <!-- /ko -->
+                    </p>
+                    <!-- ko if: app.user.get('info').get('AccountType') == 'Doctor' -->
+                    <div class="input-group">
+				      <input type="text" class="form-control" placeholder="$310.00">
+				      <span class="input-group-btn">
+				        <button class="btn btn-success" type="button">Bid!</button>
+				      </span>
+				    </div><!-- /input-group -->
+                    <!-- /ko -->
+
+                    <!-- ko if: app.user.get('info').get('AccountType') == 'Patient' -->
+				    <div class="input-group" stle="display: none;">
+				        <button class="btn btn-success" type="button">View Bids</button>
+				    </div><!-- /input-group -->
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>

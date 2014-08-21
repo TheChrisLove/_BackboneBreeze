@@ -9,8 +9,10 @@ define([
   'views/patient/createCase_view',
   'views/shared/login_view',
   'views/patient/index_view',
-  'views/patient/settings_view'
-], function (_, Backbone, View, Controller, Grid, CreateCaseView, LoginView, IndexView, SettingsView) {
+  'views/patient/settings_view',
+  'modules/grid/grid_wrapper_view',
+  'views/patient/case_row_view'
+], function (_, Backbone, View, Controller, Grid, CreateCaseView, LoginView, IndexView, SettingsView, GridWrapper, CaseRowView) {
     "use strict";
 
     var BasicController = Controller.extend({
@@ -67,10 +69,19 @@ define([
                       else {
                         this.cleanViews();
 
+                        var wrapper = GridWrapper.extend({
+                          template: 'app/templates/patient/cases.html'
+                        });
                         var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
                         var grid = new Grid({
                           title: 'My Cases',
                           resource: 'Cases',
+                          wrapper: wrapper,
+                          row: CaseRowView,
+                          columns: {
+
+                            editable: 'all',
+                          },
                           predicate: predicate,
                           defaultSort: {
                             prop: '_id',

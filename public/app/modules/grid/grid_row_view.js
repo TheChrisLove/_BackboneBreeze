@@ -22,14 +22,16 @@ define([
             'mouseup .js-saveEdit': 'save'
         },
 
+        /*
         renderTemplate: function(template, context) {
             var templateKey = (_.isFunction(this.template)) ? this.template() : templateKey;
             return kb.renderTemplate(template, this.viewModel, {
                 templateKey: this.template
             }, this.el);
         },
+        */
 
-        afterRender: function() {},
+        //afterRender: function() {},
 
         start: function() {
             _.bindAll(this, 'editMode', 'save', 'saveChanges', 'cancelChanges', '_closeEdit', '_save');

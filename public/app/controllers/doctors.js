@@ -5,8 +5,9 @@ define([
   'base/view',
   'base/controller',
   'modules/grid/grid_module',
-  'views/shared/login_view'
-], function (_, Backbone, View, Controller, Grid, LoginView) {
+  'views/shared/login_view',
+ 'views/patient/case_row_view' 
+], function (_, Backbone, View, Controller, Grid, LoginView, CaseRowView) {
     "use strict";
 
     var BasicController = Controller.extend({
@@ -27,6 +28,7 @@ define([
                     var grid = new Grid({
                         title: 'View/Search Cases',
                         resource: 'Cases',
+                        row: CaseRowView,
                         defaultSort: {
                           prop: '_id',
                           type: 'Int32',

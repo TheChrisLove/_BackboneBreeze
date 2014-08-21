@@ -23,11 +23,16 @@ define([], function() {
         { "name": "Description", "dataType": "String" },
         { "name": "ImageUrl", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
-        { "name": "PatientId", "dataType": "MongoObjectId" },
-        { "name": "PatientEmail", "dataType": "String"},
-        { "name" : "Bids", "isScalar": false, "complexTypeName" : "Case_bid:#dm" }
+        { "name": "PatientId", "dataType": "MongoObjectId" }
       ],
       "navigationProperties":[
+        {
+            "name":"Bids",
+            "entityTypeName":"Bid:#dm",
+            "isScalar":false,
+            "associationName":"Case_Bids",
+            "invForeignKeyNames" : ["CaseId"]
+        },
         {
           "name":"Patient",
           "entityTypeName":"Patient:#dm",
