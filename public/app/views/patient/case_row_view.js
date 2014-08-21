@@ -43,7 +43,7 @@ define([
                     if(bids[run].Bid() > winner) winner = bids[run].Bid();
                 }
                 return winner;
-            });
+            }, viewModel);
 
 
             viewModel.winningBid = ko.computed(function(){
