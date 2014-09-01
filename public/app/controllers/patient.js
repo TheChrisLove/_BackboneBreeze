@@ -59,30 +59,17 @@ define([
                     }
                   }
                 },
-                cases: {
-                    name: 'View Cases',
-                    isVisible: function(){
-                      return app.user.get('loggedIn'); 
-                    },
+                allCases: {
+                    name: 'Admin Page',
                     fn: function(args) {
-                      if(!app.user.verify()) app.router.go('/');
-                      else {
                         this.cleanViews();
 
-                        var wrapper = GridWrapper.extend({
-                          template: 'app/templates/patient/cases.html'
-                        });
-                        var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
                         var grid = new Grid({
                           title: 'My Cases',
                           resource: 'Cases',
-                          wrapper: wrapper,
-                          row: CaseRowView,
                           columns: {
-
                             editable: 'all',
                           },
-                          predicate: predicate,
                           defaultSort: {
                             prop: '_id',
                             type: 'Int32',
@@ -92,6 +79,42 @@ define([
 
                         this.setView(grid.getView());
                       }
+                },
+                cases: {
+                    name: 'View Cases',
+                    isVisible: function(){
+                     // return app.user.get('loggedIn'); 
+                     return true;
+                    },
+                    fn: function(args) {
+
+                      //if(!app.user.verify()) app.router.go('/');
+                      //else {
+                        this.cleanViews();
+
+                        var wrapper = GridWrapper.extend({
+                          template: 'app/templates/patient/cases.html'
+                        });
+                        //var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
+                        var grid = new Grid({
+                          title: 'My Cases',
+                          resource: 'Cases',
+                          wrapper: wrapper,
+                          row: CaseRowView,
+                          columns: {
+                            editable: 'all',
+                          },
+                          //expand: ['Bids.Doctor'],
+                          //predicate: predicate,
+                          defaultSort: {
+                            prop: '_id',
+                            type: 'Int32',
+                            order: 'desc'
+                          }
+                        });
+
+                        this.setView(grid.getView());
+                      //}
                     }
                 },
                 login: {

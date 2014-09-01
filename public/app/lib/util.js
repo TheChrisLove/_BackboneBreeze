@@ -14,6 +14,23 @@ define([
      */
     var Utils = function() {
 
+        this.attrPath = function(attrStrOrPath){
+          var path;
+
+          if (_.isString(attrStrOrPath)){
+            // TODO this parsing can probably be more efficient
+            path = (attrStrOrPath === '') ? [''] : attrStrOrPath.match(/[^\.\[\]]+/g);
+            path = _.map(path, function(val){
+              // convert array accessors to numbers
+              return val.match(/^\d+$/) ? parseInt(val, 10) : val;
+            });
+          } else {
+            path = attrStrOrPath;
+          }
+
+          return path;
+        };
+
         /**
          * Returns an object representing form values
          * @returns {Object} - Key/Value pair object representing form values

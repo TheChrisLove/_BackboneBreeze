@@ -6,8 +6,9 @@ define([
   'base/controller',
   'modules/grid/grid_module',
   'views/shared/login_view',
- 'views/patient/case_row_view' 
-], function (_, Backbone, View, Controller, Grid, LoginView, CaseRowView) {
+ 'views/patient/case_row_view',
+  'modules/grid/grid_wrapper_view'
+], function (_, Backbone, View, Controller, Grid, LoginView, CaseRowView, GridWrapper) {
     "use strict";
 
     var BasicController = Controller.extend({
@@ -24,10 +25,14 @@ define([
                   fn: function(args){
 
                     this.cleanViews();
+                    var wrapper = GridWrapper.extend({
+                          template: 'app/templates/patient/cases.html'
+                        });
 
                     var grid = new Grid({
                         title: 'View/Search Cases',
                         resource: 'Cases',
+                        wrapper: wrapper,
                         row: CaseRowView,
                         defaultSort: {
                           prop: '_id',
@@ -41,7 +46,7 @@ define([
                   }
               },
               bids: {
-                name: 'View My Bids',
+                name: 'View Bids',
                 isVisible: function(){
                   return app.user.verify();
                 },
@@ -49,19 +54,26 @@ define([
 
                   this.cleanViews();
 
-                  var predicate = app.api.breeze.Predicate.create('DoctorId', app.api.breeze.FilterQueryOp.Equals, app.user.getDoctorId());
-                  var grid = new Grid({
-                        title: 'View Bids',
-                        predicate: predicate,
-                        resource: 'Bids',
-                        defaultSort: {
-                          prop: '_id',
-                          type: 'Int32',
-                          order: 'desc'
-                        }
-                    });
+                  var predicate = app.api.breeze.Predicate.create('Bids.DoctorId', 'Equals', app.user.getDoctorId());
 
-                    this.setView(grid.getView());
+                  var wrapper = GridWrapper.extend({
+                    template: 'app/templates/patient/cases.html'
+                  });
+
+                  var grid = new Grid({
+                      title: 'View/Search Cases',
+                      resource: 'Cases',
+                      wrapper: wrapper,
+                      predicate: predicate,
+                      row: CaseRowView,
+                      defaultSort: {
+                        prop: '_id',
+                        type: 'Int32',
+                        order: 'desc'
+                      }
+                  });
+
+                  this.setView(grid.getView());
                 }
               },
               profile: {

@@ -487,6 +487,89 @@ define([
             return passed;
         };
 
+        this._getProperty = function(attrStrOrPath){
+          var attrPath = Backbone.NestedModel.attrPath(attrStrOrPath),
+            result;
+
+          Backbone.NestedModel.walkPath(this.attributes, attrPath, function(val, path){
+            var attr = _.last(path);
+            if (path.length === attrPath.length){
+              // attribute found
+              result = val[attr];
+            }
+          });
+
+          return result;
+        };
+
+        this._walkPath = function(obj, attrPath, callback, scope){
+          var val = obj,
+            childAttr;
+
+          // walk through the child attributes
+          for (var i = 0; i < attrPath.length; i++){
+            callback.call(scope || this, val, attrPath.slice(0, i + 1));
+
+            childAttr = attrPath[i];
+            val = val[childAttr];
+            if (!val) break; // at the leaf
+          }
+        };
+
+        this.getEntityProperty = function (entityTypeOrModel, propertyName, returnValueDefinition) {
+            var _prop, prop = entityTypeOrModel;
+
+            var _models, _arrName, _name = (_.isArray(propertyName)) ? propertyName : app.utils.attrPath(propertyName);
+            var returnValue = (entityTypeOrModel instanceof Backbone.Model && !returnValueDefinition) ? true : false;
+            for (var i = 0, ii = _name.length; i < ii; i++) {
+                if (prop) {
+                    // Is Prop a data/navigation/complex property?
+                    if (!returnValue && prop.isComplexProperty) {
+                        //prop = this._getEntityPropertyHelper(prop, _name[i], 'ComplexProperty');
+                        prop = prop.dataType.getProperty(_name[i]);
+                        if (!prop) return null;
+                    } else if (!returnValue && ((prop instanceof breeze.EntityType === true) || (prop.entityType))) {
+                        // Working with entityType
+                        if (prop instanceof breeze.EntityType === false) prop = prop.entityType;
+                        _prop = prop.getDataProperty(_name[i]);
+                        if (!_prop) _prop = prop.getNavigationProperty(_name[i]);
+                        if (!_prop) return null;
+                        else prop = _prop;
+                    } else if (prop.models || typeof _name[i] == 'number' || _.isArray(prop)){
+                        // Is an array or a backbone collection
+                        // Is propertyName referencing a property or an index?
+                        _models = (prop.models) ? prop.models : prop;
+
+                        if(_models && _models.length > 0){
+                            if (typeof _name[i] == 'number' && _models[_name[i]]) prop = _models[_name[i]];
+                            else {
+                                // At this point we can assume the property is in some format of 'Locations.Name', where Name is a property on
+                                // an object in the Locations array.  This should return each property for each object (returns array)
+                                var remainingPath = [_name.slice(i, _name.length)];
+                                var props = [];
+                                for(var m = 0, mm = _models.length; m < mm; m++){
+                                    props.push(this.getEntityProperty(_models[m], remainingPath));
+                                }
+                                return props;
+                            }
+                        } else return null;
+                    }else {
+                        // Working a Backbone.Model with no entityType
+                        if (prop.attributes && prop.attributes.hasOwnProperty(_name[i])) prop = prop.get(_name[i]);
+                        else if (prop[_name[i]]) prop = prop[_name[i]];
+                        else return null;
+                    }
+                } else return null;
+            }
+
+            // If we have not kicked back an invalid property already, we have validated the property exists at this point.
+            // However if workign with a Backbone.Model, there is no guarantee there is a set value.
+            // If the user is simply validating, translate this undefined/null as a TRUE.
+            return (_.isUndefined(prop) || _.isNull(prop)) ? true : prop;
+        };
+
+
+        //TODO need to be able to validate dot delimited properties, (including if they are arrays)
         /**
          * Tests an entity against a predicate
          * @param {Model} model - Backbone.Model to test against
@@ -505,7 +588,7 @@ define([
                 // Check if we need to validate on related properties
                 if (predicate._propertyOrExpr) {
                     var collection = model.get(predicate._propertyOrExpr);
-                    if (!collection.length) collection = [collection];
+                    if (!_.isArray(collection)) collection = [collection];
 
                     evaluated = this.applyPredicate(collection, predicate._value);
 
@@ -522,6 +605,9 @@ define([
                         case 'All':
                         case 'Every':
                             return (evaluated.length == collection.length);
+                            break;
+                        default: 
+                            return (evaluated.length > 0);
                             break;
                     }
                 }
@@ -553,7 +639,8 @@ define([
             }
 
             // If the above is skipped, we are in the context of a single predicate with no children (lowest level)
-            var prop = model.get(predicate._propertyOrExpr);
+            var prop = this.getEntityProperty(model, predicate._propertyOrExpr);
+            var isArray = _.isArray(prop);
             // Add a space in the instance that prop is a typeof number
             var _prop = prop + '';
             var value = predicate._value;
@@ -565,7 +652,8 @@ define([
 
             switch (comparator) {
                 case 'Equals':
-                    return prop == value;
+                    if(isArray && $.inArray(prop, value)) return true;
+                    else return prop == value;
                     break;
                 case 'NotEquals ':
                     return prop != value;

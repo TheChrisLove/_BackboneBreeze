@@ -26,19 +26,36 @@
                     </p>
                     <!-- ko if: app.user.get('info').get('AccountType') == 'Doctor' -->
                     <div class="input-group">
-				      <input type="text" class="form-control" placeholder="$310.00">
+				      <input type="text" class="form-control" data-bind="attr: {placeholder: $data.nextBid}, value: $data.nextBid">
 				      <span class="input-group-btn">
-				        <button class="btn btn-success" type="button">Bid!</button>
+                        <!-- ko if: $data.myBid && $data.myBid() != 'N/A' -->
+                        <button class="btn btn-success js_updateBid" type="button">Update Bid!</button>
+                        <!-- /ko -->
+                        <!-- ko if: $data.myBid && $data.myBid() == 'N/A' -->
+                        <button class="btn btn-success js_bid" type="button">Bid!</button>
+                        <!-- /ko -->
 				      </span>
 				    </div><!-- /input-group -->
                     <!-- /ko -->
 
                     <!-- ko if: app.user.get('info').get('AccountType') == 'Patient' -->
 				    <div class="input-group" stle="display: none;">
-				        <button class="btn btn-success" type="button">View Bids</button>
+				        <button class="btn btn-success js_viewBids" type="button">View Bids</button>
 				    </div><!-- /input-group -->
                     <!-- /ko -->
                 </div>
             </div>
+            <!-- ko if : app.user.get('info').get('AccountType') == 'Patient'  -->
+            <div class="row viewBids noDisplay" style="margin-top:15px;">
+                <div class="col-md-12">
+                    <h4>Case Bids</h4>
+                    <ul data-bind="foreach: Bids" class="list-group">
+                        <li class="list-group-item">
+                            <span data-bind="text: Bid"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /ko -->
         </div>
     </div>

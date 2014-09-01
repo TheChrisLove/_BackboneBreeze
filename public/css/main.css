@@ -73,13 +73,19 @@ ul.case_list {
   text-align: left;
   list-style-type: none;
 }
-ul.case_list li {
+ul.case_list ul.list-group {
+  margin-top: 15px;
+}
+ul.case_list > li {
   width: 100%;
   min-height: 100px;
 }
 .link {
   cursor: pointer;
   color: #5885a9;
+}
+.noDisplay {
+  display: none;
 }
 .link-plain,
 .clickable {
@@ -1026,6 +1032,7 @@ form.search .input-group-addon {
   text-transform: uppercase;
 }
 /******************************* List Groups *****************************/
+/*
 .list-group .list-group-item {
   background: none;
   -webkit-border-radius: 0;
@@ -1091,6 +1098,7 @@ form.search .input-group-addon {
 .list-group.alt .list-group-item i {
   color: #808183;
 }
+*/
 /****************************** Pagination *********************************/
 .center-pag {
   position: absolute;
