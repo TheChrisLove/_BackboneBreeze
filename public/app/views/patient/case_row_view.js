@@ -128,6 +128,7 @@ define([
         },
 
         bidViewModel: function(model){
+            //console.log('vm creating' + model);
             console.log('vm creating' + model);
         },
 
