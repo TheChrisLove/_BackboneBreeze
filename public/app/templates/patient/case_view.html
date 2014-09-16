@@ -48,12 +48,24 @@
             <!-- ko if : app.user.get('info').get('AccountType') == 'Patient'  -->
             <div class="row viewBids noDisplay" style="margin-top:15px;">
                 <div class="col-md-12">
-                    <h4>Case Bids</h4>
-                    <ul data-bind="foreach: Bids" class="list-group">
-                        <li class="list-group-item">
-                            <span data-bind="text: Bid"></span>
-                        </li>
-                    </ul>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Case Bids</div>
+                        <ul data-bind="foreach: Doctors" class="list-group">
+                            <li class="list-group-item">
+                                <h5>
+                                    <span data-bind="text: PracticeName"></span>&nbsp;
+                                    <!-- ko foreach: new Array(parseInt(Rating())) -->
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    <!-- /ko -->
+                                    <div class="pull-right" >
+                                        <span>$<span data-bind="text: Bid"></span></span>&nbsp;
+                                        <span class="btn btn-primary btn-sm">Accept Bid</span>
+                                    </div>
+
+                                </h5>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <!-- /ko -->

@@ -29,7 +29,7 @@ define([], function() {
         { "name": "ImageUrl", "dataType": "String" },
         { "name": "Password", "dataType": "String" },
         { "name": "MobilePhone", "dataType": "String" },
-        { "name": "Rating", "dataType": "String" },
+        { "name": "Rating", "dataType": "Number" },
         { "name": "UserId", "dataType" : "MongoObjectId" }
       ],
       "navigationProperties":[

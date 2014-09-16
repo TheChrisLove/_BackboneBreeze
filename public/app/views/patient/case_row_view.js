@@ -128,8 +128,10 @@ define([
         },
 
         bidViewModel: function(model){
-            //console.log('vm creating' + model);
-            console.log('vm creating' + model);
+            var viewModel = kb.viewModel(model);
+            viewModel.Bid = kb.observable(this.viewModel._Bids.findWhere({DoctorId: model.get('_id')}), 'Bid');
+
+            return viewModel;
         },
 
         createViewModel: function(options) {
@@ -139,7 +141,8 @@ define([
             });
             app.testing = viewModel;
 
-            viewModel.Bids = app.utils.trackedBreezeCollection(this.model.get('Bids'), true);
+            viewModel._Bids = app.utils.trackedBreezeCollection(this.model.get('Bids'))
+            viewModel.Bids = kb.collectionObservable(viewModel._Bids);
             viewModel.Created = app.utils.formatDateTime(this.model.get('Created'));
             // TODO create method to ;build a tracked queryEngine collection
             viewModel._Doctors = new Backbone.Collection([]);

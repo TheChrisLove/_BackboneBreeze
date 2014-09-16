@@ -7,7 +7,7 @@ define([], function() {
       "isComplexType":true,
       "dataProperties": [
         { "name": "DoctorId", "dataType": "MongoObjectId" },
-        { "name": "Bid", "dataType": "String" },
+        { "name": "Bid", "dataType": "Number" },
         { "name": "Created", "dataType": "String" },
         { "name": "Modified", "dataType": "String" },
       ]
