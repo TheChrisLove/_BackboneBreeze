@@ -17,7 +17,7 @@ define([
          */
         initialize: function(options) {
 
-            _.bindAll(this, 'getPatientId', 'getDoctorId');
+            _.bindAll(this, 'getPatientId', 'getDoctorId', 'getAccountType');
         },
 
         title: 'User Model',
@@ -30,6 +30,12 @@ define([
             loggedIn: false,
             info: null,
             error_message: ""
+        },
+
+        getAccountType: function(){
+            var info = this.get('info');
+            if (info) return this.get('info').get('AccountType');
+            else return false;
         },
 
         getPatientId: function(){

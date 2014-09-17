@@ -75,7 +75,11 @@ define(function ($, Backbone, _) {
                 var $el = $(element);
                 $el.data('href', nav);
                 $el.attr('data-href', nav);
-                if (bindingContext.$rawData.active == true) $el.addClass('active');
+                if (bindingContext.$rawData.active == true){
+                    $el.addClass('active');
+                    $el.parent().addClass('active');
+
+                } 
             },
             update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
                 // This will be called when the binding is first applied to an element

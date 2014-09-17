@@ -41,7 +41,9 @@ define([
                 createCase: {
                     name : 'Create New Case',
                     isVisible: function(){
-                      return (this.get('currentAction') == 'index') ? false : true;
+                      if (app.user.get('loggedIn') == false) return true;
+                      else if (app.user.getAccountType() == 'Patient') return true;
+                      else return false;
                     },
                     fn: function(args) {
                       this.cleanViews();
@@ -61,6 +63,9 @@ define([
                 },
                 allCases: {
                     name: 'Admin Page',
+                    isVisible: function(){
+                      return (app.user.getAccountType() == 'Admin');
+                    },
                     fn: function(args) {
                         this.cleanViews();
 
@@ -80,22 +85,54 @@ define([
                         this.setView(grid.getView());
                       }
                 },
+                viewCases: {
+                  name: 'View Cases',
+                  isVisible: function(){
+                    if (app.user.get('loggedIn') == false) return true;
+                    else if (app.user.getAccountType() == 'Doctor') return true;
+                    else return false;
+                  },
+                  fn: function(){
+                      this.cleanViews();
+                      if (app.user.get('loggedIn') == true && app.user.getAccountType() != 'Doctor') app.router.go('/');
+
+                      var wrapper = GridWrapper.extend({
+                        template: 'app/templates/patient/cases.html'
+                      });
+
+                      var grid = new Grid({
+                        title: 'My Cases',
+                        resource: 'Cases',
+                        wrapper: wrapper,
+                        row: CaseRowView,
+                        columns: {
+                          editable: 'all',
+                        },
+                        defaultSort: {
+                          prop: '_id',
+                          type: 'Int32',
+                          order: 'desc'
+                        }
+                      });
+
+                      this.setView(grid.getView());
+                  }
+                },
                 cases: {
-                    name: 'View Cases',
+                    name: 'My Cases',
                     isVisible: function(){
-                     // return app.user.get('loggedIn'); 
-                     return true;
+                      return app.user.get('loggedIn'); 
                     },
                     fn: function(args) {
 
-                      //if(!app.user.verify()) app.router.go('/');
-                      //else {
+                      if(!app.user.verify()) app.router.go('/');
+                      else {
                         this.cleanViews();
 
                         var wrapper = GridWrapper.extend({
                           template: 'app/templates/patient/cases.html'
                         });
-                        //var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
+                        var predicate = app.api.breeze.Predicate.create('PatientId', app.api.breeze.FilterQueryOp.Equals, app.user.getPatientId());
                         var grid = new Grid({
                           title: 'My Cases',
                           resource: 'Cases',
@@ -104,8 +141,7 @@ define([
                           columns: {
                             editable: 'all',
                           },
-                          //expand: ['Bids.Doctor'],
-                          //predicate: predicate,
+                          predicate: predicate,
                           defaultSort: {
                             prop: '_id',
                             type: 'Int32',
@@ -114,17 +150,7 @@ define([
                         });
 
                         this.setView(grid.getView());
-                      //}
-                    }
-                },
-                login: {
-                    name: 'Login / Signup',
-                    isVisible: function(){
-                      return (app.user.get('loggedIn')) ? false : true; 
-                    },
-                    fn: function(args) {
-                        this.cleanViews();
-                        this.setView(LoginView);
+                      }
                     }
                 },
                 settings: {
@@ -139,6 +165,26 @@ define([
                         this.setView(SettingsView);
                       }
                     }
+                },
+                login: {
+                    name: 'Login',
+                    isVisible: function(){
+                      return (app.user.get('loggedIn')) ? false : true; 
+                    },
+                    fn: function(args) {
+                        this.cleanViews();
+                        this.setView(LoginView);
+                    }
+                },
+                signup: {
+                  name: 'Signup',
+                  isVisible: function(){
+                    return (app.user.get('loggedIn')) ? false : true;
+                  },
+                  fn: function(){
+                    this.cleanViews();
+                    this.setView(LoginView);
+                  }
                 },
                 logout: {
                     name: 'Logout',
