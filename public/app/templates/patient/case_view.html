@@ -20,11 +20,11 @@
                         <br>
                         <strong>Total Bids:</strong> <span data-bind="text: numberBids"></span>
                         <br>
-                        <!-- ko if: app.user.get('info').get('AccountType') == 'Doctor' -->
+                        <!-- ko if: app.user.getAccountType() == 'Doctor' -->
                         <strong>My Bid: </strong> <span data-bind="text: $data.myBid"></span>
                         <!-- /ko -->
                     </p>
-                    <!-- ko if: app.user.get('info').get('AccountType') == 'Doctor' -->
+                    <!-- ko if: app.user.getAccountType() == 'Doctor' -->
                     <div class="input-group">
 				      <input type="text" class="form-control" data-bind="attr: {placeholder: $data.nextBid}, value: $data.nextBid">
 				      <span class="input-group-btn">
@@ -38,14 +38,14 @@
 				    </div><!-- /input-group -->
                     <!-- /ko -->
 
-                    <!-- ko if: app.user.get('info').get('AccountType') == 'Patient' -->
+                    <!-- ko if: app.user.getAccountType() == 'Patient' -->
 				    <div class="input-group" stle="display: none;">
 				        <button class="btn btn-success js_viewBids" type="button">View Bids</button>
 				    </div><!-- /input-group -->
                     <!-- /ko -->
                 </div>
             </div>
-            <!-- ko if : app.user.get('info').get('AccountType') == 'Patient'  -->
+            <!-- ko if : app.user.getAccountType() == 'Patient'  -->
             <div class="row viewBids noDisplay" style="margin-top:15px;">
                 <div class="col-md-12">
                     <div class="panel panel-default">

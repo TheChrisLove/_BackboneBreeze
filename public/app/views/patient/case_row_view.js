@@ -139,7 +139,6 @@ define([
             var viewModel = kb.viewModel(this.model, {
                 excludes: ['Bids', 'Created']
             });
-            app.testing = viewModel;
 
             viewModel._Bids = app.utils.trackedBreezeCollection(this.model.get('Bids'))
             viewModel.Bids = kb.collectionObservable(viewModel._Bids);
@@ -174,7 +173,8 @@ define([
                 return (this._winningBid()) ? '$' + this._winningBid() : 'N/A';
             }, viewModel);
 
-            if(app.user.get('info').get('AccountType') == 'Doctor'){
+
+            if(app.user.getAccountType() == 'Doctor'){
 
                 var doctorId = app.user.getDoctorId();
 

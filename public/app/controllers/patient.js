@@ -101,7 +101,7 @@ define([
                       });
 
                       var grid = new Grid({
-                        title: 'My Cases',
+                        title: 'View Cases',
                         resource: 'Cases',
                         wrapper: wrapper,
                         row: CaseRowView,
