@@ -23,14 +23,12 @@ define([
           'submit form' : 'saveChanges',
         },
 
-        model : app.user,
-
         start: function(options){
           _.bindAll(this, 'saveChanges');
         },
 
         createViewModel: function(){
-          return kb.viewModel(this.model);
+          return kb.viewModel(app.user.get('info').get('Patient'));
         },
 
         saveChanges: function(event){
