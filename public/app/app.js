@@ -1,7 +1,7 @@
 /* global define, console */
 define([
     'underscore', 'backbone', 'lib/util',
-    'models/info', 'models/user', 
+    'models/auth', 'models/info', 'models/user',
     'moment', 'knockout', 'komapping',
     'modules/timer/timer',
     'bootstrap',
@@ -17,7 +17,7 @@ define([
     'validateCustomAddons',
     'koamdhelpers'
 ], function(_, Backbone, Utils,
-    Modules, User, Moment, ko, komapping, Timer) {
+    Auth, Modules, User, Moment, ko, komapping, Timer) {
     "use strict";
 
     // Application Module
@@ -58,6 +58,7 @@ define([
         utils: new Utils(), // Custom utility toolbelt
         moment: Moment, // Date Manipulation Library
         timer: new Timer(),
+        auth: new Auth(),
 
         // Tracking User and Location Data
         // -------------------------------

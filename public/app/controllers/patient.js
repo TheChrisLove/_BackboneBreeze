@@ -183,7 +183,7 @@ define([
                   },
                   fn: function(){
                     this.cleanViews();
-                    this.setView(LoginView);
+                    this.setView(app.auth.getRegisterView());
                   }
                 },
                 logout: {
