@@ -94,7 +94,11 @@ define([
             var type = user.get('AccountType');
             this.set('info', user);
 
-            if(!noRedirect){
+            if(noRedirect && !_.isBoolean(noRedirect)){
+                if(_.isFunction(noRedirect)) app.router.go(noRedirect());
+                else if(_.isObject(noRedirect)) app.router.go(noRedirect[type]);
+                else app.router.go(noRedirect);
+            } else if(!noRedirect){
                 if(type == 'Patient') app.router.go('patient/cases');
                 else if (type == 'Doctor') app.router.go('doctors/');
                 else app.router.go('/');
@@ -141,7 +145,7 @@ define([
          * Logout current user, clear user object, and return to login page.
          * TODO: Finish this function.
          */
-        logout: function() {
+        logout: function(redirect) {
             /**
              * Logout event triggers on User.logout
              * @event User#user:logout
@@ -151,7 +155,7 @@ define([
             // Refresh the app back to default state.
             // window.location.href = window.location.origin + window.location.pathname {Window re-direct works in all browsers};
             //window.location.href = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
-            window.location.reload();
+            if(redirect !== false) window.location.reload();
         }
 
     });

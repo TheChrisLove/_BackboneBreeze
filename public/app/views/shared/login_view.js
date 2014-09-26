@@ -13,14 +13,14 @@ define([
 
         template: _.template(template),
 
-        model: app.user,
-
         events: {
             "click .js-loginButton": "login",
             "submit form": "login"
         },
 
         start: function() {
+            if(!this.model && app && app.user) this.model = app.user;
+            else this.model = new Backbone.Model();
             this.model.set("error_message", "");
             _.bindAll(
                 this,
