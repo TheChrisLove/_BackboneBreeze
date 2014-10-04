@@ -1,6 +1,7 @@
 var fs = require("fs");
 var express = require('express');
 var routes = require('./routes');
+var auth = require('./authentication');
 
 var app = express();
 var appDir =  __dirname+'/../zza';
