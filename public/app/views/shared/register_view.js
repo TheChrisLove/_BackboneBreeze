@@ -78,31 +78,29 @@ define([
 
         _createPatient: function(email, zipcode){
           // create user
-          var user = app.api.manager.createEntity('User', {
-            AccountType: 'Patient',
-            Email: email 
-          });
+          app.user.createUser(email, 'Patient').then(function(user){
 
-          app.api.manager.saveChanges([user]).then(function(data){
-            var patient = app.api.manager.createEntity('Patient', {
-              Email: email,
-              Zipcode: zipcode,
-              UserId: user.get('_id')
-            });
-
-            app.api.manager.saveChanges([patient]).then(function(data){
-
-              app.user.set({
-                info:  user, 
-                loggedIn: true
-              });
-              app.user.loginSuccess(user, {
-                Patient: 'patient/createCase',
-                Doctor: 'doctors/cases'
+              var patient = app.api.manager.createEntity('Patient', {
+                Email: email,
+                Zipcode: zipcode,
+                UserId: user.get('_id')
               });
 
-            });
-          });
+              app.api.manager.saveChanges([patient]).then(function(data){
+
+                app.user.set({
+                  info:  user, 
+                  loggedIn: true,
+                  authenticated: true
+                });
+                app.user.loginSuccess(user, {
+                  Patient: 'patient/createCase',
+                  Doctor: 'doctors/cases'
+                });
+
+              });
+
+          })
         },
 
 
@@ -118,12 +116,7 @@ define([
           delete opts.CreditCardExpiration;
           delete opts.AccountType;
 
-          var user = app.api.manager.createEntity('User', {
-            AccountType: 'Doctor',
-            Email: opts.Email 
-          });
-
-          app.api.manager.saveChanges([user]).then(function(data){
+          app.user.createUser(opts.Email, 'Doctor').then(function(user){
             opts.UserId = user.get('_id');
             var doctor = app.api.manager.createEntity('Doctor', opts);
 

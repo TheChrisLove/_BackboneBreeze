@@ -26,6 +26,7 @@ define([
         defaults: {
             username: "",
             password: "",
+            authenticated: false,
             loggingIn: false,
             loggedIn: false,
             info: null,
@@ -48,6 +49,18 @@ define([
 
         },
 
+        authenticate: function(){
+            var _this = this;
+            return $.get('/auth/verify', {
+                username: this.get('username'),
+                password: this.get('password')
+            }, function(data){
+                console.log('data')
+                if(data.authenticated) _this.set('authenticated', data.authenticated);
+                return data;
+            });
+        },
+
         /**
          * Login function retrieves user credentials
          */
@@ -61,7 +74,6 @@ define([
             };
 
             var _this = this;
-            this.set('loggedIn', true);
 
             return app.api.breeze.EntityQuery
                 .from('Users')
@@ -72,6 +84,8 @@ define([
                     // Determine user type
                     var user = data.results[0];
                     var type = user.get('AccountType');
+                    // Need to update this... firing sequence of loggin in is off
+                    // the check for get type below is basically an expand, auth should happen here or not
                     if(!user.get(type)){
                         app.api.breeze.EntityQuery
                             .from(type + 's')
@@ -79,9 +93,22 @@ define([
                             .where('UserId', 'Equals', user.get('_id'))
                             .execute()
                             .then(function(data){
-                                _this.loginSuccess(user, args.noRedirect);
+                                if(!_this.get('authenticated')) _this.authenticate().then(function(authenticated){
+                                    if(_this.get('authenticated')) return _this.loginSuccess(user, args.noRedirect);
+                                    else {
+                                        var modal = {
+                                            title: 'Oops! Unable to login...',
+                                            content: 'The password you entered does not match the password for this account.  Please try again.'
+                                        };
+                                        if(authenticated.locked) modal.content = 'This account is temporarily locked.  Please try again later.';
+                                        app.modal.show(modal);
+                                        _this.set('loggingIn', false);
+                                        return false;
+                                    }
+                                });
+                                else _this.loginSuccess(user, args.noRedirect);
                             });
-                    } else _this.loginSuccess(user, args.noRedirect);
+                    } 
                 });
         },
 
@@ -92,6 +119,7 @@ define([
          */
         loginSuccess: function(user, noRedirect) {
             var type = user.get('AccountType');
+            this.set('loggedIn', true);
             this.set('info', user);
 
             if(noRedirect && !_.isBoolean(noRedirect)){
@@ -130,6 +158,7 @@ define([
                 app.timer.killSubscriber('idleUser');
             });
 
+            return true;
         },
 
         /**
@@ -137,7 +166,7 @@ define([
          * @returns {Boolean} If user is valid or not.
          */
         verify: function() {
-            if (this.get('info') && this.get('info').get('_id')) return true;
+            if (this.get('authenticated') && this.get('info').get('_id')) return true;
             else return false;
         },
 
@@ -156,6 +185,35 @@ define([
             // window.location.href = window.location.origin + window.location.pathname {Window re-direct works in all browsers};
             //window.location.href = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
             if(redirect !== false) window.location.reload();
+        },
+
+        resetPassword: function(){
+
+        },
+
+        createUser: function(email, type, set){
+            var opts = {
+                AccountType: type,
+                Email: email
+            };
+
+            var _set = set;
+            var user = app.api.manager.createEntity('User', opts);
+
+            return app.api.manager.saveChanges([user]).then(function(data){
+                var user = data.entities[0];
+                
+                return  Q.when($.get('/auth/create', opts), function(data){
+                    // TODO not sure if anything to do here
+                    if(_set) app.user.set({
+                        info: user, 
+                        loggedIn: true,
+                        authenticated: true
+                    });
+
+                    return user;
+                });
+            });
         }
 
     });

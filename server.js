@@ -30,6 +30,7 @@ app.configure(function(){
 
     /* '/breeze/zza' API routes */
 app.configure(function() {
+    app.get('/auth/update', auth.updatePassword);
     app.get('/auth/verify', auth.authenticate);
     app.get('/auth/create', auth.createUser);
     app.get('/breeze/zza/Metadata', routes.getMetadata);

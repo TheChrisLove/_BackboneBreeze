@@ -74,26 +74,22 @@ define([
                   })
                 } else {
                   // create user
-                  var user = app.api.manager.createEntity('User', {
-                    AccountType: 'Patient',
-                    Email: _this.get('email')
-                  });
-
-                  app.api.manager.saveChanges([user]).then(function(data){
-                    var patient = app.api.manager.createEntity('Patient', {
-                      Email: _this.get('email'),
-                      Zipcode: _this.get('newCase').get('Zipcode'),
-                      UserId: user.get('_id')
-                    });
-
-                    app.api.manager.saveChanges([patient]).then(function(data){
-                      _this.get('user').set({
-                        info:  user, 
-                        loggedIn: true
+                  app.user.createUser(_this.get('email'), 'Patient').then(function(user){
+                      var patient = app.api.manager.createEntity('Patient', {
+                        Email: _this.get('email'),
+                        Zipcode: _this.get('newCase').get('Zipcode'),
+                        UserId: user.get('_id')
                       });
-                      _this._createCase();
 
-                    });
+                      app.api.manager.saveChanges([patient]).then(function(data){
+                        _this.get('user').set({
+                          info:  user, 
+                          loggedIn: true,
+                          authenticated: true
+                        });
+                        _this._createCase();
+
+                      });
                   });
                 }
             });

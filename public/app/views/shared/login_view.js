@@ -38,8 +38,8 @@ define([
             this.model.set("error_message", "");
             var btn = $('.js-loginButton', this.$el)
             btn.button('loading');
-            this.model.login().fail(function(){
-                btn.reset();
+            this.model.login().then(function(){
+                btn.button('reset');
             });
             
 //            app.modal.show({
