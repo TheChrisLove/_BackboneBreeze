@@ -17,6 +17,7 @@ exports.updatePassword = function(req, res, next){
         if(passport){
 
             passport.set('password', req.query.newPassword);
+            passport.set('resetToken', null);
             passport.save(function(err) {
                 if (err) throw err;
 
@@ -27,6 +28,9 @@ exports.updatePassword = function(req, res, next){
                 };
 
                 mailer.send(mailOptions);
+                res.send({
+                    success: 'Password Updated'
+                });
             });
 
         } else {
@@ -35,9 +39,54 @@ exports.updatePassword = function(req, res, next){
     });
 }
 
-// TODO
-exports.resetPassword = function(req, res, next){
+exports.resetConfirm = function(req, res, next){
+    var response = {
+        authenticated: false
+    };
 
+    if(!req.query.Email) res.send(response);
+
+    Passport.findOne({ username: req.query.Email }, function(err, passport){
+        if(!passport) res.send({
+            error: 'Unable to reset password'
+        });
+
+        if(req.query.resetToken == passport.get('resetToken')) res.send({ authenticated: true });
+        else res.send(response);
+    });
+}
+
+exports.resetRequest = function(req, res, next){
+    var response = {
+        authenticated: false
+    };
+
+    if(!req.query.Email) res.send(response);
+
+    Passport.findOne({ username: req.query.Email }, function(err, passport){
+        if(!passport) res.send({
+            error: 'Unable to reset password'
+        });
+
+        var token = generatePassword(12, false);
+
+        passport.set('resetToken', token);
+        passport.save(function(err){
+            if (err) throw err;
+
+            // TODO get server name for passport request link
+            var mailOptions = {
+                to : req.query.Email,
+                subject: 'Password Reset Request',
+                text: 'To reset your password, visit ' + token  
+            };
+
+            mailer.send(mailOptions);
+            res.send({
+                success: 'Reset token sent to ' + req.query.email
+            });
+        })
+    });
 }
 
 exports.createPassport = function(req, res, next){

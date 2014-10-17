@@ -10,7 +10,7 @@ var UserSchema = new Schema({
     password: { type: String, required: true },
     loginAttempts: { type: Number, required: true, default: 0 },
     lockUntil: { type: Number },
-    resetToken: { type: Number}
+    resetToken: { type: String }
 });
 
 UserSchema.statics.failedLogin = {

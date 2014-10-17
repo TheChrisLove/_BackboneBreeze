@@ -33,6 +33,8 @@ app.configure(function() {
     app.get('/auth/update', auth.updatePassword);
     app.get('/auth/verify', auth.authenticate);
     app.get('/auth/create', auth.createPassport);
+    app.get('/auth/resetRequest', auth.resetRequest);
+    app.get('/auth/resetConfirm', auth.resetConfirm);
     app.get('/breeze/zza/Metadata', routes.getMetadata);
     app.post('/breeze/zza/SaveChanges', routes.saveChanges);
     app.get('/breeze/zza/Patients', routes.getPatients); 
