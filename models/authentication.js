@@ -1,20 +1,10 @@
 var mongoose = require('mongoose'),
 	Passport = require('./passport'),
-    nodemailer = require('nodemailer'),
     mailer = require('./mailer'),
     generatePassword = require('password-generator');
 
-// create reusable transporter object using SMTP transport
-var transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'ben.g.hron@gmail.com',
-        pass: 'hron41380'
-    }
-});
-
+// Connect to database
 mongoose.connect('mongodb://localhost/bidclinic');
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -88,21 +78,12 @@ exports.createPassport = function(req, res, next){
             auth(req.query.Email, password, function(passport, reason){
                 if(passport){
                     var mailOptions = {
-                        from: 'bidclinic<info@bidclinic.com>', // sender address
                         to: req.query.Email, // list of receivers
-                        //to: 'bghron@gmail.com',
                         subject: 'Account Created', // Subject line
                         text: 'Welcome to BidClinic!  Your account has been created.  Your new password is ' + password // plaintext body
                     };
 
-                    // send mail with defined transport object
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if(error){
-                            console.log(error);
-                        }else{
-                            console.log('Message sent: ' + info.response);
-                        }
-                    });
+                    mailer.send(mailOptions);
 
                     response.authenticated = true;
                     res.send(response);
