@@ -9,36 +9,25 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 
-// TODO
 exports.updatePassword = function(req, res, next){
     var response = { authenticated: false };
     if(!req.query.password || !req.query.username) res.send(response);
 
-    auth(req.query.username, req.query.password, function(user, reason){
-        if(user){
+    auth(req.query.username, req.query.password, function(passport, reason){
+        if(passport){
 
-            // TODO update user with new password then save
-            /*
-            newUser.save(function(err) {
+            passport.set('password', req.query.newPassword);
+            passport.save(function(err) {
                 if (err) throw err;
 
                 var mailOptions = {
-                    from: 'bidclinic<info@bidclinic.com>', // sender address
                     to: req.query.username, // list of receivers
                     subject: 'Password Updated', // Subject line
                     text: 'Your password has been updated.' // plaintext body
                 };
 
-                // send mail with defined transport object
-                transporter.sendMail(mailOptions, function(error, info){
-                    if(error){
-                        console.log(error);
-                    }else{
-                        console.log('Message sent: ' + info.response);
-                    }
-                });
+                mailer.send(mailOptions);
             });
-            */
 
         } else {
             res.send({ err: 'User Not Found'});
