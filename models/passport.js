@@ -122,4 +122,4 @@ UserSchema.statics.getAuthenticated = function(username, password, cb) {
     });
 };
 
-module.exports = mongoose.model('Password', UserSchema);
+module.exports = mongoose.model('Passport', UserSchema);

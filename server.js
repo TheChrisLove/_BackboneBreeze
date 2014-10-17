@@ -1,7 +1,7 @@
 var fs = require("fs");
 var express = require('express');
 var routes = require('./routes');
-var auth = require('./authentication');
+var auth = require('./models/authentication');
 
 var app = express();
 var appDir =  __dirname+'/../zza';
@@ -32,7 +32,7 @@ app.configure(function(){
 app.configure(function() {
     app.get('/auth/update', auth.updatePassword);
     app.get('/auth/verify', auth.authenticate);
-    app.get('/auth/create', auth.createUser);
+    app.get('/auth/create', auth.createPassport);
     app.get('/breeze/zza/Metadata', routes.getMetadata);
     app.post('/breeze/zza/SaveChanges', routes.saveChanges);
     app.get('/breeze/zza/Patients', routes.getPatients); 

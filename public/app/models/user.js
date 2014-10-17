@@ -51,11 +51,10 @@ define([
 
         authenticate: function(){
             var _this = this;
-            return $.get('/auth/verify', {
+            return Q.when($.get('/auth/verify', {
                 username: this.get('username'),
                 password: this.get('password')
-            }, function(data){
-                console.log('data')
+            }), function(data){
                 if(data.authenticated) _this.set('authenticated', data.authenticated);
                 return data;
             });
@@ -83,32 +82,35 @@ define([
                 .then(function(data){
                     // Determine user type
                     var user = data.results[0];
+                    if(!user) return app.modal.show({
+                        title: 'Oops',
+                        content: 'Unable to log in at this time.  Please verify email and password and try again.'
+                    });
+
                     var type = user.get('AccountType');
                     // Need to update this... firing sequence of loggin in is off
                     // the check for get type below is basically an expand, auth should happen here or not
-                    if(!user.get(type)){
-                        app.api.breeze.EntityQuery
-                            .from(type + 's')
-                            .using(app.api.manager)
-                            .where('UserId', 'Equals', user.get('_id'))
-                            .execute()
-                            .then(function(data){
-                                if(!_this.get('authenticated')) _this.authenticate().then(function(authenticated){
-                                    if(_this.get('authenticated')) return _this.loginSuccess(user, args.noRedirect);
-                                    else {
-                                        var modal = {
-                                            title: 'Oops! Unable to login...',
-                                            content: 'The password you entered does not match the password for this account.  Please try again.'
-                                        };
-                                        if(authenticated.locked) modal.content = 'This account is temporarily locked.  Please try again later.';
-                                        app.modal.show(modal);
-                                        _this.set('loggingIn', false);
-                                        return false;
-                                    }
-                                });
-                                else _this.loginSuccess(user, args.noRedirect);
+                    app.api.breeze.EntityQuery
+                        .from(type + 's')
+                        .using(app.api.manager)
+                        .where('UserId', 'Equals', user.get('_id'))
+                        .execute()
+                        .then(function(data){
+                            if(!_this.get('authenticated')) _this.authenticate().then(function(authenticated){
+                                if(_this.get('authenticated')) return _this.loginSuccess(user, args.noRedirect);
+                                else {
+                                    var modal = {
+                                        title: 'Oops! Unable to login...',
+                                        content: 'The password you entered does not match the password for this account.  Please try again.'
+                                    };
+                                    if(authenticated.locked) modal.content = 'This account is temporarily locked.  Please try again later.';
+                                    app.modal.show(modal);
+                                    _this.set('loggingIn', false);
+                                    return false;
+                                }
                             });
-                    } 
+                            else _this.loginSuccess(user, args.noRedirect);
+                        });
                 });
         },
 
