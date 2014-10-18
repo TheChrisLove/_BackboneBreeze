@@ -116,8 +116,8 @@ exports.createPassport = function(req, res, next){
             auth(req.query.Email, password, function(passport, reason){
                 if(passport){
                     var mailOptions = {
-                        //to: req.query.Email, // list of receivers
-                        to: 'bghron@gmail.com',
+                        to: req.query.Email, // list of receivers
+                        //to: 'bghron@gmail.com',
                         subject: 'Account Created', // Subject line
                         text: 'Welcome to BidClinic!  Your account has been created.  Your new password is ' + password // plaintext body
                     };
