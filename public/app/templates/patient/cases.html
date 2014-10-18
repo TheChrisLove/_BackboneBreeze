@@ -21,7 +21,38 @@
 				</div>
 			</div>
 		-->
-			
+
+
+
+
+
+
+
+
+<div class="row">
+<form class="form-horizontal" role="form" style="width: 100%;">
+<!-- ko foreach: _columns -->
+    <!-- ko if: active  && (name() == 'Description' || name() == 'Zipcode' ) -->
+    <div class="col-md-6">
+	    <div data-bind="attr: { 'data-type' : type, 'data-prop' : prop }, css: { inSort: $parent.sortEnabled() == true , filtered: filtered}">
+
+  <div class="form-group form-group-lg" style="margin-bottom: 0px;">
+    <div class="col-sm-12">
+
+    <div class="input-group input-group-sm">
+      <input type="text" class="form-control search" placeholder="Search..." data-bind="attr: { 'data-prop' : prop,  placeholder : 'Search cases by ' + name() }, value: value ">
+      <span class="input-group-addon searchGo"><span class="glyphicon glyphicon-search"></span></span>
+    </div>
+    </div>
+  </div>
+
+	    </div>
+	</div>
+    <!-- /ko -->
+<!-- /ko -->
+</form>
+</div>
+
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="case_list grid_view collection-list"></ul>
