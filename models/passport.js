@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
+    bcrypt = require('bcrypt-nodejs'),
     SALT_WORK_FACTOR = 10,
     MAX_LOGIN_ATTEMPTS = 5,
     LOCK_TIME = 2 * 60 * 60 * 1000;
@@ -35,7 +35,7 @@ UserSchema.pre('save', function(next) {
         if (err) return next(err);
 
         // hash the password along with our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, null, function(err, hash) {
             if (err) return next(err);
 
             // override the cleartext password with the hashed one
