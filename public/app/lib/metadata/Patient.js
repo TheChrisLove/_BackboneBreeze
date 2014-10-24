@@ -19,10 +19,14 @@ define([], function() {
             }
           ]
         },
-        { "name": "Email", "dataType": "String" },
+        { "name": "FirstName", "dataType": "String" },
+        { "name": "LastName", "dataType": "String" },
+        { "name": "Address", "dataType": "String" },
+        { "name": "City", "dataType": "String" },
+        { "name": "State", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
+        { "name": "Email", "dataType": "String" },
         { "name": "Phone", "dataType": "String" },
-        { "name": "Password", "dataType": "String" },
         { "name": "MobilePhone", "dataType": "String" },
         { "name": "Rating", "dataType": "String" },
         { "name": "UserId", "dataType" : "MongoObjectId" }

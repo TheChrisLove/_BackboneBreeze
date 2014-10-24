@@ -27,6 +27,7 @@ require.config({
         Q: "../vendor/q", // Version 1, https://github.com/kriskowal/q
         metadata: "metadata",
         saveQueuing: "../vendor/extensions/breeze.savequeuing",
+        datajs: "../vendor/datajs-1.0.1.min",
 
         // Backbone Extensions
         layoutmanager: "../vendor/extensions/backbone-layoutmanager", // Version 0.9.4, https://github.com/tbranyen/backbone.layoutmanager

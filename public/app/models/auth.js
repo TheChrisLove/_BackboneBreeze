@@ -27,8 +27,12 @@ define([
 
         },
 
-        updatePassword: function(form){
-          return Q.when($.get('/auth/updatePassword', form));
+        updatePassword: function(user, password, newPassword){
+          return Q.when($.get('/auth/update', {
+            username: user.get('username'),
+            password: password,
+            newPassword: newPassword
+          }));
         },
 
         getUpdatePasswordView: function(){

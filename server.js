@@ -3,18 +3,41 @@ var express = require('express');
 var routes = require('./routes');
 var auth = require('./models/authentication');
 
+require('jaydata');
+require('q');
+require('./models/product');
+
+window.DOMParser=require('xmldom').DOMParser;
+
+var CronJob = require('cron').CronJob;
+// TODO implement cron to check expired dates on cases and close as necessary
+/*
+new CronJob('* * * * * *', function(){
+    console.log('You will see this message every second');
+}, null, true, "America/Los_Angeles");
+*/
+
 var app = express();
 var appDir =  __dirname+'/../zza';
 var expressAppdir =  __dirname+'/public';
 
 app.configure(function(){
+    app.use(express.query());
+    app.use(express.cookieParser());
+    app.use(express.methodOverride());  // for full REST ... if we need it
+    app.use(express.session({secret: 'session key'}));
+    app.use(express.bodyParser());
+
+    app.use("/api", $data.JayService.OData.Utils.simpleBodyReader());
+    app.use("/api", $data.JayService.createAdapter(api.Context, function (req, res) {
+        return new api.Context({name: "mongoDB", databaseName:"bidclinic", address: "localhost", port: 27017 });
+    }));
+
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.compress());
     app.use('/', express.static(expressAppdir)); // look for overrides on express server 1st
     app.use('/', express.static(appDir));        // then look in regular zza
-    app.use(express.bodyParser());
-   // app.use(express.methodOverride());  // for full REST ... if we need it
     app.use(app.router);
 });
 
