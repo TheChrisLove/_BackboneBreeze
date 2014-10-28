@@ -208,6 +208,7 @@ define([
                 return  Q.when($.get('/auth/create', opts), function(data){
                     // TODO not sure if anything to do here
                     if(_set) app.user.set({
+                        username: opts.Email,
                         info: user, 
                         loggedIn: true,
                         authenticated: true

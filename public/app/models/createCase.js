@@ -9,28 +9,21 @@ define([
     var Model = Backbone.Model.extend({
 
         defaults: {
-	    	newCase: new Backbone.Model({
-	            "Description" : '',
-	            "ImageUrl" : '', 
-	            "Zipcode" : '', 
-	            "PatientId" : '',
-              "Created" : null,
-              "PatientEmail" : null
-	          }),
 	          email: '',
 	          user: app.user
         },
 
-        start: function (attributes, options) {
-          _.bindAll(this, '_createCase', 'createCase')
+        initialize: function (attributes, options) {
+          _.bindAll(this, '_createCase', 'createCase');
+          this.set('newCase', app.api.manager.createEntity('Case'))
          },
 
         _createCase: function(){
           this.get('newCase').set('PatientId', this.get('user').get('info').get('Patient').get('_id'));
           this.get('newCase').set('PatientEmail', this.get('user').get('info').get('Patient').get('Email'));
           this.get('newCase').set("Created", new Date());
-          var newCase = app.api.manager.createEntity('Case', this.get('newCase').toJSON());
-          return app.api.manager.saveChanges([newCase]).then(function(){
+          //var newCase = app.api.manager.createEntity('Case', this.get('newCase').toJSON());
+          return app.api.manager.saveChanges([this.get('newCase')]).then(function(){
              app.router.go('/patient/caseCreated/');
           });
         },

@@ -186,41 +186,78 @@ $(function() {
             <div class="wrap">
                 <div class="well" style="border-color: #694D9F; border-width:2px; background-color: #FFF;">
                 <p class="form-title">You are the Best Pet Owner ... EVER!</p>
-                <form class="login" role="form">
-                <div class="form-group">
-<!--                    <label for="Description">Description</label>-->
-                    <textarea type="text" class="form-control" id="Description" placeholder="Briefly tell us about your case" data-bind="value: Description" autofocus=autofocus></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="input-group image-preview">
-                        <input type="text" class="form-control image-preview-filename" placeholder="Upload an image" disabled="disabled"> 
-                        <!-- don't give a name === doesn't send on POST/GET -->
-                        <span class="input-group-btn">
-                            <!-- image-preview-clear button -->
-                            <button type="button" class="btn btn-primary image-preview-clear" style="display:none;">
-                                <span class="glyphicon glyphicon-remove"></span> Clear
-                            </button>
-                            <!-- image-preview-input -->
-                            <div class="btn btn-primary image-preview-input">
-                                <span class="glyphicon glyphicon-folder-open"></span>
-                                <span class="image-preview-input-title">Browse</span>
-                                <input type="file" accept="image/png, image/jpeg, image/gif" name="caseInput-file-preview" class="form-control" id="ImageUrl" placeholder="Enter Image Url" data-bind="value: ImageUrl"/> 
-                            </div>
-                        </span>
-                    </div>
-                </div>
+                <form class="form-horizontal bannerForm" role="form">
+                                          <fieldset>
+                                        <div class="form-group">
+                                            <div class="col-md-12">                        
+                                            <textarea type="text" rows="3" class="form-control" id="Description" placeholder="Briefly tell us about your case" data-bind="value: Description" autofocus=autofocus>
+                                            </textarea>
+                                            </div>
+                                        </div>
 
-                <div class="form-group" data-bind="visible: !loggedIn()">
-<!--                    <label for="Email">Email address</label>-->
-                    <input type="email" class="form-control" id="Email" placeholder="Enter email address" data-bind="value: Email">
-                </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12">                        
+                                                <select class="form-control" data-bind="value: PetType">
+                                                  <option>What type of pet do you have?</option>
+                                                  <option value="Dog" >Dog</option>
+                                                  <option value="Cat" >Cat</option>
+                                                  <option value="Bird" >Bird</option>
+                                                  <option value="Reptile" >Reptile</option>
+                                                  <option value="Exotic" >Exotic</option>
+                                                  <option value="Small Animal" >Small Mammal</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
-                <div class="form-group">
-<!--                    <label for="Zipcode">Zipcode</label>-->
-                    <input type="text" class="form-control" id="Zipcode" placeholder="Enter Zipcode" data-bind="value: Zipcode">
-                </div>
-                    <input type="submit" class="btn js-createCase" value="Create Case" style="background-color: #694D9F; color: #FFF;"/>
-                </form>
+                                        <div class="form-group">
+                                            <div class="col-md-12">                        
+                                                <select class="form-control" data-bind="value: CaseType">
+                                                  <option>Whom are you looking for?</option>
+                                                  <option value="Veterinarian" >Veterinarians</option>
+                                                  <option value="Dog Walker" >Dog Walkers</option>
+                                                  <option value="Groomer" >Groomers</option>
+                                                  <option value="Sitter" >Sitters</option>
+                                                  <option value="Trainer" >Trainers</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                            <input type="email" class="form-control" id="Email" placeholder="Enter an Image Link" data-bind="value: ImageUrl">                        </div>
+                                        </div>
+
+                                        <!--
+                                        <div class="form-group">
+                                            <div class="input-group image-preview">
+                                                <input type="text" class="form-control image-preview-filename" placeholder="Upload an image" > 
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-primary image-preview-clear" style="display:none;">
+                                                        <span class="glyphicon glyphicon-remove"></span> Clear
+                                                    </button>
+                                                    <div class="btn btn-primary image-preview-input">
+                                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                                        <span class="image-preview-input-title">Browse</span>
+                                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="caseInput-file-preview" class="form-control" id="ImageUrl" placeholder="Enter Image Url" /> 
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        -->
+
+                                        <div class="form-group" data-bind="visible: !loggedIn()">
+                                            <div class="col-md-12">
+                                            <input type="email" class="form-control" id="Email" placeholder="Enter Your Email" data-bind="value: Email">                        </div>
+                                        </div>
+
+                                        <div class="form-group" data-bind="visible: !loggedIn()">
+                                            <div class="col-md-12">
+                                            <input type="text" class="form-control" id="Zipcode" placeholder="Enter Your Zipcode" data-bind="value: Zipcode">                 </div>
+                                        </div>
+                                            <a type="submit" class="btn js-createCase">
+                                        <i class="glyphicon glyphicon-ok"></i> Create Case</a>
+                                        </fieldset>
+                                      </form>
                     </div>
             </div>
         </div>

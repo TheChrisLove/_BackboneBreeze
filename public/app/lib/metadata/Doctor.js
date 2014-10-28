@@ -19,6 +19,8 @@ define([], function() {
             }
           ]
         },
+        { "name": "ProviderType", "dataType": "String" },
+        { "name": "PracticeAdmin", "dataType": "String", "defaultValue": true },
         { "name": "FirstName", "dataType": "String" },
         { "name": "LastName", "dataType": "String" },
         { "name": "VetLicenseNumber", "dataType": "String" },
@@ -27,13 +29,11 @@ define([], function() {
         { "name": "State", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
         { "name": "Phone", "dataType": "String" },
-        { "name": "Phone", "dataType": "String" },
         { "name": "Email", "dataType": "String" },
         { "name": "Website", "dataType": "String" },
         { "name": "PracticeName", "dataType": "String" },
         { "name": "ImageUrl", "dataType": "String" },
-        { "name": "Password", "dataType": "String" },
-        { "name": "Rating", "dataType": "Number" },
+        { "name": "Rating", "dataType": "Number", "defaultValue" : 1 },
         { "name": "UserId", "dataType" : "MongoObjectId" }
       ],
       "navigationProperties":[

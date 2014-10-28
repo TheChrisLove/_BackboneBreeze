@@ -7,8 +7,9 @@ define([
   'modules/grid/grid_module',
   'views/shared/login_view',
  'views/patient/case_row_view',
-  'modules/grid/grid_wrapper_view'
-], function (_, Backbone, View, Controller, Grid, LoginView, CaseRowView, GridWrapper) {
+  'modules/grid/grid_wrapper_view',
+  'views/patient/settings_view'
+], function (_, Backbone, View, Controller, Grid, LoginView, CaseRowView, GridWrapper, SettingsView) {
     "use strict";
 
     var BasicController = Controller.extend({
@@ -29,10 +30,18 @@ define([
                           template: 'app/templates/patient/cases.html'
                         });
 
+                    var zipcode = (app.user.get('info') && 
+                                   app.user.get('info').get('Doctor') && 
+                                   app.user.get('info').get('Doctor').get('Zipcode')) ? app.user.get('info').get('Doctor').get('Zipcode') : null;
+                    var predicate = (zipcode) ? app.api.breeze.Predicate.create('Zipcode', 'Equals', zipcode) : null;
+                    var _filters = (predicate) ? { Zipcode: predicate } : {};
+
                     var grid = new Grid({
                         title: 'View/Search Cases',
                         resource: 'Cases',
                         wrapper: wrapper,
+                        //predicate: (predicate) ? predicate : null,
+                        _filters: _filters,
                         row: CaseRowView,
                         defaultSort: {
                           prop: '_id',
@@ -77,11 +86,36 @@ define([
                 }
               },
               profile: {
-                name : 'Account Settings',
+                name: 'Account Settings',
                 isVisible: function(){
-                  return app.user.verify();
+                  return app.user.get('loggedIn'); 
                 },
-                fn: function(args){
+                fn: function(args) {
+                  if(!app.user.verify()) app.router.go('/');
+                  else {
+                    this.cleanViews();
+                    var view = SettingsView.extend({
+                      createViewModel: function(){
+                        return kb.viewModel(app.user.get('info').get('Doctor'));
+                      },
+                      template: 'app/templates/doctors/settings.html'
+                    })
+                    this.setView(new view());
+                  }
+                }
+              },
+              practice: {
+                fn: function(){
+                  var vetLicenseNumber = app.user.get('info').get('Doctor').get('VetLicenseNumber');
+                  var predicate = app.api.breeze.Predicate.create('VetLicenseNumber', 'Equals', vetLicenseNumber);
+
+                  var grid = new Grid({
+                    resource: 'Doctors',
+                    predicate: predicate
+                  });
+
+                  this.cleanViews();
+                  this.setView(grid.getView());
 
                 }
               },

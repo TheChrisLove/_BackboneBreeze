@@ -25,10 +25,9 @@ define([
           'click .js-createCase' : 'createCase'
         },
 
-        model : new CaseCreationModel(),
-
         start: function(options){
           _.bindAll(this, 'createCase');
+          this.model = new CaseCreationModel();
         },
 
         createViewModel: function(){

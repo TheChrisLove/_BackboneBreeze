@@ -1,0 +1,62 @@
+<form role="form">
+<div class="col-md-6">
+	<div class="form-group">
+	    <label for="Description">First Name</label>
+	    <input type="text" class="form-control" data-bind="value: FirstName">
+	</div>
+
+	<div class="form-group">
+	    <label for="Description">Last Name</label>
+	    <input type="text" class="form-control" data-bind="value: LastName">
+	</div>
+
+	<div class="form-group">
+	    <label for="Description">Practice Name</label>
+	    <input type="text" class="form-control" data-bind="value: PracticeName">
+	</div>
+
+	<div class="form-group">
+	    <label for="Description">Website Address</label>
+	    <input type="text" class="form-control" data-bind="value: Website">
+	</div>
+
+	
+	<div class="form-group">
+	    <label for="ImageUrl">Phone</label>
+	    <input type="text" class="form-control" id="ImageUrl" placeholder="Enter Phone Number" data-bind="value: Phone">
+	</div>
+
+</div>
+<div class="col-md-6">
+
+<div class="form-group">
+	    <label for="Description">Address</label>
+	    <input type="text" class="form-control" data-bind="value: Address">
+	</div>
+	<div class="form-group">
+	    <label for="Description">City</label>
+	    <input type="text" class="form-control" data-bind="value: City">
+	</div>
+	<div class="form-group">
+	    <label for="Description">State</label>
+	    <input type="text" class="form-control" data-bind="value: State">
+	</div>
+
+		<div class="form-group">
+	    <label for="Description">Zip Code</label>
+	    <input type="text" class="form-control" data-bind="value: Zipcode">
+	</div>
+
+	<div class="form-group">
+	    <label for="Description">Email</label>
+	    <input type="text" class="form-control" id="Description" placeholder="Enter Email" data-bind="value: Email">
+	</div>
+	
+</div>
+<p class="text-right">
+	<span data-bind="visible: PracticeAdmin" class="btn btn-primary link" data-href="doctors/practice">Manage Practice</span>&nbsp;&nbsp;&nbsp;
+	<span class="btn btn-primary js_changePassword">Change Password</span>&nbsp;&nbsp;&nbsp;
+	<button type="submit" class="btn btn-primary pull-right">Save Changes</button>
+</p>
+
+</form>

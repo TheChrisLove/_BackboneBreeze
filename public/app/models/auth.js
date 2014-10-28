@@ -29,7 +29,7 @@ define([
 
         updatePassword: function(user, password, newPassword){
           return Q.when($.get('/auth/update', {
-            username: user.get('username'),
+            username: user.get('info').get('Email'),
             password: password,
             newPassword: newPassword
           }));

@@ -20,6 +20,15 @@ define([], function() {
           ]
         },
         { "name": "Created", "dataType" : "DateTime"},
+        { "name": "CaseStatus", "dataType" : "String", "defaultValue" : "Open"},
+        { "name": "CaseType", "dataType": "String" },
+        { "name": "PetType", "dataType": "String" },
+        { "name": "Expiration", "dataType": "DateTime", 
+          "defaultValue" : (function(){
+            var d = new Date();
+            d.setDate(d.getDate()+30);
+            return d.toDateString();
+          })()},
         { "name": "Description", "dataType": "String" },
         { "name": "ImageUrl", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
