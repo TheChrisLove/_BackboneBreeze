@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    mongodb = require('mongodb'),
 	Passport = require('./passport'),
     mailer = require('./mailer'),
     generatePassword = require('password-generator');

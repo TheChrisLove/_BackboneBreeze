@@ -9,14 +9,6 @@ require('./models/product');
 
 window.DOMParser=require('xmldom').DOMParser;
 
-var CronJob = require('cron').CronJob;
-// TODO implement cron to check expired dates on cases and close as necessary
-/*
-new CronJob('* * * * * *', function(){
-    console.log('You will see this message every second');
-}, null, true, "America/Los_Angeles");
-*/
-
 var app = express();
 var appDir =  __dirname+'/../zza';
 var expressAppdir =  __dirname+'/public';
@@ -59,6 +51,7 @@ app.configure(function() {
     app.get('/auth/resetRequest', auth.resetRequest);
     app.get('/auth/resetConfirm', auth.resetConfirm);
     app.get('/breeze/zza/Metadata', routes.getMetadata);
+    app.get('/test', routes.test);
     app.post('/breeze/zza/SaveChanges', routes.saveChanges);
     app.get('/breeze/zza/Patients', routes.getPatients); 
     app.get('/breeze/zza/Bids', routes.getBids); 

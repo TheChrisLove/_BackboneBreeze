@@ -103,6 +103,7 @@ define([
                       var grid = new Grid({
                         title: 'View Cases',
                         resource: 'Cases',
+                        limit: 12,
                         wrapper: wrapper,
                         row: CaseRowView,
                         columns: {

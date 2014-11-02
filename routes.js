@@ -1,6 +1,7 @@
 var mongodb = require('mongodb');
 var fs = require('fs');
 var breezeMongo = require('breeze-mongodb');
+var mailer = require('./models/mailer');
 var metadata;
 
 var host = 'localhost';
@@ -14,6 +15,41 @@ var db = new mongodb.Db(dbName, dbServer, {
     safe: true
 });
 db.open(function () {/* noop */ });
+
+var CronJob = require('cron').CronJob;
+new CronJob('00 00 12 * * *', function(){
+    var query = {
+        Expiration: { $gte : new Date()},
+        CaseStatus: { $ne : 'Closed'}
+    };
+
+    var collection = db.collection('Cases');
+    var cursor = collection.find(query);
+    cursor.each(function(err, item){
+        var mailOptions = {
+            to: item.PatientEmail, // list of receivers
+            subject: 'Case Expired...', // Subject line
+            text: 'Your case has expired: "' + item.Description + '"'
+        };
+        mailer.send(mailOptions);
+    })
+    collection.update(query,
+        {
+            $set : {
+                CaseStatus: "Closed"
+            }
+        },
+        {
+            multi: true,
+            raw: true
+        },
+        function(err,count, status){
+            if(err) console.log(err); 
+            else {
+                console.log(status);
+            }
+        });
+}, null, true, "America/Los_Angeles");
 
 exports.getMetadata = function(req, res, next) {
     if (!metadata){ getMetadataFromScriptFile();  }
@@ -34,6 +70,10 @@ exports.getMetadata = function(req, res, next) {
             metadataSrc.lastIndexOf('}')+1); // end with last '}'
     }
 }
+
+exports.test = function(req, res, next){
+    
+};
 
 exports.get = function (req, res, next) {
     var slug = req.params.slug;
@@ -188,12 +228,30 @@ function processResults(res, next) {
     }
 }
 
+function checkCases(req){
+    if(req.body && req.body.entities){
+        for(var i = 0, ii = req.body.entities.length; i < ii; i++){
+            if(req.body.entities[i].entityAspect.entityTypeName == 'Case:#dm'){
+                var mailOptions = {
+                    to: req.body.entities[i].PatientEmail, // list of receivers
+                    subject: 'New Incoming Bid!', // Subject line
+                    text: 'Someone has bid on one of your cases.  Login now to see more.' // plaintext body
+                };
+
+                mailer.send(mailOptions);
+            }
+        }
+
+    }
+}
+
 /*** Save Changes ***/
 
 exports.saveChanges = function(req, res, next) {
     var saveHandler = new breezeMongo.MongoSaveHandler(db, req.body, processResults(res, next));
     saveHandler.beforeSaveEntity = beforeSaveEntity;
     saveHandler.beforeSaveEntities = beforeSaveEntities;
+    checkCases(req);
     saveHandler.save();
 };
 
