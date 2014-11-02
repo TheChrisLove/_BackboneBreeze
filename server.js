@@ -2,6 +2,7 @@ var fs = require("fs");
 var express = require('express');
 var routes = require('./routes');
 var auth = require('./models/authentication');
+var mailer = require('./models/mailer');
 
 require('jaydata');
 require('q');
@@ -51,7 +52,7 @@ app.configure(function() {
     app.get('/auth/resetRequest', auth.resetRequest);
     app.get('/auth/resetConfirm', auth.resetConfirm);
     app.get('/breeze/zza/Metadata', routes.getMetadata);
-    app.get('/test', routes.test);
+    app.get('/mail', mailer.api);
     app.post('/breeze/zza/SaveChanges', routes.saveChanges);
     app.get('/breeze/zza/Patients', routes.getPatients); 
     app.get('/breeze/zza/Bids', routes.getBids); 

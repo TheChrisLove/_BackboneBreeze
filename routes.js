@@ -232,13 +232,23 @@ function checkCases(req){
     if(req.body && req.body.entities){
         for(var i = 0, ii = req.body.entities.length; i < ii; i++){
             if(req.body.entities[i].entityAspect.entityTypeName == 'Case:#dm'){
-                var mailOptions = {
-                    to: req.body.entities[i].PatientEmail, // list of receivers
-                    subject: 'New Incoming Bid!', // Subject line
-                    text: 'Someone has bid on one of your cases.  Login now to see more.' // plaintext body
-                };
+                if(req.body.entities[i].entityAspect.entityState == 'Modified'){
+                    var mailOptions = {
+                        to: req.body.entities[i].PatientEmail, // list of receivers
+                        subject: 'New Incoming Bid!', // Subject line
+                        text: 'Someone has bid on one of your cases.  Login now to see more.' // plaintext body
+                    };
 
-                mailer.send(mailOptions);
+                    mailer.send(mailOptions);
+                } else if (req.body.entities[i].entityAspect.entityState == 'Added'){
+                    var mailOptions = {
+                        to: req.body.entities[i].PatientEmail, // list of receivers
+                        subject: 'New Case Created!', // Subject line
+                        text: 'Your case has been created.  Login to view bids!' // plaintext body
+                    };
+
+                    mailer.send(mailOptions);
+                }
             }
         }
 

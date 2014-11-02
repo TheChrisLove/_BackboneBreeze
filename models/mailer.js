@@ -14,6 +14,11 @@ var mailOptions = {
     from: 'bidclinic<info@bidclinic.com>', // sender address
 };
 
+exports.api = function(req, res, next){
+    var test;
+
+}
+
 
 exports.send = function(options){
 	transporter.sendMail(_.extend(mailOptions, options), function(error, info){
