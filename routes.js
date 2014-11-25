@@ -228,11 +228,17 @@ function processResults(res, next) {
     }
 }
 
+function getModifiedProperties (entity){
+
+}
+
 function checkCases(req){
     if(req.body && req.body.entities){
         for(var i = 0, ii = req.body.entities.length; i < ii; i++){
             if(req.body.entities[i].entityAspect.entityTypeName == 'Case:#dm'){
-                if(req.body.entities[i].entityAspect.entityState == 'Modified'){
+                var diff = getModifiedProperties(req.body.entities[i]);
+
+                if(dif.bids == 'Modified'){
                     var mailOptions = {
                         to: req.body.entities[i].PatientEmail, // list of receivers
                         subject: 'New Incoming Bid!', // Subject line
@@ -240,7 +246,7 @@ function checkCases(req){
                     };
 
                     mailer.send(mailOptions);
-                } else if (req.body.entities[i].entityAspect.entityState == 'Added'){
+                } else if (diff == 'Added'){
                     var mailOptions = {
                         to: req.body.entities[i].PatientEmail, // list of receivers
                         subject: 'New Case Created!', // Subject line
