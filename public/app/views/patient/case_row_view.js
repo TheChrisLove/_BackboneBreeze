@@ -140,6 +140,8 @@ define([
                 excludes: ['Bids', 'Created']
             });
 
+            viewModel.loggedIn = kb.observable(app.user, 'loggedIn');
+
             viewModel._Bids = app.utils.trackedBreezeCollection(this.model.get('Bids'))
             viewModel.Bids = kb.collectionObservable(viewModel._Bids);
             viewModel.Created = app.utils.formatDateTime(this.model.get('Created'));

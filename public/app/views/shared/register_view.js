@@ -37,9 +37,9 @@ define([
             if(!app.user.get('loggedIn')) app.user.logout(false);
 
             var _this = this;
-            var type = this.$el.find('input[name="AccountType"]:checked').val();
+            var type = this.$el.find('select[name="AccountType"]').val();
             var email = this.$el.find('input[name="Email"]').val();
-            var zipcode = this.$el.find('input[name="Zipcode"]').val(); 
+            var city = this.$el.find('input[name="City"]').val(); 
 
             // Check for existing email.
             var query = app.api.breeze
@@ -70,19 +70,19 @@ define([
                     }]
                   })
                 } else { 
-                    if(type == 'Patient') _this._createPatient(email, zipcode);
+                    if(type == 'Patient') _this._createPatient(email, city);
                     else _this.continueRegistration()
                 }
             });
         },
 
-        _createPatient: function(email, zipcode){
+        _createPatient: function(email, city){
           // create user
           app.user.createUser(email, 'Patient').then(function(user){
 
               var patient = app.api.manager.createEntity('Patient', {
                 Email: email,
-                Zipcode: zipcode,
+                City: city,
                 UserId: user.get('_id')
               });
 
@@ -110,11 +110,6 @@ define([
         
         createDoctor: function(event, modal) {
           var opts = app.utils.getForm(this.$el.find('form[name="register_now"]'));
-          delete opts.PaymentMethod;
-          delete opts.CreditCardNumber;
-          delete opts.CreditCardCCV;
-          delete opts.CreditCardExpiration;
-          delete opts.AccountType;
 
           app.user.createUser(opts.Email, 'Doctor').then(function(user){
             opts.UserId = user.get('_id');

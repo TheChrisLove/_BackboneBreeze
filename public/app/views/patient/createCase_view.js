@@ -21,13 +21,13 @@ define([
         className: 'banner',
 
         events: {
-          'submit form' : 'createCase',
+          'click .js-createCase' : 'createCase',
+          'submit form' : 'createCase'
         },
-
-        model : new CaseCreationModel(),
 
         start: function(options){
           _.bindAll(this, 'createCase');
+          this.model = new CaseCreationModel();
         },
 
         createViewModel: function(){

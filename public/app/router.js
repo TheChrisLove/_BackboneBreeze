@@ -151,7 +151,7 @@ define([
                         el: "main",
                         template: _.template(layout_main),
                         views: {
-                            //'#footer' : new Footer(),
+                            '#footer' : new Footer(),
                             '#peripheral': [new Modal(), new Warning()]
                         }
                     })
@@ -267,7 +267,7 @@ define([
                 cleanup[c].view = null;
             }
 
-            if ($('#main').length <= 0) $('body').append('<main id="main" role="main"></main>');
+            if ($('#main').length <= 0) $('body').prepend('<main id="main" role="main"></main>');
 
             // By default, if there is no args.name, or it wasn't found in this.layouts, we render args.layout.
             if (trackNew) {

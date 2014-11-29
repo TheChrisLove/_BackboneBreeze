@@ -1,77 +1,60 @@
-<style type="text/css">
-body { 
-  background: url(/img/slider/SickPupBkg.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-</style>
-
 <div class="container">
-    <div class="row step_1">
-        <div class="col-md-4 col-md-offset-7">
-            <div class="panel">
-                <div class="panel-heading panel-purple">
-                    <span class="glyphicon glyphicon-home"></span> Register now to get started!</div>
+    <div class="row">
+        <div class="col-md-5">
+            <h1 class="form-title">Register now!</h1>
+            <p>Bid and view on all cases!</p>
+            <form class="form-horizontal bannerForm" role="form" name="register_now">
 
-                    <form class="form-horizontal" role="form" name="register_now">
-                <div class="panel-body register_step_1">
+                <div class=" register_step_1">
                     <div class="form-group">                      
-                        <label class="col-sm-3 control-label">Email</label>
-                        <div class="col-sm-9">
-                            <input type="text"  name="Email" class="form-control" placeholder="Your Email Address" />
+                        <div class="col-md-12">
+                            <input type="text"  name="Email" class="form-control" placeholder="Enter your email address" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Zipcode</label>
-                        <div class="col-sm-9">
-                            <input type="text"  name="Zipcode"  class="form-control" placeholder="Your Zipcode" required />
+                        <div class="col-md-12">
+                            <input type="text"  name="City"  class="form-control" placeholder="Enter your City" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="checkbox-inline">
-                          <input type="radio" name="AccountType"  value="Patient" checked> Pet Parent
-                        </label>
-                        <label class="checkbox-inline">
-                          <input type="radio" name="AccountType"  value="Doctor" checked> Veterinarian
-                        </label>
-                        <label class="checkbox-inline">
-                          <input type="radio" name="AccountType"  value="Doctor"> Service Provider
-                        </label>
+                        <div class="col-md-12">
+                            <select class="form-control" name="AccountType">
+                                <option>Please choose an account type</option>
+                                <option value="Patient">Pet Parent</option>
+                                <option value="Doctor">Veterinarian</option>
+                                <option value="Doctor">Service Provider</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group last">
-                        <div class="col-sm-offset-8 col-sm-2">
-                            <span class="btn btn-primary loginButton js-checkEmail">
+                        <div class="col-md-12">
+                            <span class="btn btn-primary pull-right loginButton js-checkEmail">
                                 <span class="glyphicon glyphicon-ok"></span> Continue
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="panel-body register_step_2 hidden">
+                <div class="register_step_2 hidden">
                     <div class="form-group">                      
-                        <label class="col-sm-3 control-label">First</label>
-                        <div class="col-sm-9">
+                        <div class="col-md-12">
                             <input type="text" name="FirstName" class="form-control" placeholder="First Name" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Last</label>
-                        <div class="col-sm-9">
+                        <div class="col-md-12">
                             <input type="text" name="LastName" class="form-control" placeholder="Last Name" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Practice</label>
-                        <div class="col-sm-9">
-                            <input type="text"  name="PracticeName" class="form-control" placeholder="Practice Name" required />
+                        <div class="col-md-12">
+                            <input type="text"  name="PracticeName" class="form-control" placeholder="Business Name" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Service Provided</label>
                         <div class="col-sm-9">
                             <select name="ProviderType" class="form-control" required>
+                                <option>Service Provided?</option>
                                 <option value="Veterinarian">Veterinarian</option>
                                 <option value="Trainer">Trainer</option>
                                 <option value="Sitter">Sitter</option>
@@ -82,76 +65,37 @@ body {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Website</label>
-                        <div class="col-sm-9">
+                        <div class="col-md-12">
                             <input type="text" name="Website" class="form-control" placeholder="Website" required />
                         </div>
                     </div>
-
-                    <div class="form-group last">
-                        <div class="col-sm-offset-8 col-sm-2">
-                            <span class="btn btn-primary loginButton js-continue">
-                                <span class="glyphicon glyphicon-ok"></span> Continue
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="panel-body register_step_3 hidden">
-                    <div class="form-group">                      
-                        <label class="col-sm-3 control-label">Payment Method</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="PaymentMethod">
-                              <option>Visa</option>
-                              <option>MasterCard</option>
-                              <option>Discover</option>
-                              <option>Amex</option>
-                            </select>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="Phone" class="form-control" placeholder="Phone Number" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Credit Card Number</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="CreditCardNumber" class="form-control" placeholder="Your Card Number" required>
+                        <div class="col-md-12">
+                            <input type="text" name="VetLicenseNumber" class="form-control" placeholder="License Number" required />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Credit Card CCV</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="CreditCardCCV" class="form-control" placeholder="Your Card CCV" required>
-                        </div>
-                    </div>
-                     <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Expiration Date</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="CreditCardExpiration" class="form-control" placeholder="Expiration Date" required>
-                        </div>
-                    </div>
-                    
+
 
                     <div class="form-group last">
-                        <div class="col-sm-offset-8 col-sm-2">
-                            <span class="btn btn-primary loginButton js-register">
+                        <div class="col-md-12">
+                            <span class="btn pull-right btn-primary loginButton js-register">
                                 <span class="glyphicon glyphicon-ok"></span> Register Now
                             </span>
                         </div>
                     </div>
-                        <input type="submit" class="concealed" value="Go"/>
                 </div>
-                    </form>
 
-
-
-                <div class="panel-footer">
-                    <p class="text-right">
-                        <a href="patient/login" class="link">Have an account? Sign In.</a>
-                    </p>
-            </div>
+                        <input type="submit" class="concealed" value="Go"/>
+                
+            </form>
         </div>
     </div>
-    <div class="row step_2">
-    </div>
 </div>
+
+
+

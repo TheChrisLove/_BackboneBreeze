@@ -19,9 +19,11 @@ define([
          },
 
         _createCase: function(){
-          this.get('newCase').set('PatientId', this.get('user').get('info').get('Patient').get('_id'));
-          this.get('newCase').set('PatientEmail', this.get('user').get('info').get('Patient').get('Email'));
-          this.get('newCase').set("Created", new Date());
+          var newCase = this.get('newCase');
+          newCase.set('PatientId', this.get('user').get('info').get('Patient').get('_id'));
+          newCase.set('PatientEmail', this.get('user').get('info').get('Patient').get('Email'));
+          newCase.set("Created", new Date());
+          if(!newCase.get('City')) newCase.set('City', this.get('user').get('info').get('Patient').get('City'));
           //var newCase = app.api.manager.createEntity('Case', this.get('newCase').toJSON());
           return app.api.manager.saveChanges([this.get('newCase')]).then(function(){
              app.router.go('/patient/caseCreated/');
@@ -70,7 +72,7 @@ define([
                   app.user.createUser(_this.get('email'), 'Patient').then(function(user){
                       var patient = app.api.manager.createEntity('Patient', {
                         Email: _this.get('email'),
-                        Zipcode: _this.get('newCase').get('Zipcode'),
+                        City: _this.get('newCase').get('City'),
                         UserId: user.get('_id')
                       });
 

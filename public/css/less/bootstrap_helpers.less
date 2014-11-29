@@ -5,3 +5,29 @@
     border: 1px solid @btn-primary_color1;
     .gradient(@btn-primary_color1, @btn-primary_color1, @btn-primary_color2);
 }
+
+.jumbotron {
+	padding: 0px;
+
+	> div > div:first-child {
+		padding: 30px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+  	> div > div:first-child {
+	    padding-top: 48px;
+	    padding-bottom: 48px;
+    }
+  }
+  .container .jumbotron {
+  	> div > div:first-child {
+	    padding-right: 60px;
+	    padding-left: 60px;
+   }
+  }
+  .jumbotron h1 {
+    font-size: 63px;
+  }
+}

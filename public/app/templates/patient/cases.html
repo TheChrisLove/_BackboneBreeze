@@ -32,7 +32,7 @@
 <div class="row">
 <form class="form-horizontal" role="form" style="width: 100%;">
 <!-- ko foreach: _columns -->
-    <!-- ko if: active  && (name() == 'Description' || name() == 'Zipcode' ) -->
+    <!-- ko if: active  && (name() == 'Description' || name() == 'City' ) -->
     <div class="col-md-6">
 	    <div data-bind="attr: { 'data-type' : type, 'data-prop' : prop }, css: { inSort: $parent.sortEnabled() == true , filtered: filtered}">
 
@@ -55,7 +55,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<ul class="case_list grid_view collection-list"></ul>
+					<ul class="case_list grid_view collection-list list-unstyled"></ul>
 				</div>
 			 </div>
 			 <!--

@@ -30,11 +30,11 @@ define([
                           template: 'app/templates/patient/cases.html'
                         });
 
-                    var zipcode = (app.user.get('info') && 
+                    var city = (app.user.get('info') && 
                                    app.user.get('info').get('Doctor') && 
-                                   app.user.get('info').get('Doctor').get('Zipcode')) ? app.user.get('info').get('Doctor').get('Zipcode') : null;
-                    var predicate = (zipcode) ? app.api.breeze.Predicate.create('Zipcode', 'Equals', zipcode) : null;
-                    var _filters = (predicate) ? { Zipcode: predicate } : {};
+                                   app.user.get('info').get('Doctor').get('City')) ? app.user.get('info').get('Doctor').get('City') : null;
+                    var predicate = (city) ? app.api.breeze.Predicate.create('City', 'Equals', city) : null;
+                    var _filters = (predicate) ? { City: predicate } : {};
 
                     var grid = new Grid({
                         title: 'View/Search Cases',
@@ -127,7 +127,16 @@ define([
                   fn: function (args) {
                     // TODO differentiate between user/doctor?
                     this.cleanViews();
-                    this.setView(LoginView)
+                    this.setView({
+                      zone: '.content',
+                      view: new View({
+                        template: 'app/templates/common/aboutUs.html'
+                      })
+                    });
+                    this.setView({
+                      view : LoginView,
+                      zone: '.zone1' 
+                    });
                   }
               },
               logout: {

@@ -229,6 +229,15 @@ function processResults(res, next) {
 }
 
 function getModifiedProperties (entity){
+    var ret = { 
+        state : entity.entityAspect.entityState, 
+        props : entity.entityAspect.originalValuesMap
+    };
+
+    return ret;
+    //if(ret.state == 'Added') return ret;
+
+    //if(ret.state == 'Modified') return ret;
 
 }
 
@@ -238,7 +247,7 @@ function checkCases(req){
             if(req.body.entities[i].entityAspect.entityTypeName == 'Case:#dm'){
                 var diff = getModifiedProperties(req.body.entities[i]);
 
-                if(dif.bids == 'Modified'){
+                if(diff.state == 'Modified' && (diff.props.Bids && diff.prop.Bids.length > 0)){
                     var mailOptions = {
                         to: req.body.entities[i].PatientEmail, // list of receivers
                         subject: 'New Incoming Bid!', // Subject line
@@ -246,7 +255,7 @@ function checkCases(req){
                     };
 
                     mailer.send(mailOptions);
-                } else if (diff == 'Added'){
+                } else if (diff.state == 'Added'){
                     var mailOptions = {
                         to: req.body.entities[i].PatientEmail, // list of receivers
                         subject: 'New Case Created!', // Subject line

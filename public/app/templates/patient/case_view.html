@@ -2,15 +2,11 @@
 		<div class="panel-body">
 			<div class="row">
                 <div class="col-md-9">
-                    <img data-bind="attr: { src: ImageUrl }" alt="featured" class="img-rounded thumb" style="max-height: 157px; width: auto;">
-                    <p data-bind="text: Description"></p>
-                    <div class="foot">
-                        <span class="glyphicon glyphicon-th"></span> 
-                        <span>Expires:</span>
-                        <span data-bind="text: Expiration"></span>
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        <span data-bind="text: PatientEmail"></span>
-                    	<span class="glyphicon glyphicon-globe"></span> <span data-bind="text: Zipcode"></span>
+                    <div class="media">
+                        <img data-bind="attr: { src: ImageUrl }" class="pull-left img-rounded thumb" style="max-height: 157px; width: auto;">
+                        <div class="media-body">
+                            <p data-bind="text: Description"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3 vitals" style="padding-right: 15px;">
@@ -69,5 +65,17 @@
                 </div>
             </div>
             <!-- /ko -->
+        </div>
+        <div class="panel-footer">
+                        <span class="glyphicon glyphicon-th"></span>&nbsp;
+                        <span>Expires:</span>
+                        <span data-bind="text: Expiration"></span> &nbsp;|&nbsp;
+                        <!-- ko if: loggedIn -->
+                        <span class="glyphicon glyphicon-envelope"></span>&nbsp;
+                        <span data-bind="text: PatientEmail"></span> &nbsp;|&nbsp;
+                        <!-- /ko -->
+                        <!-- ko if: City -->
+                        <span class="glyphicon glyphicon-globe"></span> <span data-bind="text: City"></span>
+                        <!-- /ko -->
         </div>
     </div>

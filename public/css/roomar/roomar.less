@@ -1,0 +1,244 @@
+
+
+
+/* Navigation 
+ * --------------------------------------------- */
+.navbar .nav { float: right;}
+.bullets li{
+    background: url('../img/menu_bullet.png') 0 center no-repeat;
+    padding-left: 15px !important;
+}
+.bullets li:first-child{
+    background: none !important;
+    padding-left: 0px;
+}
+
+
+/* Core styles
+ * --------------------------------------------- */
+body{
+    background: #eeeeee;
+    color: #323232;
+    padding: 0px;
+    margin: 0px;
+}
+#wrapper {width: 100%; }
+#header{
+    background: url('../img/header_bg_480.jpg') center center no-repeat;
+    display: block;
+    height: 230px;
+    text-align: center;
+}       
+#main_logo{margin: 10px; }
+#content{
+    background-color: #fefefe;
+    box-shadow: 0 0 60px rgba(0,0,0,.2);
+}
+.subHeader{
+    border-top: 1px solid white;
+    background: #d9d9d9;
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+.subHeader > div > div {padding: 0px 25px 0 25px; }
+.subHeader h3{color: #324043; }
+.subHeader p{color: #797979; }
+.subHeader a:hover{text-decoration: none; }
+.subHeader h4, .subHeader h3, .subHeader h2{
+    color: #383b3f;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-family: "Helvetica Neue",helvetica,arial,sans;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    margin-bottom: 12px;
+}
+.subHeader h4{background: transparent url('../img/read_more_arrow.png') no-repeat right 60%; }
+.mainContent p, .mainContent li, .mainContent label{color: #717171; }
+.mainContent h1, .mainContent h2, .mainContent h3, .mainContent h4{color: #323232 }
+.leftColumn > div > div{padding: 0 0px 0 0px; }
+.leftColumn > div > div > div{
+    margin: 0 auto;
+    margin-top: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    width: 90%;
+    text-align: center;
+}
+.front_page .leftColumn h2{margin: 20px 0 20px 0 ; }
+.leftColumn > div > div > div > div{ text-align: left;}
+.leftColumn p, .leftColumn h3, .leftColumn h4, .leftColumn h2, .leftColumn li{text-align: left !important; }
+.leftColumn_img{
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 20px;
+    max-width: 90%;
+    height: auto;
+}
+
+.rightColumn{
+    height: 100%;
+    border-left: 1px solid #d9d9d9;
+}
+.rightColumn {padding-bottom: 40px; }
+.rightColumn > div:first-child{padding: 20px 0 0 0; }
+.rightColumn > div >  div > div{
+    padding: 0px 40px 0px 40px;
+    margin: 0 auto;
+}
+footer{
+    color: #595959;
+    background: #eeeeee;
+}
+footer a { color: #595959 !important;}
+footer .bullets li{background: url('../img/menu_bullet_dark.png') 0 center no-repeat; }
+
+/* Right column icons
+ * --------------------------------------------- */
+h3.icon_header{
+    padding-left: 38px;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+}
+h3.ico-specializations{ background-image: url('../img/specializations.png');}
+h3.ico-tools{background-image: url('../img/tools.png');}
+h3.ico-email{background-image: url('../img/email.png');}
+
+/* Common styles/structures
+ * --------------------------------------------- */
+ .centered{
+    text-align: center !important;
+ }
+ h3 .rbutton{
+    text-align: center !important;
+margin-bottom: 20px;
+ }
+ .alt_header{
+    font-weight:bold;
+    color:#00aed7 !important;
+ }
+ .border{
+    width: 80%;
+    height: 1px;
+    display: block;
+    border-top:1px solid #eeeeee;
+    text-align:center;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+ }
+ .center{margin: 0 auto;}
+
+/* Buttons
+ * --------------------------------------------- */
+.rbutton,
+.rbutton:link,
+.rbutton:visited{
+    cursor: pointer;
+    border: none;
+    display:inline-block;
+    color:#fff !important;
+    background-color:#00aed7;
+    padding:9px 18px;
+    text-align:left;
+    text-decoration:none;
+    font-size:.875em;/* 14/16 */
+    font-weight:bold;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.rbutton * {
+    color: #fff !important;
+}
+
+.rbutton:hover,
+.rbutton:active{
+    background-color:#666;
+}
+
+/* Page Specific 
+ * --------------------------------------------- */
+
+.blueprints{
+    float: left;
+margin-right: 15px;
+max-width: 40%;
+}
+.optic-cable{
+    display: none;
+}
+@media (min-width: 476px) {
+     #contact_form input,
+     #contact_form textarea{
+       width: 299px;
+        margin-left: 3px;
+    }
+    .captcha_error{
+        color: #850400 !important;
+        width: 340px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+ }
+
+/* Core Responsive
+ * --------------------------------------------- */
+
+ @media (min-width: 480px) { #header{background: url('../img/header_bg_600.jpg') center center no-repeat; } }
+ @media (min-width: 600px) { #header{background: url('../img/header_bg_768.jpg') center center no-repeat; } }
+ @media (min-width: 658px) {
+     .networked-computers{
+        background: url('../img/networked-computers.jpg') 100% 0 no-repeat;
+    }
+    .optic-cable{
+        display: block;
+        float: right;
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) {
+     .networked-computers{
+        background: none;
+    }
+}
+ @media (min-width: 1014px) {
+     .networked-computers{
+        background: url('../img/networked-computers.jpg') 100% 0 no-repeat;
+    }
+}
+ @media (min-width: 619px) {
+     #contact_form{
+        width: 350px;
+        position: relative;
+        left: -120px;
+     }
+    #header{text-align: left;height: 350px;}
+    #header_tagline{
+        position: absolute;
+        width: 100%;
+        display: block;
+        top: 340px;
+     }
+ #header_tagline img{
+    float:right;
+    position: relative;
+    right: 25px;
+     }
+ }
+ @media (min-width: 768px) { #header{background: url('../img/header_bg_1024.jpg') center center no-repeat; } }
+ @media (min-width: 1024px) { #header{background: url('../img/header_bg_1280.jpg') center center no-repeat; } }
+ @media (min-width: 1280px) { #header{background: url('../img/header_bg_1440.jpg') center center no-repeat; } }
+ @media (min-width: 1440px) { #header{background: url('../img/header_bg_1840.jpg') center center no-repeat; } }
+ @media (min-width: 1840px) { #header{background: url('../img/header_bg_2218.jpg') center center no-repeat; } }
+ @media (min-width: 2218px) {
+    body{
+        padding-top: 30px;
+    }
+    #wrapper{
+        max-width: 1282px;
+        width: 90%;
+    }
+ }
+
+
+footer{
+    padding: 25px;
+}

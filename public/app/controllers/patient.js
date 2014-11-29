@@ -33,8 +33,15 @@ define([
                   fn: function(){
                     this.cleanViews();
                     this.setView({
+                      zone: '.content',
+                      view: new View({
+                        template: 'app/templates/common/aboutUs.html'
+                      })
+                    });
+
+                    this.setView({
                       zone: '.zone1',
-                      view: IndexView
+                      view: CreateCaseView
                     });
                   }
                 },
@@ -47,7 +54,19 @@ define([
                     },
                     fn: function(args) {
                       this.cleanViews();
-                      this.setView(CreateCaseView);
+                      if(app.user.get('loggedIn') == false){
+                        this.setView({
+                          zone: '.content',
+                          view: new View({
+                                  template: 'app/templates/common/aboutUs.html'
+                                })
+                        });
+                      }
+                        
+                      this.setView({
+                        view: CreateCaseView,
+                        zone: '.zone1'
+                      });
                     }
                 },
                 caseCreated: {
@@ -55,9 +74,7 @@ define([
                     if(!app.user.verify()) app.router.go('/');
                     else {
                       this.cleanViews();
-                      this.setView(new View({
-                        template: 'app/templates/patient/case_created.html'
-                      }));
+                      this.setView( new View({ template: 'app/templates/patient/case_created.html'}));
                     }
                   }
                 },
@@ -174,7 +191,16 @@ define([
                     },
                     fn: function(args) {
                         this.cleanViews();
-                        this.setView(LoginView);
+                        this.setView({
+                          zone: '.content',
+                          view: new View({
+                            template: 'app/templates/common/aboutUs.html'
+                          })
+                        });
+                        this.setView({
+                          zone: '.zone1',
+                          view: LoginView
+                        });
                     }
                 },
                 signup: {
@@ -184,7 +210,16 @@ define([
                   },
                   fn: function(){
                     this.cleanViews();
-                    this.setView(app.auth.getRegisterView());
+                    this.setView({
+                      zone: '.content',
+                      view: new View({
+                        template: 'app/templates/common/aboutUs.html'
+                      })
+                    });
+                    this.setView({
+                      view: app.auth.getRegisterView(),
+                      zone: '.zone1'
+                    });
                   }
                 },
                 logout: {

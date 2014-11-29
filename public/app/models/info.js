@@ -236,7 +236,7 @@ define([
                 var parent = oldLayout.$el.parent();
                 oldLayout.remove();
                 oldController.set('layout', null);
-                parent.append(reset);
+                parent.prepend(reset);
             }
         },
 

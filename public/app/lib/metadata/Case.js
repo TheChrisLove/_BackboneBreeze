@@ -31,6 +31,7 @@ define([], function() {
           })()},
         { "name": "Description", "dataType": "String" },
         { "name": "ImageUrl", "dataType": "String" },
+        { "name": "City", "dataType": "String" },
         { "name": "Zipcode", "dataType": "String" },
         { "name": "PatientId", "dataType": "MongoObjectId" },
         { "name": "PatientEmail", "dataType": "String"},
