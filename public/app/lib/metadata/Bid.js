@@ -10,6 +10,8 @@ define([], function() {
         { "name": "Bid", "dataType": "Number" },
         { "name": "Created", "dataType": "String" },
         { "name": "Modified", "dataType": "String" },
+        { "name": "Winner", "dataType": "Boolean" },
+        { "name": "WinnerEmail", "dataType": "String" }
       ]
     }
     

@@ -247,7 +247,25 @@ function checkCases(req){
             if(req.body.entities[i].entityAspect.entityTypeName == 'Case:#dm'){
                 var diff = getModifiedProperties(req.body.entities[i]);
 
-                if(diff.state == 'Modified' && (diff.props.Bids && diff.prop.Bids.length > 0)){
+                if(diff.state == 'Modified' && req.body.entities[i].CaseStatus == 'Closed' && diff.props.CaseStatus == 'Open'){
+                    // Case was just closed
+                    var mailOptionsPractice = {
+                        to: req.body.entities[i].WinnerEmail, // list of receivers
+                        subject: 'Your bid has been accepted!', // Subject line
+                        text: 'A patient has accepted your bid for $' + req.body.entities[i].WinningBid + '.'  // plaintext body
+                    };
+
+                    var mailOptionsPatient = {
+                        to: req.body.entities[i].PatientEmail, // list of receivers
+                        subject: 'Bid Accepted, Case closed!', // Subject line
+                        text: 'Your confirmatio number for your case is: '  + req.body.entities[i]._id// plaintext body
+                    };
+
+                    mailer.send(mailOptionsPractice);
+                    mailer.send(mailOptionsPatient);
+
+
+                } else if(diff.state == 'Modified' && (diff.props.Bids && diff.props.Bids.length > 0)){
                     var mailOptions = {
                         to: req.body.entities[i].PatientEmail, // list of receivers
                         subject: 'New Incoming Bid!', // Subject line

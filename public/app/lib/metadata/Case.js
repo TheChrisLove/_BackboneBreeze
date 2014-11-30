@@ -35,6 +35,8 @@ define([], function() {
         { "name": "Zipcode", "dataType": "String" },
         { "name": "PatientId", "dataType": "MongoObjectId" },
         { "name": "PatientEmail", "dataType": "String"},
+        { "name": "WinnerEmail", "dataType": "String"},
+        { "name": "WinningBid", "dataType": "String"},
         { "name" : "Bids", "isScalar": false, "complexTypeName" : "Case_bid:#dm" }
       ],
       "navigationProperties":[

@@ -26,7 +26,40 @@ define([
         },
 
         start: function(){
-            _.bindAll(this, 'bid', '_createBid', '_updateBid', 'bidViewModel');
+            _.bindAll(this, 'bid', '_createBid', '_updateBid', 'bidViewModel', 'acceptBid');
+        },
+
+        acceptBid : function(vm){
+            var bid = vm._Bid;
+            if(!bid) return false;
+            var _this = this;
+
+            app.modal.show({
+                title: 'Accept Bid?',
+                content: 'Are you sure you want to accept this bid for $' + vm.Bid() + ' from ' + vm.PracticeName() + '?',
+                buttons: [{
+                    name: 'Yes',
+                    fn: function(){
+                        _this.model.set({
+                            CaseStatus : 'Closed',
+                            WinnerEmail: vm.Email(), 
+                            WinningBid: vm.Bid()
+                        });
+                        bid.set({
+                            Winner :true,
+                            WinnerEmail: vm.Email()
+                        });
+                        app.api.saveChanges().then(function(){
+                            $.gritter.add({
+                                title: 'Bid Accepted',
+                                text: 'You have accepted the bid. Check your email for your confirmation number.'
+                            });
+                            app.modal.close();
+                        });
+                    }
+                }]
+
+            })
         },
 
         viewBids: function(event){
@@ -128,8 +161,13 @@ define([
         },
 
         bidViewModel: function(model){
+            var _this = this;
             var viewModel = kb.viewModel(model);
-            viewModel.Bid = kb.observable(this.viewModel._Bids.findWhere({DoctorId: model.get('_id')}), 'Bid');
+            var bid = this.viewModel._Bids.findWhere({DoctorId: model.get('_id')});
+            viewModel._Bid = bid;
+            viewModel.Bid = (bid) ? kb.observable(bid, 'Bid') : null;
+            viewModel.WinningBid = kb.observable(bid, 'Winner');
+            viewModel.acceptBid = function(){ _this.acceptBid(viewModel) };
 
             return viewModel;
         },

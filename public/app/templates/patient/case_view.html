@@ -1,4 +1,7 @@
-	<div class="panel panel-default featured" style="margin-top: 16px;">
+	<div class="panel panel-default featured" style="margin-top: 16px;" data-bind="css: { 'panel-default' : CaseStatus() !== 'Closed', 'panel-danger' : CaseStatus() == 'Closed'}">
+        <!-- ko if: CaseStatus() == 'Closed'-->
+        <div class="panel-heading">This case is Closed.</div>
+        <!-- /ko -->
 		<div class="panel-body">
 			<div class="row">
                 <div class="col-md-9">
@@ -20,7 +23,7 @@
                         <strong>My Bid: </strong> <span data-bind="text: $data.myBid"></span>
                         <!-- /ko -->
                     </p>
-                    <!-- ko if: app.user.getAccountType() == 'Doctor' -->
+                    <!-- ko if: app.user.getAccountType() == 'Doctor' && CaseStatus() == 'Open' -->
                     <div class="input-group">
 				      <input type="text" class="form-control" data-bind="attr: {placeholder: $data.nextBid}, value: $data.nextBid">
 				      <span class="input-group-btn">
@@ -44,20 +47,24 @@
             <!-- ko if : app.user.getAccountType() == 'Patient'  -->
             <div class="row viewBids noDisplay" style="margin-top:15px;">
                 <div class="col-md-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="margin-bottom: 0px;">
                         <div class="panel-heading">Case Bids</div>
-                        <ul data-bind="foreach: Doctors" class="list-group">
-                            <li class="list-group-item">
+                        <ul data-bind="foreach: Doctors" class="list-group" style="margin-top: 0px;">
+                            <li class="list-group-item" data-bind="if: Bid">
+                                <div >
                                 <h5>
+                                    <span data-bind="if: WinningBid " class="label label-success">Winner!</span>
                                     <span data-bind="text: PracticeName"></span>&nbsp;
                                     <!-- ko foreach: new Array(parseInt(Rating())) -->
                                         <span class="glyphicon glyphicon-star"></span>
                                     <!-- /ko -->
                                     <div class="pull-right" >
                                         <span>$<span data-bind="text: Bid"></span></span>&nbsp;
-                                        <span class="btn btn-primary btn-sm">Accept Bid</span>
+                                        <!-- ko if: $parent.CaseStatus() == 'Open' -->
+                                        <span class="btn btn-primary btn-sm" data-bind="click: acceptBid">Accept Bid</span>
+                                        <!-- /ko -->
                                     </div>
-
+                                </div>
                                 </h5>
                             </li>
                         </ul>

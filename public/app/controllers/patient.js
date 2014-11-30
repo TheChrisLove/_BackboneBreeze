@@ -121,6 +121,7 @@ define([
                         title: 'View Cases',
                         resource: 'Cases',
                         limit: 12,
+                        predicate: app.api.Predicate.create('CaseStatus', 'Equals', 'Open'),
                         wrapper: wrapper,
                         row: CaseRowView,
                         columns: {
