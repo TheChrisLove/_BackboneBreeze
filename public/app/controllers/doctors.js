@@ -120,7 +120,7 @@ define([
                 }
               },
               login: {
-                  name: "Login/Signup",
+                  name: "Login",
                   isVisible: function(){
                     return (app.user.verify()) ? false : true;
                   },
@@ -139,6 +139,25 @@ define([
                     });
                   }
               },
+              signup: {
+                  name: 'Sign Up',
+                  isVisible: function(){
+                    return (app.user.get('loggedIn')) ? false : true;
+                  },
+                  fn: function(){
+                    this.cleanViews();
+                    this.setView({
+                      zone: '.content',
+                      view: new View({
+                        template: 'app/templates/common/aboutUs.html'
+                      })
+                    });
+                    this.setView({
+                      view: app.auth.getRegisterView(),
+                      zone: '.zone1'
+                    });
+                  }
+                },
               logout: {
                 name: 'Logout',
                 isVisible: function(){

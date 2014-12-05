@@ -205,7 +205,7 @@ define([
                     }
                 },
                 signup: {
-                  name: 'Signup',
+                  name: 'Sign Up',
                   isVisible: function(){
                     return (app.user.get('loggedIn')) ? false : true;
                   },
