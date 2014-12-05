@@ -17,21 +17,27 @@ var db = new mongodb.Db(dbName, dbServer, {
 db.open(function () {/* noop */ });
 
 var CronJob = require('cron').CronJob;
-new CronJob('00 00 12 * * *', function(){
+new CronJob('00 49 14 * * *', function(){
     var query = {
-        Expiration: { $gte : new Date()},
-        CaseStatus: { $ne : 'Closed'}
+        $and: [
+        { Expiration: { $lte : new Date()} },
+        { CaseStatus: { $ne : 'Closed' } }
+        ]
     };
 
     var collection = db.collection('Cases');
     var cursor = collection.find(query);
     cursor.each(function(err, item){
-        var mailOptions = {
-            to: item.PatientEmail, // list of receivers
-            subject: 'Case Expired...', // Subject line
-            text: 'Your case has expired: "' + item.Description + '"'
-        };
-        mailer.send(mailOptions);
+        if(item){
+            /*
+            var mailOptions = {
+                to: item.PatientEmail, // list of receivers
+                subject: 'Case Expired...', // Subject line
+                text: 'Your case has expired: "' + item.Description + '"'
+            };
+            mailer.send(mailOptions);
+            */
+        }
     })
     collection.update(query,
         {
