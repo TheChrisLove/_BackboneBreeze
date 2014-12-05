@@ -639,11 +639,15 @@ define([
             }
 
             // If the above is skipped, we are in the context of a single predicate with no children (lowest level)
-            var prop = this.getEntityProperty(model, predicate._propertyOrExpr);
+            var _prop = this.getEntityProperty(model, predicate._propertyOrExpr);
             var isArray = _.isArray(prop);
             // Add a space in the instance that prop is a typeof number
-            var _prop = prop + '';
-            var value = predicate._value;
+            //var value = predicate._value;
+
+            // Add a space in the instance that prop is a typeof number
+            var prop = (_prop + '').toLowerCase();
+            var _value = predicate._value;
+            var value = (_value + '').toLowerCase();
 
             // TODO implement date comparison
             if ((comparator == 'Equals') || (comparator == 'GreaterThan') || (comparator == 'LessThan')) {
@@ -671,13 +675,13 @@ define([
                     return prop <= value;
                     break;
                 case 'Contains':
-                    return (_prop.indexOf(value) != -1);
+                    return (prop.indexOf(value) != -1);
                     break;
                 case 'EndsWith':
-                    return (_prop.indexOf(value, prop.length - value.length) !== -1);
+                    return (prop.indexOf(value, prop.length - value.length) !== -1);
                     break;
                 case 'StartsWith':
-                    return (_prop.indexOf(value) == 0);
+                    return (prop.indexOf(value) == 0);
                     break;
                 default:
                     console.log('Evaluation for predicate type' + comparator + 'to be implemented.');
