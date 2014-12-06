@@ -1,0 +1,94 @@
+  	<div class="panel with-nav-tabs panel-primary">
+      <!-- ko if : !view.modal -->
+	  <div class="panel-heading">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" data-bind="foreach: tabs">
+          <li data-bind="css: { active : _name() == $parent.activeTab }"><a data-bind="attr: { href: '#' + _name(), 'data-updateTab' : _name }, text: name" role="tab" data-toggle="tab"></a></li>
+        </ul>
+    </div>
+      <!-- /ko -->
+      <div data-bind="css: { 'panel-body' : !view.modal }">
+        <form role="form" class="properties_form">
+        <!-- Tab panes -->
+        <div class="tab-content" data-bind="foreach: tabs">
+          <div class="tab-pane" data-bind="attr: { id : _name }, css: { active : _name() == $parent.activeTab } " >
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-12">
+
+                    <!-- ko foreach: $data.properties -->
+
+                    <div data-bind=" template: { name: 'properties-template', data: $data }"></div>
+
+                    <!-- /ko -->
+                    <div class="clearfix"></div>
+                </div>
+                
+            </div>
+
+          </div>
+        </div>
+          <div class="col-md-12" data-bind="if: !view.modal">
+            <span class="pull-right">
+                <span class="btn btn-default js_cancelChanges" data-loading-text="Canceling..."><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</span>
+                <span class="btn btn-primary js_save" data-loading-text="Saving..."><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</span>
+            </span>
+          </div>
+        </form>
+
+	  </div>
+	</div>
+
+
+<script type="text/html" id="properties-template">
+<!-- ko switch: inputType -->
+
+    <!-- ko case: 'formGroup' -->
+    <div data-bind="attr: { class : (view.modal) ? 'col-md-12' : 'col-md-6' } ">
+  		<div class="form-group">
+  			<label><span data-bind="text: name"></span></label><br /><sup style="font-size: 90%;"><em data-bind="text: $data.hint"></em></sup>
+  		  	<div class="panel panel-default">
+				<div class="panel-body">
+		  			<!-- ko foreach: _subfields -->
+		  			<div data-bind=" template: { name: 'properties-template', data: $data, disabled : $data.editable === false  }"></div>
+		  			<!-- /ko -->
+		  		</div>
+	  		</div>
+  		</div>
+    </div>
+  	<!-- /ko -->
+
+	<!-- ko case: 'select' -->
+    <div data-bind="attr: { class : (view.modal) ? 'col-md-12' : 'col-md-6' } ">
+		<div class="form-group">
+		    <label><span data-bind="text: name"></span></label><br /><sup style="font-size: 90%;"><em data-bind="text: $data.hint"></em></sup>
+			<select class="form-control" data-bind="attr: { name : _name, disabled : $data.editable === false  }, options: selectOptions, optionsText: 'display', optionsValue: 'value', value: _value">
+			</select>
+		</div>
+    </div>
+	<!-- /ko -->
+
+	<!-- ko case: 'checkbox' -->
+    <div data-bind="attr: { class : (view.modal) ? 'col-md-12' : 'col-md-6' } ">
+	    <div class="form-group">
+           <label><span data-bind="text: name"></span></label><br /><sup style="font-size: 90%;"><em data-bind="text: $data.hint"></em></sup>
+           <span class="button-checkbox">
+               <button type="button" class="btn" data-color="primary"><span data-bind="text: name"></span></button>
+               <input type="checkbox" class="hidden" data-bind="attr: { name : _name, disabled : $data.editable === false  }, checked: _value" />
+           </span>             
+        </div>
+    </div>
+    <!-- /ko -->
+
+  	<!-- ko case: $default -->
+    <div class="clearfix" data-bind="attr: { class : (view.modal) ? 'col-md-12' : 'col-md-6' } ">
+        <div class="form-group">
+           <label><span data-bind="text: name"></span></label><br /><sup style="font-size: 90%;"><em data-bind="text: $data.hint"></em></sup>
+		   <input class="form-control" data-bind="value: _value, attr: { type: inputType, name: _name, disabled : $data.editable === false } ">
+        </div>
+    </div>
+    <!-- /ko-->
+
+<!-- /ko -->
+</script>

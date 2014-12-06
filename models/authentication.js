@@ -52,8 +52,19 @@ exports.resetConfirm = function(req, res, next){
             error: 'Unable to reset password'
         });
 
-        if(req.query.resetToken == passport.get('resetToken')) res.send({ authenticated: true });
-        else res.send(response);
+        if(req.query.resetToken == passport.get('resetToken')){
+            // Actually reset a new password
+            var password = generatePassword();
+            passport.set('password', password);
+            passport.save();
+            mailer.send({
+                to: req.query.Email, // list of receivers
+                subject: 'Password Reset', // Subject line
+                text: 'Your new password is: ' + password
+            });
+
+            res.send({ authenticated: true });
+        } else res.send(response);
     });
 }
 
@@ -75,16 +86,19 @@ exports.resetRequest = function(req, res, next){
         passport.save(function(err){
             if (err) throw err;
 
+            var body = 'Here is your password reset token: ' + token;
+            console.log(token);
+
             // TODO get server name for passport request link
             var mailOptions = {
                 to : req.query.Email,
                 subject: 'Password Reset Request',
-                text: 'To reset your password, visit ' + token  
+                text: body
             };
 
             mailer.send(mailOptions);
             res.send({
-                success: 'Reset token sent to ' + req.query.email
+                success: 'Reset token sent to ' + req.query.Email
             });
         })
     });

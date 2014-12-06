@@ -15,6 +15,7 @@ define([
 
         events: {
             "click .js-loginButton": "login",
+            "click .js-forgotPassword": "forgotPassword",
             "submit form": "login"
         },
 
@@ -27,6 +28,49 @@ define([
                 'login',
                 '_login'
             );
+        },
+
+        forgotPassword: function(){
+            app.modal.show({
+                title: 'Forgot Your Password?',
+                view: new View({template: 'app/templates/shared/forgotPassword.html'}),
+                buttons: [{
+                    name : 'Continue',
+                    fn: function(){
+                        var email = app.modal.$el.find('#getEmail').val();
+                        $.get('/auth/resetRequest', { Email: email}, function(resp){
+                            if(resp.success){
+                                app.modal.$el.find('.step1').hide();
+                                app.modal.$el.find('.step2').fadeIn();
+                                app.modal.model.get('buttons').reset({
+                                    name: 'Reset Password',
+                                    fn: function(){
+                                        $.get('/auth/resetConfirm', {
+                                            Email: app.modal.$el.find('#getEmail').val(),
+                                            resetToken: app.modal.$el.find('#getToken').val()
+                                        }, function(resp){
+                                            if(resp.authenticated){
+                                                app.modal.show({
+                                                    title: 'Password Reset',
+                                                    content: 'Your password has been reset.  Please check your email for your new password.'
+                                                });
+                                            } else {
+                                                app.modal.$el.find('.alert').fadeIn();
+                                            }
+                                        });
+                                    }
+                                })
+                            } else {
+                                app.modal.show({
+                                    title: 'Forgot Your Password?',
+                                    content: 'Oops!  That email was not found!  Please try again.'
+                                });
+                            }
+                        });
+                    }
+                }]
+            })
+
         },
         
         _login: function(event, modal) {
